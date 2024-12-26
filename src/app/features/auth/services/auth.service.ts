@@ -9,16 +9,18 @@ import { Observable } from 'rxjs';
 export class AuthService {
 role: string|null = ''
   constructor(private _HttpClient:HttpClient) {
-    // if(localStorage.getItem('role') !== null){
+    // if(localStorage.getItem('userToken') ){
     //   this.getProfile();
     // }
    }
    getProfile(){
-    let encoded: any = localStorage.getItem('userToken');
-    let decoded: any = jwtDecode(encoded)
-    this.getRole()
+    let finalToken: any = localStorage.getItem('userToken');
+    let decodedToken: any = jwtDecode(finalToken)
+    localStorage.setItem('userName', decodedToken.userName);
+    localStorage.setItem('userGroup', decodedToken.userGroup);
+    this.setRole()
   }
-  getRole(){
+  setRole(){
     if (localStorage.getItem('userToken') !== null && localStorage.getItem('role')) {
       this.role = localStorage.getItem('role')
     }

@@ -21,24 +21,16 @@ export class SignInComponent {
   }
 
   onSubmit(data: FormGroup) {
+
     this._AuthService.onSignin(data.value).subscribe({
       next: (res:any) => {
         console.log(res);
-        // localStorage.setItem('userToken', res.data.token)
-        // localStorage.setItem('role',res.data.user.role)
-        // localStorage.setItem('userName',res.data.user.userName)
-        // localStorage.setItem('email',res.data.user.email)
-        // localStorage.setItem('userId',res.data.user._id)
+        localStorage.setItem('userToken', res.data.token)
+        this._AuthService.getProfile()
       }, error: (err) => {
+        console.log(err);
         // this._ToastrService.error(err.error.message, 'Error!')
       }, complete: () => {
-        if(localStorage.getItem('role')=='admin'){
-          this._Router.navigate(['/dashboard'])
-         }
-         else{
-          this._Router.navigate(['/landingPage/home']);
-         }
-
         // this._ToastrService.success('Logged In', 'Successfully')
       }
     })
