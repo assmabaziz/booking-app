@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common/http';
-import { BaseUrlInterceptor } from './core/interceptors/global-interceptor/global.interceptor';
+import { globalInterceptor } from './core/interceptors/global-interceptor/global.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
-    { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: globalInterceptor, multi: true },
     provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
