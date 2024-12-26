@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class BaseUrlInterceptor implements HttpInterceptor {
-  private baseUrl = 'http://your-api-base-url.com'; // Replace with your actual base URL
+export class globalInterceptor implements HttpInterceptor {
+  private baseUrl = 'http://upskilling-egypt.com/3000'; // Replace with your actual base URL
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const modifiedRequest = request.clone({
