@@ -9,9 +9,9 @@ import { Observable } from 'rxjs';
 export class AuthService {
 role: string|null = ''
   constructor(private _HttpClient:HttpClient) {
-    if(localStorage.getItem('role') !== null){
-      this.getProfile();
-    }
+    // if(localStorage.getItem('role') !== null){
+    //   this.getProfile();
+    // }
    }
    getProfile(){
     let encoded: any = localStorage.getItem('userToken');
@@ -29,6 +29,6 @@ role: string|null = ''
 
 onSignin(data:any):Observable<any>
  {
-  return this._HttpClient.post<any>('portal/users/login', data)
+  return this._HttpClient.post<any>('/api/v0/admin/users/login', data)
  }
 }

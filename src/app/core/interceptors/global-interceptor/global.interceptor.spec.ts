@@ -1,17 +1,15 @@
-// import { TestBed } from '@angular/core/testing';
-// import { HttpInterceptorFn } from '@angular/common/http';
+import { TestBed } from '@angular/core/testing';
+import { globalInterceptor } from './global.interceptor';
 
-// import { globalInterceptor } from './global.interceptor';
+describe('globalInterceptor', () => {
+  beforeEach(() => TestBed.configureTestingModule({
+    providers: [
+      globalInterceptor
+      ]
+  }));
 
-// describe('globalInterceptor', () => {
-//   const interceptor: HttpInterceptorFn = (req, next) =>
-//     TestBed.runInInjectionContext(() => new globalInterceptor(req, next));
-
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({});
-//   });
-
-//   it('should be created', () => {
-//     expect(interceptor).toBeTruthy();
-//   });
-// });
+  it('should be created', () => {
+    const interceptor: globalInterceptor = TestBed.inject(globalInterceptor);
+    expect(interceptor).toBeTruthy();
+  });
+});
