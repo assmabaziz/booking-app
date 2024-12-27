@@ -1,10 +1,47 @@
 @import "../../../assets/styles/abstructs/variables";
 
-.row {
-  margin-left: 0;
-  margin-right: 0;
-}
+section {
+  &.row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .sidebar {
+    background-color: $blue-main;
+    transition: all 0.3s;
+    width: 15%;
 
-.sidebar {
-  background-color: $blue-main;
+    &.closed {
+      width: 7%;
+    }
+
+    .btn-toggle {
+      background-color: $blue-main;
+      padding: 5px;
+      position: absolute;
+      top: 20px;
+      right: -20px;
+      color: wheat;
+      border-radius: 0 0.5rem 0.5rem 0;
+      cursor: pointer;
+      z-index: 999;
+    }
+  }
+  .main-router {
+    width: 85%;
+    transition: 0.3s;
+  }
+  .main-router2 {
+    width: 93%;
+    transition: 0.3s;
+  }
+
+  // .sidebar.closed .icon-container {
+  //   margin-left: 0.5rem;
+  // }
+  // ul.closed {
+  //   padding-left: 0.5rem;
+  // }
+  // ul.closed li a span {
+  //   display: none;
+  // }
 }

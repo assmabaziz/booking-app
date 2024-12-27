@@ -8,8 +8,8 @@
         routerLinkActive="active"
         (click)="item.link == 'logout' ? logout() : null"
       >
-        <i [class]="item.icon" class="icon-container"></i>
-        <span>{{ item.name }}</span>
+        <i [class]="item.icon" class="icon-container mx-auto"></i>
+        <span *ngIf="!isClosed">{{ item.name }}</span>
       </a>
     </li>
     }
