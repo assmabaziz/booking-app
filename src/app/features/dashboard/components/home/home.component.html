@@ -38,5 +38,15 @@
         </div>
       </div>
     </div>
+
+    <div>
+      <div
+        echarts
+        [options]="chartOptions"
+        class="chart"
+        *ngIf="isBrowser"
+      ></div>
+      <!-- <div echarts [options]="chartOptions" class="chart"></div> -->
+    </div>
   </div>
 </section>
