@@ -1,0 +1,36 @@
+<section class="">
+  <div
+    class="d-flex justify-content-end align-items-center p-2 rounded-4 m-3 navbar"
+  >
+    <div class="pt-2">
+      <mat-icon class="me-4 text-warning">notifications</mat-icon>
+    </div>
+    <div class="">
+      <img
+        src="../../../../assets/images/auth-images/backgound-sign-in.svg"
+        class="profile-image"
+        alt=""
+      />
+    </div>
+    <span class="ps-3 pt-1">Hosam</span>
+    <div class="">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>person</mat-icon>
+          Profile
+        </button>
+        <button mat-menu-item>
+          <mat-icon>lock_open</mat-icon> Change Password
+        </button>
+        <button mat-menu-item><mat-icon>logout</mat-icon> Logout</button>
+      </mat-menu>
+    </div>
+  </div>
+</section>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AuthService } from '../../../features/auth/services/auth.service';
 
 interface IMenu {
@@ -12,6 +12,7 @@ interface IMenu {
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
+  @Input() isClosed!: boolean;
   sidebarList: IMenu[] = [
     {
       name: 'Home',
