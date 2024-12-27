@@ -1,6 +1,10 @@
 @import "../../../../../assets/styles/abstructs/variables";
 
 section {
+  .chart {
+    width: 100%;
+    height: 400px;
+  }
   .black-box {
     display: flex;
     justify-content: space-between;
