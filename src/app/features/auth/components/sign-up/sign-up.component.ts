@@ -57,14 +57,16 @@ export class SignUpComponent {
     for (const [key, val] of myMap) {
       myData.append(key, data.value[key]);
     }
-    this._AuthService.onSignUp(myData).subscribe({
-      next: (res) => {
-        console.log(res);
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => {},
-    });
+    console.log(myData);
+
+    // this._AuthService.onSignUp(myData).subscribe({
+    //   next: (res) => {
+    //     console.log(res);
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //   },
+    //   complete: () => {},
+    // });
   }
 }

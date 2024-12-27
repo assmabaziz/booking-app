@@ -29,10 +29,10 @@ export class AuthService {
     }
   }
   onSignUp(data:any):Observable<any>{
-    return this._HttpClient.post<any>('http://upskilling-egypt.com/3000/api/v0/admin/users',data)
+    return this._HttpClient.post<any>('/api/v0/admin/users',data)
   }
   onSignin(data: ILogin): Observable<any> {
-    return this._HttpClient.post<ILogin>('http://upskilling-egypt.com/3000/api/v0/admin/users/login', data);
+    return this._HttpClient.post<ILogin>('/api/v0/admin/users/login', data);
   }
   onLogout() {
     localStorage.clear();
