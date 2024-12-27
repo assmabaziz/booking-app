@@ -1,0 +1,54 @@
+@import "../../../../assets/styles/abstructs/variables";
+
+* {
+  box-sizing: border-box;
+}
+
+section {
+  font-size: 18px;
+  font-weight: 500;
+  background-color: $blue-main;
+
+  ul {
+    list-style-type: none;
+  }
+
+  li {
+    cursor: pointer;
+    line-height: 2rem;
+    a {
+      position: relative;
+      text-decoration: none;
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+      align-items: center;
+      color: $text-gray;
+
+      span {
+        flex-grow: 1;
+      }
+
+      &:hover,
+      &.active {
+        background-color: $bg-hover;
+        color: $text-whiteColor;
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          width: 4px;
+          background-color: black;
+        }
+      }
+    }
+  }
+
+  .icon-container {
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+  }
+}
