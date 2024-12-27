@@ -36,7 +36,9 @@ export class AuthService {
   onSignin(data: any): Observable<any> {
     return this._HttpClient.post<any>('/api/v0/admin/users/login', data);
   }
-
+  forgotPassword(email:any){
+    return this._HttpClient.post<any>('/api/v0/portal/users/forgot-password',email)
+  }
   onLogout() {
     localStorage.clear();
     this._Router.navigate(['/auth']);
