@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
   {
     path: 'auth',
-    loadChildren: () => import('./features/auth/auth.module').then((m) => m.AuthModule),
+    loadChildren: () =>
+      import('./features/auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'dashboard',
@@ -20,7 +22,13 @@ const routes: Routes = [
         (m) => m.LandingPageModule
       ),
   },
-  { path: 'users-admin', loadChildren: () => import('./features/dashboard/modules/users-admin/users-admin.module').then(m => m.UsersAdminModule) },
+  {
+    path: 'users-admin',
+    loadChildren: () =>
+      import(
+        './features/dashboard/modules/users-admin/users-admin.module'
+      ).then((m) => m.UsersAdminModule),
+  },
 ];
 
 @NgModule({

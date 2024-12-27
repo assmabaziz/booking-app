@@ -1,0 +1,12 @@
+@import "../../../../assets/styles/abstructs/variables";
+
+section {
+  .navbar {
+    background-color: $text-gray;
+  }
+
+  .profile-image {
+    width: 2.5rem;
+    border-radius: 50%;
+  }
+}

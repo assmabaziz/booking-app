@@ -1,0 +1,33 @@
+@import "../../../../../assets/styles/abstructs/variables";
+
+section {
+  .black-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0.9375rem;
+    padding: 20px;
+    background-color: black;
+    width: 90%;
+    margin-inline: auto;
+    font-weight: 500;
+    p {
+      font-size: 1.5rem;
+      color: $text-gray;
+    }
+    span {
+      font-size: 2.125rem;
+      color: $text-whiteColor;
+    }
+    .icon-work {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $blue-main;
+      width: 3.5rem;
+      height: 3.5rem;
+      background-color: $light-black;
+      border-radius: 50%;
+    }
+  }
+}

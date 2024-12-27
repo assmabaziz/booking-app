@@ -1,1 +1,27 @@
-<router-outlet></router-outlet>
+<section class="row bg-secondary-subtle h-100">
+  <div class="px-0 sidebar position-relative" [class.closed]="isSidebarClosed">
+    <app-sidebar [isClosed]="isSidebarClosed"></app-sidebar>
+    <span class="btn-toggle" (click)="toggleSidebar()">
+      <i
+        class="fa-solid"
+        [ngClass]="{
+          'fa-angle-right': isSidebarClosed,
+          'fa-angle-left ': !isSidebarClosed
+        }"
+      ></i>
+    </span>
+  </div>
+
+  <div
+    [ngClass]="{
+    'main-router': !isSidebarClosed,
+    'main-router2': isSidebarClosed,
+  }"
+    class=""
+  >
+    <nav class="">
+      <app-navbar></app-navbar>
+    </nav>
+    <router-outlet></router-outlet>
+  </div>
+</section>

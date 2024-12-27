@@ -1,0 +1,96 @@
+@mixin divCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@mixin auth-section {
+  .container{
+    min-height: 100vh;
+    padding: 1rem;
+    .logo {
+      color: $text-mainColor;
+      font-size: 1.625rem;
+      font-style: normal;
+      font-weight: 500;
+      span {
+        color: $text-secondryColor;
+      }
+      p {
+        color: $text-secondryColor;
+        font-size: 14px;
+      }
+    }
+    .card-auth {
+      width: 75%;
+      margin: auto;
+      margin-top: 1rem;
+      .header-auth {
+        margin-bottom: 2rem;
+        h2 {
+          margin-bottom: 1rem;
+          font-weight: 500;
+        }
+        span {
+          color: $text-secondryColor;
+          font-weight: bold;
+        }
+      }
+      .form-group {
+        margin-bottom: 1.5rem ;
+        label {
+          color: $text-secondryColor;
+          margin: 5px;
+        }
+        input,select {
+          background-color: #f5f6f8;
+        }
+        a {
+          color: $text-secondryColor;
+          font-weight: bold;
+        }
+      }
+      .eye-icon{
+        position: absolute;
+        top: 58%;
+        right: 5%;
+        z-index: 100;
+      }
+      button {
+        border-radius: $border-reduis;
+        padding: 0.5rem;
+        transition: all 0.3s ease-in;
+        &.primary {
+          background: $bg-mainColor;
+          color: $text-whiteColor;
+        }
+        &.outline-primary {
+          color: $text-mainColor;
+          border: 2px solid $text-mainColor;
+        }
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+    .caption {
+      color: $text-whiteColor;
+      h2 {
+        font-weight: 600;
+      }
+    }
+  }
+
+}
+@mixin bg-image {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 0.95rem;
+  color: $text-whiteColor;
+}

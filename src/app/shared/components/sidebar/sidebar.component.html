@@ -1,0 +1,17 @@
+<section>
+  <ul class="mt-4 ps-0">
+    @for (item of sidebarList; track $index) {
+
+    <li class="my-2">
+      <a
+        [routerLink]="item.link !== 'logout' ? item.link : null"
+        routerLinkActive="active"
+        (click)="item.link == 'logout' ? logout() : null"
+      >
+        <i [class]="item.icon" class="icon-container mx-auto"></i>
+        <span *ngIf="!isClosed">{{ item.name }}</span>
+      </a>
+    </li>
+    }
+  </ul>
+</section>

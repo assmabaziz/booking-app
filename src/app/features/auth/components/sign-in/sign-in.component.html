@@ -1,1 +1,128 @@
-<p>sign-in works!</p>
+<section id="signin" class="auth">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h1
+          class="logo p-3 cursor-pointer"
+          [routerLink]="['/landingPage/home']"
+        >
+          Stay<span>cation.</span>
+        </h1>
+        <div class="card-auth">
+          <div class="header-auth">
+            <h2>Sign in</h2>
+            <p class="mb-0">If you don’t have an account register</p>
+            <p>
+              You can
+              <a
+                class="text-decoration-none"
+                routerLink="/auth/signup"
+                >Register here !
+              </a>
+            </p>
+          </div>
+          <div class="inputs-auth">
+            <form [formGroup]="signInForm" (ngSubmit)="onSubmit(signInForm)">
+              <div class="form-group mb-3">
+                <label for="exampleInputEmail1" class="text-secondryColor"
+                  >Email address</label
+                >
+                <input
+                  formControlName="email"
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                />
+                <small
+                  id="emailHelp"
+                  class="form-text text-danger"
+                  *ngIf="
+                    signInForm.controls.email.errors &&
+                    signInForm.controls.email.touched
+                  "
+                >
+                  <p
+                    *ngIf="signInForm.get('email')?.getError('required')"
+                    class="mb-0"
+                  >
+                    Email Is Required
+                  </p>
+                  <p
+                    *ngIf="signInForm.get('email')?.getError('email')"
+                    class="mb-0"
+                  >
+                    Email Is Invalid
+                  </p>
+                </small>
+              </div>
+              <div class="form-group mb-3">
+                <div class="pass position-relative">
+                  <label for="exampleInputPassword1" class="text-secondryColor"
+                    >Password</label
+                  >
+                  <input
+                    formControlName="password"
+                    [type]="hidePassword ? 'password' : 'text'"
+                    class="form-control"
+                    id="exampleInputPassword1"
+                    placeholder="Password"
+                  />
+                  <span
+                    (click)="hidePassword = !hidePassword"
+                    class="eye-icon pointer"
+                    ><i
+                      class="fa-solid pointer"
+                      [class]="hidePassword ? 'fa-eye-slash' : 'fa-eye'"
+                    ></i
+                  ></span>
+                </div>
+                <small
+                  id="emailHelp"
+                  class="form-text text-danger"
+                  *ngIf="
+                    signInForm.controls.password.errors &&
+                    signInForm.controls.password.touched
+                  "
+                >
+                  <p
+                    *ngIf="signInForm.get('password')?.getError('required')"
+                    class="mb-0"
+                  >
+                    Password Is Required
+                  </p>
+                  <p
+                    *ngIf="signInForm.get('password')?.getError('pattern')"
+                    class="mb-0"
+                  >
+                    Please must have A,a ,"&#64;",%,$,#, From 8 , 16
+                  </p>
+                </small>
+              </div>
+              <div class="mb-3 text-end text-lightGrey">
+                <a
+                  routerLink="/auth/forgot-password"
+                  class="text-decoration-none text-muted"
+                >
+                  forget password ?</a
+                >
+              </div>
+              <button type="submit" class="primary btn w-100 my-3">
+                Sign in
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-md-6 cover d-none d-md-flex flex-column justify-content-end p-5"
+      >
+        <div class="caption text-white">
+          <h3>Sign in to Roamhome</h3>
+          <p>Homes as unique as you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
