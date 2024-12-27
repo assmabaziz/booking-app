@@ -1,0 +1,42 @@
+<section>
+  <div class="row align-items-center mt-3">
+    <div class="col-md-6">
+      <div class="chart-container" *ngIf="chartOptionsBooking">
+        <div
+          echarts
+          [options]="chartOptionsBooking"
+          class="chart-booking"
+        ></div>
+        <div class="chart-labels">
+          <div class="label pending">
+            <div class="label-color"></div>
+            Pending: {{ pending }}
+          </div>
+          <div class="label completed">
+            <div class="label-color"></div>
+            Completed: {{ completed }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div
+        class="chart-container flex-column bg-white w-75 mx-auto rounded-4"
+        *ngIf="chartOptionsUsers"
+      >
+        <div echarts [options]="chartOptionsUsers" class="chart-users"></div>
+        <div class="chart-labels">
+          <div class="label pending">
+            <div class="label-color"></div>
+            User: {{ user }}
+          </div>
+          <div class="label completed">
+            <div class="label-color"></div>
+            Admin: {{ admin }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

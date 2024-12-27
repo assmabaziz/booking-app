@@ -4,11 +4,11 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { HomeComponent } from './components/home/home.component';
-import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
+import { ChartsComponent } from './components/charts/charts.component';
 
 @NgModule({
-  declarations: [DashboardComponent, HomeComponent],
+  declarations: [DashboardComponent, HomeComponent, ChartsComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
