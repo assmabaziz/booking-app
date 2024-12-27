@@ -29,10 +29,8 @@ export class AuthService {
       this.role = localStorage.getItem('role');
     }
   }
-  onSignUp(data: any): Observable<any> {
-    return this._HttpClient.post('portal/users', data);
-  }
-
+  onSignUp(data:any):Observable<any>{
+    return this._HttpClient.post('/api/v0/admin/users',data)
   onSignin(data: any): Observable<any> {
     return this._HttpClient.post<any>('/api/v0/admin/users/login', data);
   }
