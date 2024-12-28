@@ -11,26 +11,22 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class globalInterceptor implements HttpInterceptor {
-  intercept(
-    request: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
-    const userToken = localStorage.getItem('userToken');
-    const baseUrl = 'https://upskilling-egypt.com:3000';
-    let newHeaders = {};
-    if (userToken) {
-      newHeaders = {
-        Authorization: ` ${userToken}`,
-      };
+  private baseUrl = 'https://upskilling-egypt.com:3000'; // Replace with your actual base URL
+  newRequest: HttpRequest<unknown> | undefined;
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    if (localStorage.getItem('userToken')) {
+      this.newRequest = request.clone({
+        url: this.baseUrl + request.url,
+        setHeaders: {
+          Authorization: `${localStorage.getItem('userToken')}`
+        }
+      })
     }
-    console.log('Original URL:', request.url);
-    console.log('Base URL:', baseUrl);
-    const modifiedUrl = baseUrl + request.url;
-    console.log('Modified URL:', modifiedUrl);
-    const newRequest = request.clone({
-      setHeaders: newHeaders,
-      url: modifiedUrl,
-    });
-    return next.handle(newRequest);
+    else {
+      this.newRequest = request.clone({
+        url: this.baseUrl + request.url
+      })
+    }
+    return next.handle(this.newRequest);
   }
 }

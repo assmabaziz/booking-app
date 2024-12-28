@@ -6,7 +6,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [SidebarComponent, NavbarComponent],
   imports: [
@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
+    MatTableModule
   ],
   exports: [SidebarComponent, NavbarComponent, MatIconModule],
 })

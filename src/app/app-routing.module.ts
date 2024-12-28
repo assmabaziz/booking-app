@@ -22,13 +22,7 @@ const routes: Routes = [
         (m) => m.LandingPageModule
       ),
   },
-  {
-    path: 'users-admin',
-    loadChildren: () =>
-      import(
-        './features/dashboard/modules/users-admin/users-admin.module'
-      ).then((m) => m.UsersAdminModule),
-  },
+   
 ];
 
 @NgModule({

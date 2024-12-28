@@ -1,0 +1,19 @@
+export interface IusersAdmin {
+  success:boolean,
+  message:string,
+  data:{
+    users:[
+      {_id:number,
+        userName:string,
+        email:string,
+        phoneNumber:number,
+        country:string,
+        role:string,
+        profileImage:string,
+        verified:boolean,
+        createdAt:string,
+        updatedAt:string
+      },
+    ],
+    totalCount:number}
+}
