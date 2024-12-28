@@ -3,11 +3,9 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { HTTP_INTERCEPTORS, provideHttpClient, withFetch , HttpClientModule} from '@angular/common/http';
 import { globalInterceptor } from './core/interceptors/global-interceptor/global.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToastrModule } from 'ngx-toastr';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -19,7 +17,7 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule, ReactiveFormsModule, FormsModule,ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     }),
-    HttpClientModule
+    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,

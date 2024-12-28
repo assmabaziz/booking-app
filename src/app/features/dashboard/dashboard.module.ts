@@ -9,7 +9,7 @@ import { ChartsComponent } from './components/charts/charts.component';
 import { TableSharedComponent } from './components/table-shared/table-shared.component';
 
 @NgModule({
-  declarations: [DashboardComponent, HomeComponent, ChartsComponent],
+  declarations: [DashboardComponent, HomeComponent, ChartsComponent,TableSharedComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -18,8 +18,6 @@ import { TableSharedComponent } from './components/table-shared/table-shared.com
       echarts: () => import('echarts'),
     }),
   ],
-  declarations: [DashboardComponent, HomeComponent, TableSharedComponent],
-  imports: [CommonModule, DashboardRoutingModule, SharedModule],
   exports:[
     TableSharedComponent
   ]
