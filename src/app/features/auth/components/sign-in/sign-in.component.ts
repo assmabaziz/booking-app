@@ -16,7 +16,7 @@ export class SignInComponent {
     password: new FormControl(null, [Validators.required, Validators.pattern('^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$')]),
   })
   constructor(private _AuthService: AuthService,
-    private _Router: Router,){
+    private _Router: Router, private _ToastrService: ToastrService){
   }
   onSubmit(data: FormGroup) {
     this._AuthService.onSignin(data.value).subscribe({
@@ -26,10 +26,10 @@ export class SignInComponent {
         this._AuthService.getProfile()
       }, error: (err) => {
         console.log(err);
-        // this._ToastrService.error(err.error.message, 'Error!')
+        this._ToastrService.error(err.error.message)
       }, complete: () => {
-        // this._ToastrService.success('Logged In', 'Successfully')
-        if (this._AuthService.role === 'Admin') {
+        this._ToastrService.success('Logged in successfully')
+        if (this._AuthService.role === 'admin') {
           this._Router.navigate(['/dashboard']);
         } else {
           //this route will be changed

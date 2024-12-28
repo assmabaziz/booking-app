@@ -16,16 +16,15 @@ export class AuthService {
   getProfile() {
     let finalToken: any = localStorage.getItem('userToken');
     let decodedToken: any = jwtDecode(finalToken);
-    localStorage.setItem('userName', decodedToken.userName);
-    localStorage.setItem('userGroup', decodedToken.userGroup);
+    localStorage.setItem('userRole', decodedToken.role);
     this.setRole();
   }
   setRole() {
     if (
-      localStorage.getItem('userToken') !== null &&
-      localStorage.getItem('role')
+      localStorage.getItem('userToken') &&
+      localStorage.getItem('userRole')
     ) {
-      this.role = localStorage.getItem('role');
+      this.role = localStorage.getItem('userRole');
     }
   }
   onSignUp(data:any):Observable<any>{
