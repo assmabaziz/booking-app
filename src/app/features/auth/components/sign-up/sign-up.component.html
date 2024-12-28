@@ -14,9 +14,7 @@
             <p class="mb-0">If you already have an account register</p>
             <p>
               You can
-              <a
-                class="text-decoration-none"
-                routerLink="/auth/signin"
+              <a class="text-decoration-none" routerLink="/auth/signin"
                 >login here !
               </a>
             </p>
@@ -60,66 +58,72 @@
               <div class="form-group mb-3">
                 <div class="row gap-2 flex-nowrap">
                   <div class="col-md-6">
-                    <label for="exampleInputPhoneNumber" class="text-secondryColor"
-                    >Phone number</label
-                  >
-                  <input
-                    formControlName="phoneNumber"
-                    type="tel"
-                    class="form-control"
-                    id="exampleInputPhoneNumber"
-                    aria-describedby="phoneNumber"
-                    placeholder="Enter phone number"
-                  />
-                  <small
-                    id="phoneNumber"
-                    class="form-text text-danger"
-                    *ngIf="
-                      signUpForm.controls.phoneNumber.errors &&
-                      signUpForm.controls.phoneNumber.touched
-                    "
-                  >
-                    <p
-                      *ngIf="signUpForm.get('phoneNumber')?.getError('required')"
-                      class="mb-0"
+                    <label
+                      for="exampleInputPhoneNumber"
+                      class="text-secondryColor"
+                      >Phone number</label
                     >
-                      Phone number is required
-                    </p>
-                    <p
-                      *ngIf="signUpForm.get('phoneNumber')?.getError('pattern')"
-                      class="mb-0"
+                    <input
+                      formControlName="phoneNumber"
+                      type="tel"
+                      class="form-control"
+                      id="exampleInputPhoneNumber"
+                      aria-describedby="phoneNumber"
+                      placeholder="Enter phone number"
+                    />
+                    <small
+                      id="phoneNumber"
+                      class="form-text text-danger"
+                      *ngIf="
+                        signUpForm.controls.phoneNumber.errors &&
+                        signUpForm.controls.phoneNumber.touched
+                      "
                     >
-                      Accept only egyptian numbers
-                    </p>
-                  </small>
+                      <p
+                        *ngIf="
+                          signUpForm.get('phoneNumber')?.getError('required')
+                        "
+                        class="mb-0"
+                      >
+                        Phone number is required
+                      </p>
+                      <p
+                        *ngIf="
+                          signUpForm.get('phoneNumber')?.getError('pattern')
+                        "
+                        class="mb-0"
+                      >
+                        Accept only egyptian numbers
+                      </p>
+                    </small>
                   </div>
                   <div class="col-md-6">
                     <label for="exampleInputCountry" class="text-secondryColor"
-                    >Country</label
-                  >
-                  <input
-                    formControlName="country"
-                    type="text"
-                    class="form-control"
-                    id="exampleInputCountry"
-                    aria-describedby="country"
-                    placeholder="Country"
-                  />
-                  <small
-                    id="country"
-                    class="form-text text-danger"
-                    *ngIf="
-                      signUpForm.controls.country.errors &&
-                      signUpForm.controls.country.touched
-                    "
-                  >
-                    <p
-                      *ngIf="signUpForm.get('country')?.getError('required')"
-                      class="mb-0"
+                      >Country</label
                     >
-                      Feild is required
-                    </p>
-                  </small>
+                    <input
+                      formControlName="country"
+                      type="text"
+                      class="form-control"
+                      id="exampleInputCountry"
+                      aria-describedby="country"
+                      placeholder="Country"
+                    />
+                    <small
+                      id="country"
+                      class="form-text text-danger"
+                      *ngIf="
+                        signUpForm.controls.country.errors &&
+                        signUpForm.controls.country.touched
+                      "
+                    >
+                      <p
+                        *ngIf="signUpForm.get('country')?.getError('required')"
+                        class="mb-0"
+                      >
+                        Feild is required
+                      </p>
+                    </small>
                   </div>
                 </div>
               </div>
@@ -230,18 +234,45 @@
                   "
                 >
                   <p
-                    *ngIf="signUpForm.get('confirmPassword')?.getError('required')"
+                    *ngIf="
+                      signUpForm.get('confirmPassword')?.getError('required')
+                    "
                     class="mb-0"
                   >
                     Feild is required
                   </p>
                   <p
-                    *ngIf="signUpForm.get('confirmPassword')?.getError('mismatch')"
+                    *ngIf="
+                      signUpForm.get('confirmPassword')?.getError('mismatch')
+                    "
                     class="mb-0"
                   >
                     Please enter semilar value as password
                   </p>
                 </small>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-md-6">
+                  <ngx-dropzone
+                    (change)="onSelect($event)"
+                    [multiple]="false"
+                    class="circle-preview"
+                  >
+                    <ngx-dropzone-label class="text-main p-3">
+                      <i class="fa-solid fa-upload fa-3x mb-3"></i>
+                      <p>uppload image</p>
+                    </ngx-dropzone-label>
+                    <ngx-dropzone-image-preview
+                      ngProjectAs="ngx-dropzone-preview"
+                      class="img-fluid"
+                      [removable]="true"
+                      (removed)="onRemove(f)"
+                      *ngFor="let f of files"
+                      [file]="f"
+                    >
+                    </ngx-dropzone-image-preview>
+                  </ngx-dropzone>
+                </div>
               </div>
               <button type="submit" class="primary btn w-100 my-3">
                 Sign up
@@ -261,4 +292,3 @@
     </div>
   </div>
 </section>
-
