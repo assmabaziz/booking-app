@@ -15,8 +15,4 @@ export class UsersAdminService {
       params: params,
     });
   }
-
-  // getAllUsers(params: any): Observable<any> {
-  //   return this._HttpClient.get('/api/v0/admin/users', params);
-  // }
 }
