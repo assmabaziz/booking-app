@@ -15,7 +15,6 @@ export class TableSharedComponent implements OnChanges {
 
   constructor() {}
   ngOnChanges(): void {
-    console.log(this.dataSource, this.displayedColumns);
     this.data = new MatTableDataSource(this.dataSource);
   }
 }
