@@ -5,4 +5,20 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {}
+export class HomeComponent {
+  ads: number = 0;
+  rooms: number = 0;
+  facilities: number = 0;
+
+  // getAds(ads: number) {
+  //   this.ads = ads;
+  // }
+
+  // getRooms(rooms: number) {
+  //   this.rooms = rooms;
+  // }
+
+  // getFacilities(facilities: number) {
+  //   this.facilities = facilities;
+  // }
+}
