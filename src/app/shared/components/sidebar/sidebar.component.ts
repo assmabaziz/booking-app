@@ -34,13 +34,13 @@ export class SidebarComponent {
     {
       name: 'Ads',
       icon: 'fa-solid fa-user-group',
-      link: '/dashboard/booking',
+      link: '/dashboard/Ads',
     },
     {
       name: 'Facilities',
       icon: 'fa-solid fa-newspaper',
       link: '/dashboard/facilities',
-    }
+    },
   ];
 
   constructor(private _AuthService: AuthService) {}

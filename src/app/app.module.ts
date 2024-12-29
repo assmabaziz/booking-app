@@ -27,7 +27,6 @@ import { MatTableModule } from '@angular/material/table';
     FormsModule,
     MatTableModule,
     MatPaginatorModule,
-
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
