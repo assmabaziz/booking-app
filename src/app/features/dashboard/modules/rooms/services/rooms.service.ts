@@ -8,21 +8,21 @@ import { Observable } from 'rxjs';
 export class RoomsService {
   constructor(private _HttpClient: HttpClient) {}
   onGetAllRooms(data: any): Observable<any> {
-    return this._HttpClient.get('admin/rooms', { params: data });
+    return this._HttpClient.get('/api/v0/admin/rooms', { params: data });
   }
   onAddRoom(data: any): Observable<any> {
-    return this._HttpClient.post('admin/rooms', data);
+    return this._HttpClient.post('/api/v0/admin/rooms', data);
   }
   onGetFacilities(): Observable<any> {
-    return this._HttpClient.get('admin/room-facilities');
+    return this._HttpClient.get('/api/v0/admin/room-facilities');
   }
   onGetRoomById(id: string) {
-    return this._HttpClient.get(`admin/rooms/${id}`);
+    return this._HttpClient.get(`/api/v0/admin/rooms/${id}`);
   }
   onDeleteRoomById(id: any): Observable<any> {
-    return this._HttpClient.delete(`admin/rooms/${id}`);
+    return this._HttpClient.delete(`/api/v0/admin/rooms/${id}`);
   }
   onEditRoom(data: any, id: string): Observable<any> {
-    return this._HttpClient.put(`admin/rooms/${id}`, data);
+    return this._HttpClient.put(`/api/v0/admin/rooms/${id}`, data);
   }
 }

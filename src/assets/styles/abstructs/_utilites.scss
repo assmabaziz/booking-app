@@ -1,0 +1,23 @@
+.btn-save {
+  background-color: $bg-mainColor ;
+  color: $text-whiteColor;
+  padding: 0.5rem 1rem;
+  border-radius:$raduis;
+  border: none;
+  transition:$main-transition  ;
+  &:hover {
+    background-color: $blue-main ;
+  }
+}
+.btn-cancel {
+  background-color: $text-whiteColor;
+  color:  $bg-mainColor ;
+  padding: 0.5rem 1rem;
+  border-radius:$raduis;
+  border: 1px solid $bg-mainColor;
+  transition: $main-transition  ;
+  &:hover {
+    background-color:$text-whiteColor   ;
+    color: $bg-mainColor;
+  }
+}
