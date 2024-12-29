@@ -1,10 +1,23 @@
 <section>
-  <div class="p-3 mb-3">
-    <h4>Booking Table Details</h4>
-    <p>You can check all details</p>
+  <div class="container">
+    <div class="section-header">
+      <div class="row gap-2 flex-nowrap">
+        <div class="col-md-8">
+          <div class="section-text">
+            <h4>ADS Table Details</h4>
+            <p>You can check all details</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="section-btn">
+            <button>Add new Ads</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div>
+  <div class="mt-3">
     <app-table-shared
       [dataSource]="dataSource"
       [displayedColumns]="displayedColumns"
