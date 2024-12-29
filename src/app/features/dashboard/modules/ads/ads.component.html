@@ -1,1 +1,23 @@
-<p>ads works!</p>
+<section>
+  <div class="p-3 mb-3">
+    <h4>Booking Table Details</h4>
+    <p>You can check all details</p>
+  </div>
+
+  <div>
+    <app-table-shared
+      [dataSource]="dataSource"
+      [displayedColumns]="displayedColumns"
+      [actions]="actions"
+      [moduleName]="moduleName"
+    ></app-table-shared>
+  </div>
+  <mat-paginator
+    (page)="handlePageEvent($event)"
+    [length]="numRows"
+    [pageSize]="[params.size]"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</section>

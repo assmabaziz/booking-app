@@ -20,12 +20,20 @@ th {
   color: $blue-main;
 }
 .text-gray {
-  color: $text-gray;
+  color: $text-power-gray;
 }
 
 .edit-btn {
-  margin-left: -5px;
-  color: $text-gray;
+  // margin-left: 1px;
+  color: $text-power-gray;
+}
+.text-red {
+  color: red;
+}
+
+.delete-btn {
+  // padding-left: 15px;
+  color: red;
 }
 
 ::ng-deep
