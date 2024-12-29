@@ -7,9 +7,9 @@ const routes: Routes = [
   { path: '', component: DashboardComponent ,children:[
     {path:'',redirectTo: 'home',pathMatch:'full'},
     {path:'home',component:HomeComponent},
-    {path:'users-admin',loadChildren: () => import('./modules/users-admin/users-admin.module').then(m => m.UsersAdminModule) }
+    {path:'users-admin',loadChildren: () => import('./modules/users-admin/users-admin.module').then(m => m.UsersAdminModule) },
+    { path: 'rooms', loadChildren: () => import('./modules/rooms/rooms.module').then(m => m.RoomsModule) }
   ]},
-  { path: 'rooms', loadChildren: () => import('./modules/rooms/rooms.module').then(m => m.RoomsModule) }
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
