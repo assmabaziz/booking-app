@@ -1,0 +1,45 @@
+section {
+  .chart-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .chart-booking {
+    width: 300px;
+    height: 300px;
+  }
+  .chart-users {
+    width: 200px;
+    height: 200px;
+  }
+
+  .chart-labels {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  .label-color {
+    width: 25px;
+    height: 15px;
+    margin-right: 5px;
+    border-radius: 5px;
+  }
+
+  .pending .label-color {
+    background-color: #5470c6;
+  }
+
+  .completed .label-color {
+    background-color: #91cc75;
+  }
+}

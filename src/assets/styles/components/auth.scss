@@ -1,7 +1,7 @@
 @import "../abstructs/variables";
 @import "../abstructs/mixin";
 .auth {
-@include auth-section;
+  @include auth-section;
 }
 #signin {
   .cover {
@@ -11,10 +11,32 @@
         rgba(23, 33, 33, 0.15) -22.39%,
         rgba(0, 0, 0, 0.2) 50%
       ),
-    url(../../images/auth-images/backgound-sign-in.svg);
+      url(../../images/auth-images/backgound-sign-in.svg);
+  }
+}
+#reset {
+  .cover {
+    @include bg-image;
+    background-image: linear-gradient(
+        51deg,
+        rgba(23, 33, 33, 0.15) -22.39%,
+        rgba(0, 0, 0, 0.2) 50%
+      ),
+      url(../../images/auth-images/bg-resetPassword.svg);
   }
 }
 #signup {
+  .cover {
+    @include bg-image;
+    background-image: linear-gradient(
+        51deg,
+        rgba(23, 33, 33, 0.15) -22.39%,
+        rgba(0, 0, 0, 0.2) 50%
+      ),
+      url(../../images/auth-images/background-sign-up.svg);
+  }
+}
+#forgot-password {
   .cover {
     @include bg-image;
     background-image: linear-gradient(

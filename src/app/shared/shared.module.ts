@@ -1,18 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-<<<<<<< HEAD
-=======
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { MatPaginatorModule } from '@angular/material/paginator';
->>>>>>> 8cf980f ([feat] users(admin) Module: create table desgin and api integration and pagenator and other edits)
-
 @NgModule({
   declarations: [SidebarComponent, NavbarComponent],
   imports: [
@@ -21,14 +18,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
-<<<<<<< HEAD
-  ],
-  exports: [SidebarComponent, NavbarComponent, MatIconModule],
-=======
-    NgxDropzoneModule,
-    ImageCropperModule,
-    NgOptimizedImage,
-    MatPaginatorModule,
   ],
   exports: [
     SidebarComponent,
@@ -37,7 +26,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     NgxDropzoneModule,
     ImageCropperModule,
     NgOptimizedImage,
+    MatTableModule
   ],
->>>>>>> 8cf980f ([feat] users(admin) Module: create table desgin and api integration and pagenator and other edits)
 })
 export class SharedModule {}

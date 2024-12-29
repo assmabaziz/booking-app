@@ -16,22 +16,25 @@ export class SignInComponent {
     password: new FormControl(null, [Validators.required, Validators.pattern('^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$')]),
   })
   constructor(private _AuthService: AuthService,
-
-    private _Router: Router,){
+    private _Router: Router, private _ToastrService: ToastrService){
   }
-
   onSubmit(data: FormGroup) {
-
     this._AuthService.onSignin(data.value).subscribe({
-      next: (res:any) => {
+      next: (res) => {
         console.log(res);
         localStorage.setItem('userToken', res.data.token)
         this._AuthService.getProfile()
       }, error: (err) => {
         console.log(err);
-        // this._ToastrService.error(err.error.message, 'Error!')
+        this._ToastrService.error(err.error.message)
       }, complete: () => {
-        // this._ToastrService.success('Logged In', 'Successfully')
+        this._ToastrService.success('Logged in successfully')
+        if (this._AuthService.role === 'admin') {
+          this._Router.navigate(['/dashboard']);
+        } else {
+          //this route will be changed
+          this._Router.navigate(['/dashboard']);
+        }
       }
     })
   }

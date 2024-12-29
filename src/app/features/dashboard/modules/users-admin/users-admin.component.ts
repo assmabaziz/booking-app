@@ -1,21 +1,13 @@
-<<<<<<< HEAD
-import { Component } from '@angular/core';
-=======
 import { Component, OnInit } from '@angular/core';
 import { UsersAdminService } from './services/users-admin.service';
 import { IusersAdmin } from './interfaces/IusersAdmin';
 import { PageEvent } from '@angular/material/paginator';
->>>>>>> 8cf980f ([feat] users(admin) Module: create table desgin and api integration and pagenator and other edits)
-
 @Component({
   selector: 'app-users-admin',
   templateUrl: './users-admin.component.html',
   styleUrl: './users-admin.component.scss',
 })
 export class UsersAdminComponent {
-<<<<<<< HEAD
-
-=======
   moduleName: string = 'users';
   dataSource!: IusersAdmin[];
   displayedColumns: string[] = [
@@ -62,5 +54,4 @@ export class UsersAdminComponent {
     this.params.page = e.pageIndex + 1;
     this.getAllUsers();
   }
->>>>>>> 8cf980f ([feat] users(admin) Module: create table desgin and api integration and pagenator and other edits)
 }

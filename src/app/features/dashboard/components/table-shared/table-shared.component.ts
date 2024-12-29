@@ -1,6 +1,6 @@
+
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-
 @Component({
   selector: 'app-table-shared',
   templateUrl: './table-shared.component.html',

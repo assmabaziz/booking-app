@@ -40,18 +40,7 @@ export class SidebarComponent {
       name: 'Facilities',
       icon: 'fa-solid fa-newspaper',
       link: '/dashboard/facilities',
-    },
-    {
-      name: 'Change password',
-      icon: 'fa-solid fa-unlock',
-      link: '/dashboard/changepassword',
-    },
-    {
-      name: 'Logout',
-
-      icon: 'fa-solid fa-right-from-bracket',
-      link: 'logout',
-    },
+    }
   ];
 
   constructor(private _AuthService: AuthService) {}

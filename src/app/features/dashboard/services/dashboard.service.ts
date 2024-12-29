@@ -9,8 +9,6 @@ export class DashboardService {
   constructor(private _HttpClient: HttpClient) {}
 
   getleftSideChart(): Observable<any> {
-    return this._HttpClient.get(
-      `https://upskilling-egypt.com:3000/api/v0/admin/dashboard`
-    );
+    return this._HttpClient.get(`/api/v0/admin/dashboard`);
   }
 }

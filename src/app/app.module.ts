@@ -6,11 +6,6 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-<<<<<<< HEAD
-import { HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common/http';
-import { globalInterceptor } from './core/interceptors/global-interceptor/global.interceptor';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-=======
 import {
   HTTP_INTERCEPTORS,
   provideHttpClient,
@@ -22,21 +17,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
->>>>>>> 8cf980f ([feat] users(admin) Module: create table desgin and api integration and pagenator and other edits)
-
+import { HTTP_INTERCEPTORS, provideHttpClient, withFetch , HttpClientModule} from '@angular/common/http';
+import { globalInterceptor } from './core/interceptors/global-interceptor/global.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-<<<<<<< HEAD
-    AppRoutingModule, ReactiveFormsModule, FormsModule
-=======
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     MatTableModule,
     MatPaginatorModule,
     ToastrModule.forRoot({
+    AppRoutingModule, ReactiveFormsModule, FormsModule,ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     }),
     HttpClientModule,
@@ -44,8 +39,7 @@ import { MatTableModule } from '@angular/material/table';
     ReactiveFormsModule,
     FormsModule,
     ToastrModule.forRoot(),
-    HttpClientModule,
->>>>>>> 8cf980f ([feat] users(admin) Module: create table desgin and api integration and pagenator and other edits)
+    HttpClientModule
   ],
   providers: [
     provideClientHydration(),
