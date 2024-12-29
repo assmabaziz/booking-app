@@ -38,6 +38,10 @@
         </div>
       </div>
     </div>
-    <app-charts></app-charts>
+    <app-charts
+      (ads)="getAds($event)"
+      (facilities)="getFacilities($event)"
+      (rooms)="getRooms($event)"
+    ></app-charts>
   </div>
 </section>

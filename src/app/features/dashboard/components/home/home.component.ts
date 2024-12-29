@@ -8,17 +8,17 @@ import { Component } from '@angular/core';
 export class HomeComponent {
   ads: number = 0;
   rooms: number = 0;
-  facilities: number = 0;
+  facilities: any = 0;
 
-  // getAds(ads: number) {
-  //   this.ads = ads;
-  // }
+  getAds(ads: number) {
+    this.ads = ads;
+  }
 
-  // getRooms(rooms: number) {
-  //   this.rooms = rooms;
-  // }
+  getRooms(rooms: number) {
+    this.rooms = rooms;
+  }
 
-  // getFacilities(facilities: number) {
-  //   this.facilities = facilities;
-  // }
+  getFacilities(facilities: number) {
+    this.facilities = facilities;
+  }
 }
