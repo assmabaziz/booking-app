@@ -5,17 +5,18 @@ import { Iparams } from '../interfaces/Iparams';
 import { IusersAdmin } from '../interfaces/IusersAdmin';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersAdminService {
+  constructor(private _HttpClient: HttpClient) {}
 
-constructor(private _HttpClient:HttpClient) {}
-getAllUsers(params:Iparams):Observable<IusersAdmin>{
-  return this._HttpClient.get<IusersAdmin>('/api/v0/admin/users',{
-    params: {
-      page: params?.page || 1,
-      size: params?.size || 10,
-    }
-  })
-}
+  getAllUser(params: any): Observable<any> {
+    return this._HttpClient.get(`/api/v0/admin/users`, {
+      params: params,
+    });
+  }
+
+  // getAllUsers(params: any): Observable<any> {
+  //   return this._HttpClient.get('/api/v0/admin/users', params);
+  // }
 }

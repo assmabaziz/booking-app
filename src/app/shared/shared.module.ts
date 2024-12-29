@@ -7,6 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { DeleteItemComponent } from './components/delete-item/delete-item.component';
@@ -33,6 +34,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     NgxDropzoneModule,
     ImageCropperModule,
     NgOptimizedImage,
+    MatTableModule,
     MatDialogModule
   ],
 })
