@@ -17,10 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
-import { HTTP_INTERCEPTORS, provideHttpClient, withFetch , HttpClientModule} from '@angular/common/http';
-import { globalInterceptor } from './core/interceptors/global-interceptor/global.interceptor';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -30,8 +27,11 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     MatTableModule,
     MatPaginatorModule,
+
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     ToastrModule.forRoot({
-    AppRoutingModule, ReactiveFormsModule, FormsModule,ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     }),
     HttpClientModule,
@@ -39,7 +39,7 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     FormsModule,
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     provideClientHydration(),
