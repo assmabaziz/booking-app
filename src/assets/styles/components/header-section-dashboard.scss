@@ -1,0 +1,25 @@
+.section-header {
+  .section-text {
+    padding: 1rem 0;
+    h4 {
+      margin-bottom: 0;
+    }
+  }
+  .section-btn {
+    display: flex;
+justify-content: end;
+align-items: center;
+height: 100%;
+button {
+  background-color: $bg-mainColor ;
+  color: $text-whiteColor;
+  padding: 0.5rem 1rem;
+  border-radius:$raduis;
+  border: none;
+  transition:$main-transition  ;
+  &:hover {
+    background-color: $blue-main ;
+  }
+}
+}
+}
