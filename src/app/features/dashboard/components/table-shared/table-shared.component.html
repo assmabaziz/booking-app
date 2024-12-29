@@ -1,1 +1,97 @@
- ttttttttt
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+    <th mat-header-cell *matHeaderCellDef>
+      {{ column | titlecase }}
+      <i
+        *ngIf="column !== 'actions'"
+        class="fa-solid fa-arrow-right-arrow-left fa-rotate-90 fa-sm"
+      ></i>
+    </th>
+
+    <ng-container *ngIf="column === 'profileImage'">
+      <td mat-cell *matCellDef="let row">
+        <img [src]="row[column]" class="rounded-circle py-1" alt="" />
+      </td>
+    </ng-container>
+    <!-- <ng-container *ngIf="column === 'status'">
+      <td mat-cell *matCellDef="let row">
+        <div
+          class="badge p-2 my-auto"
+          [ngClass]="
+            row.status === 'ToDo'
+              ? 'pink'
+              : row.status === 'Done'
+              ? 'bg-success'
+              : 'yellow'
+          "
+        >
+          {{ row.status }}
+        </div>
+      </td>
+    </ng-container> -->
+    <!-- <ng-container *ngIf="column === 'project'" #project else default>
+      <td mat-cell *matCellDef="let row">
+        <span>{{ row.project.title }}</span>
+        <span *ngIf="!row.project">No project</span>
+      </td>
+    </ng-container> -->
+
+    <ng-container *ngIf="column === 'actions'">
+      <td mat-cell *matCellDef="let row">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu class="" #menu="matMenu">
+          <ng-container *ngFor="let action of actions">
+            <ng-container>
+              <button
+                mat-menu-item
+                class="justify-content-center edit-btn"
+                *ngIf="action.name === 'Edit'"
+              >
+                <mat-icon class="text-gray">{{ action.icon }}</mat-icon>
+                <span>{{ action.name }}</span>
+              </button>
+            </ng-container>
+            <ng-container>
+              <button
+                mat-menu-item
+                class="justify-content-center"
+                *ngIf="action.name === 'Delete'"
+                style="padding-left: 6px; color: red"
+              >
+                <mat-icon style="color: red">{{ action.icon }}</mat-icon>
+                <span>{{ action.name }}</span>
+              </button>
+            </ng-container>
+            <ng-container>
+              <button
+                class="justify-content-center blue-main"
+                mat-menu-item
+                *ngIf="action.name === 'View'"
+              >
+                <mat-icon class="blue-main">{{ action.icon }}</mat-icon>
+                <span>{{ action.name }}</span>
+              </button>
+            </ng-container>
+          </ng-container>
+        </mat-menu>
+      </td>
+    </ng-container>
+    <!-- <ng-container *ngIf="column === 'creationDate'" elseif project>
+      <td mat-cell *matCellDef="let row">
+        {{ row.creationDate | date : "dd/MM/yyyy" }}
+      </td>
+    </ng-container> -->
+    <td #default mat-cell *matCellDef="let row">
+      {{ row[column] }}
+    </td>
+  </ng-container>
+
+  <tr class="header" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: displayedColumns; let even = even"
+    [ngClass]="even ? 'even' : 'odd'"
+  ></tr>
+</table>

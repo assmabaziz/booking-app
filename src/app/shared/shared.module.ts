@@ -6,6 +6,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ImageCropperModule } from 'ngx-image-cropper';
@@ -17,8 +18,15 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
-    MatTableModule, NgxDropzoneModule, ImageCropperModule, NgOptimizedImage
   ],
-  exports: [SidebarComponent, NavbarComponent, MatIconModule, NgxDropzoneModule, ImageCropperModule, NgOptimizedImage],
+  exports: [
+    SidebarComponent,
+    NavbarComponent,
+    MatIconModule,
+    NgxDropzoneModule,
+    ImageCropperModule,
+    NgOptimizedImage,
+    MatTableModule
+  ],
 })
 export class SharedModule {}

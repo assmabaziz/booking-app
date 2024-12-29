@@ -1,19 +1,36 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withFetch,
+  HttpClientModule,
+} from '@angular/common/http';
+import { globalInterceptor } from './core/interceptors/global-interceptor/global.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 import { HTTP_INTERCEPTORS, provideHttpClient, withFetch , HttpClientModule} from '@angular/common/http';
 import { globalInterceptor } from './core/interceptors/global-interceptor/global.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
-
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    ToastrModule.forRoot({
     AppRoutingModule, ReactiveFormsModule, FormsModule,ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     }),
@@ -28,8 +45,8 @@ import { ToastrModule } from 'ngx-toastr';
     provideClientHydration(),
     provideAnimationsAsync(),
     { provide: HTTP_INTERCEPTORS, useClass: globalInterceptor, multi: true },
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

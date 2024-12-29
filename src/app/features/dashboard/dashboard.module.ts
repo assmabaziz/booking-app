@@ -7,6 +7,11 @@ import { HomeComponent } from './components/home/home.component';
 import { ChartsComponent } from './components/charts/charts.component';
 import { TableSharedComponent } from './components/table-shared/table-shared.component';
 import { SharedModule } from '../../shared/shared.module';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -16,8 +21,14 @@ import { SharedModule } from '../../shared/shared.module';
     TableSharedComponent,
   ],
   imports: [
+    MatPaginatorModule,
     SharedModule,
     CommonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatButtonModule,
+    MatMenuModule,
     DashboardRoutingModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),

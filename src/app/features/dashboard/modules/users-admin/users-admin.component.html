@@ -1,12 +1,25 @@
 <section>
   <div class="p-3 mb-3">
-      <h4>Booking Table Details</h4>
-      <p>You can check all details</p>
+    <h4>Booking Table Details</h4>
+    <p>You can check all details</p>
   </div>
   <div class="container-fluid">
     <div class="row">
-      <app-table-shared></app-table-shared>
+      <app-table-shared
+        [moduleName]="moduleName"
+        [displayedColumns]="displayedColumns"
+        [dataSource]="dataSource"
+        [actions]="actions"
+      ></app-table-shared>
     </div>
   </div>
+  <mat-paginator
+    (page)="handlePageEvent($event)"
+    [length]="numRows"
+    [pageSize]="[params.size]"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
 </section>
 

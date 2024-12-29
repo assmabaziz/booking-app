@@ -1,3 +1,73 @@
+@import "../../../../../assets/styles/abstructs/variables";
+
+.even {
+  background-color: $text-whiteColor;
+}
+.odd {
+  background-color: $text-gray;
+}
+.header {
+  background-color: $blue-main;
+  color: $text-whiteColor;
+}
+th {
+  i {
+    cursor: pointer;
+    color: $blue-main;
+  }
+}
+.blue-main {
+  color: $blue-main;
+}
+.text-gray {
+  color: $text-gray;
+}
+
+.edit-btn {
+  margin-left: -5px;
+  color: $text-gray;
+}
+
+::ng-deep
+  mat-form-field
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  border: 1px solid gray;
+  border-radius: 1rem;
+  padding-left: 24px;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+mat-form-field {
+  --mdc-filled-text-field-active-indicator-color: transperent;
+}
+
+::ng-deep
+  .mdc-text-field--filled:not(.mdc-text-field--disabled)
+  .mdc-line-ripple::before {
+  border-bottom: 0px solid transparent;
+}
+
+// mat-form-field .mdc-text-field--filled {
+//   --mdc-filled-text-field-container-shape: 50px;
+//   border-bottom-right-radius: 50px;
+//   border-bottom-left-radius: 50px;
+// }
+html {
+  --mdc-filled-text-field-input-text-color: $color-orange;
+}
+
+::ng-deep mat-form-field .mat-mdc-form-field-bottom-align::before {
+  content: "";
+  display: inline;
+  // height: 0px;
+}
+
+img {
+  width: 70px;
+  height: 70px;
+=======
 /* Structure */
 .example-container {
   position: relative;
