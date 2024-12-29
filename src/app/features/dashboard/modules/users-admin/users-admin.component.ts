@@ -33,16 +33,13 @@ export class UsersAdminComponent {
     size: 5,
   };
   numRows!: number;
-
   constructor(private _UsersAdminService: UsersAdminService) {}
-
   ngOnInit(): void {
     this.getAllUsers();
   }
   getAllUsers() {
     this._UsersAdminService.getAllUser(this.params).subscribe({
       next: (res) => {
-        console.log(res);
         this.dataSource = res.data.users;
         this.numRows = res.data.totalCount;
       },

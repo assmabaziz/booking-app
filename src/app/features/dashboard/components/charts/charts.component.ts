@@ -31,25 +31,20 @@ export class ChartsComponent {
     private _DashboardService: DashboardService
   ) {
     this.isBrowser = isPlatformBrowser(platformId); // Ensures this runs only in the browser
-
     if (this.isBrowser) {
       this.fetchChartData();
     }
   }
-
   fetchChartData(): void {
     this._DashboardService.getleftSideChart().subscribe({
       next: (res) => {
-        console.log(res);
         this.ads.emit(res.data.ads);
         this.rooms.emit(res.data.rooms);
         this.facilities.emit(res.data.facilities);
-
         this.pending = res.data.bookings.pending;
         this.completed = res.data.bookings.completed;
         this.user = res.data.users.user;
         this.admin = res.data.users.admin;
-
         this.chartOptionsBooking = {
           title: {
             left: 'center',

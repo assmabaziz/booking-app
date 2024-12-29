@@ -2,8 +2,8 @@ export interface IRoom {
   _id: string,
   roomNumber: string,
   images: string,
-  price: string,
-  capacity: string,
+  price: number,
+  capacity: number,
   discount: number,
   facilities: IFacilities[],
   createdAt: string,
@@ -12,9 +12,12 @@ export interface IRoom {
 export interface IFacilities {
   _id: string,
   name: string,
+  createdAt:string;
+  updatedAt:string;
+  createdBy: IRoomsCreater;
 }
-export interface IRoomsDetails {
-  success: true;
-  message: string;
-  data: IRoom;
+export interface IRoomsCreater {
+  userName:string;
+  _id: string,
 }
+

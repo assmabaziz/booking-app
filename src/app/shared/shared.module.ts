@@ -13,6 +13,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { DeleteItemComponent } from './components/delete-item/delete-item.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [SidebarComponent, NavbarComponent, DeleteItemComponent, NotFoundComponent],
   imports: [
@@ -25,7 +27,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     NgxDropzoneModule,
     ImageCropperModule,
     NgOptimizedImage,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule, ReactiveFormsModule
   ],
   exports: [
     SidebarComponent,
@@ -35,7 +38,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     ImageCropperModule,
     NgOptimizedImage,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule, ReactiveFormsModule, MatButtonModule, MatMenuModule,
   ],
 })
 export class SharedModule {}
