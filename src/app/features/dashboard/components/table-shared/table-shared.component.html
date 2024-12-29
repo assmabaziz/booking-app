@@ -12,30 +12,32 @@
 
     <ng-container [ngSwitch]="moduleName">
       <ng-container *ngSwitchCase="'Ads'">
-        <ng-container *ngIf="column === 'userName'">
-          <td mat-cell *matCellDef="let row">
-            {{ row.createdBy.userName }}
-          </td>
-        </ng-container>
-        <ng-container *ngIf="column === 'roomNumber'">
-          <td mat-cell *matCellDef="let row">
-            {{ row.room.roomNumber }}
-          </td>
-        </ng-container>
-        <ng-container *ngIf="column === 'discount'">
-          <td mat-cell *matCellDef="let row">
-            {{ row.room.discount }}
-          </td>
-        </ng-container>
-        <ng-container *ngIf="column === 'capacity'">
-          <td mat-cell *matCellDef="let row">
-            {{ row.room.capacity }}
-          </td>
-        </ng-container>
-        <ng-container *ngIf="column === 'price'">
-          <td mat-cell *matCellDef="let row">
-            {{ row.room.price }}
-          </td>
+        <ng-container [ngSwitch]="column">
+          <ng-container *ngSwitchCase="'userName'">
+            <td mat-cell *matCellDef="let row">
+              {{ row.createdBy.userName }}
+            </td>
+          </ng-container>
+          <ng-container *ngSwitchCase="'roomNumber'">
+            <td mat-cell *matCellDef="let row">
+              {{ row.room.roomNumber }}
+            </td>
+          </ng-container>
+          <ng-container *ngSwitchCase="'discount'">
+            <td mat-cell *matCellDef="let row">
+              {{ row.room.discount }}
+            </td>
+          </ng-container>
+          <ng-container *ngSwitchCase="'capacity'">
+            <td mat-cell *matCellDef="let row">
+              {{ row.room.capacity }}
+            </td>
+          </ng-container>
+          <ng-container *ngSwitchCase="'price'">
+            <td mat-cell *matCellDef="let row">
+              {{ row.room.price }}
+            </td>
+          </ng-container>
         </ng-container>
       </ng-container>
 

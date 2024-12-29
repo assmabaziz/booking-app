@@ -1,7 +1,13 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, Output, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  Inject,
+  Output,
+  PLATFORM_ID,
+  EventEmitter,
+} from '@angular/core';
 import { DashboardService } from '../../services/dashboard.service';
-import { EventEmitter } from 'stream';
+// import { EventEmitter } from 'stream';
 
 @Component({
   selector: 'app-charts',
@@ -16,9 +22,9 @@ export class ChartsComponent {
   completed: number = 0;
   user: number = 0;
   admin: number = 0;
-  // @Output() ads = new EventEmitter<any>();
-  // @Output() facilities = new EventEmitter<any>();
-  // @Output() rooms = new EventEmitter<any>();
+  @Output() ads = new EventEmitter<any>();
+  @Output() facilities = new EventEmitter<any>();
+  @Output() rooms = new EventEmitter<any>();
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -32,9 +38,9 @@ export class ChartsComponent {
   fetchChartData(): void {
     this._DashboardService.getleftSideChart().subscribe({
       next: (res) => {
-        // this.ads.emit(res.data.ads);
-        // this.rooms.emit(res.data.rooms);
-        // this.facilities.emit(res.data.facilities);
+        this.ads.emit(res.data.ads);
+        this.rooms.emit(res.data.rooms);
+        this.facilities.emit(res.data.facilities);
         this.pending = res.data.bookings.pending;
         this.completed = res.data.bookings.completed;
         this.user = res.data.users.user;
