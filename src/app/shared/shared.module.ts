@@ -6,18 +6,26 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatTableModule} from '@angular/material/table';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { DeleteItemComponent } from './components/delete-item/delete-item.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 @NgModule({
-  declarations: [SidebarComponent, NavbarComponent],
+  declarations: [SidebarComponent, NavbarComponent, DeleteItemComponent, NotFoundComponent],
   imports: [
     CommonModule,
     RouterModule,
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
+    MatTableModule,
+    NgxDropzoneModule,
+    ImageCropperModule,
+    NgOptimizedImage,
+    MatDialogModule
   ],
   exports: [
     SidebarComponent,
@@ -26,7 +34,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     NgxDropzoneModule,
     ImageCropperModule,
     NgOptimizedImage,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ],
 })
 export class SharedModule {}

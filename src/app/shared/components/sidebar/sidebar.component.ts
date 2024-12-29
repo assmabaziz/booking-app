@@ -28,7 +28,7 @@ export class SidebarComponent {
     {
       name: 'Rooms',
       icon: 'fa-solid fa-table-cells',
-      link: '/dashboard/Rooms',
+      link: '/dashboard/rooms',
     },
 
     {
