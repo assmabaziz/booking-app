@@ -7,7 +7,7 @@ section {
   }
   .sidebar {
     background-color: $blue-main;
-    transition: all 0.3s;
+    transition: all 1s;
     width: 15%;
 
     &.closed {
@@ -28,10 +28,10 @@ section {
   }
   .main-router {
     width: 85%;
-    transition: 0.3s;
+    transition: 1s;
   }
   .main-router2 {
     width: 93%;
-    transition: 0.3s;
+    transition: 1s;
   }
 }
