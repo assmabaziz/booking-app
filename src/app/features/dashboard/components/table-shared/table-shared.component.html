@@ -1,18 +1,53 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
     <th mat-header-cell *matHeaderCellDef>
-      {{ column | titlecase }}
-      <i
-        *ngIf="column !== 'actions'"
-        class="fa-solid fa-arrow-right-arrow-left fa-rotate-90 fa-sm"
-      ></i>
+      <div class="d-flex">
+        <span>{{ column | titlecase }}</span
+        ><i
+          *ngIf="column !== 'actions'"
+          class="fa-solid fa-arrow-right-arrow-left fa-rotate-90 fa-sm text-warning"
+        ></i>
+      </div>
     </th>
 
-    <ng-container *ngIf="column === 'profileImage'">
-      <td mat-cell *matCellDef="let row">
-        <img [src]="row[column]" class="rounded-circle py-1" alt="" />
-      </td>
+    <ng-container [ngSwitch]="moduleName">
+      <ng-container *ngSwitchCase="'Ads'">
+        <ng-container *ngIf="column === 'userName'">
+          <td mat-cell *matCellDef="let row">
+            {{ row.createdBy.userName }}
+          </td>
+        </ng-container>
+        <ng-container *ngIf="column === 'roomNumber'">
+          <td mat-cell *matCellDef="let row">
+            {{ row.room.roomNumber }}
+          </td>
+        </ng-container>
+        <ng-container *ngIf="column === 'discount'">
+          <td mat-cell *matCellDef="let row">
+            {{ row.room.discount }}
+          </td>
+        </ng-container>
+        <ng-container *ngIf="column === 'capacity'">
+          <td mat-cell *matCellDef="let row">
+            {{ row.room.capacity }}
+          </td>
+        </ng-container>
+        <ng-container *ngIf="column === 'price'">
+          <td mat-cell *matCellDef="let row">
+            {{ row.room.price }}
+          </td>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'users'">
+        <ng-container *ngIf="column === 'profileImage'">
+          <td mat-cell *matCellDef="let row">
+            <img [src]="row[column]" class="rounded-circle py-1" alt="" />
+          </td>
+        </ng-container>
+      </ng-container>
     </ng-container>
+
     <!-- <ng-container *ngIf="column === 'status'">
       <td mat-cell *matCellDef="let row">
         <div
@@ -46,10 +81,10 @@
             <ng-container>
               <button
                 mat-menu-item
-                class="justify-content-center edit-btn"
+                class="justify-content-center text-secondary"
                 *ngIf="action.name === 'Edit'"
               >
-                <mat-icon class="text-gray">{{ action.icon }}</mat-icon>
+                <mat-icon class="text-secondary">{{ action.icon }}</mat-icon>
                 <span>{{ action.name }}</span>
               </button>
             </ng-container>
@@ -58,9 +93,9 @@
                 mat-menu-item
                 class="justify-content-center"
                 *ngIf="action.name === 'Delete'"
-                style="padding-left: 6px; color: red"
+                class="text-danger"
               >
-                <mat-icon style="color: red">{{ action.icon }}</mat-icon>
+                <mat-icon class="text-danger">{{ action.icon }}</mat-icon>
                 <span>{{ action.name }}</span>
               </button>
             </ng-container>

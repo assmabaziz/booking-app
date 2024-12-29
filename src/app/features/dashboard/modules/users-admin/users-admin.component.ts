@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersAdminService } from './services/users-admin.service';
 import { IusersAdmin } from './interfaces/IusersAdmin';
 import { PageEvent } from '@angular/material/paginator';
+import { IAds } from '../ads/interfaces/iads';
 @Component({
   selector: 'app-users-admin',
   templateUrl: './users-admin.component.html',
