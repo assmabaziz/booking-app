@@ -74,6 +74,9 @@
  <div class="container-fluid">
     <div class="row">
       <app-table-shared
+      (roomsDelte)="deleteRoomById($event)"
+      (roomsViewed)="uppdateRoom($event)"
+      (roomsEdit)="uppdateRoom($event)"
         [moduleName]="moduleName"
         [displayedColumns]="displayedColumns"
         [dataSource]="dataSource"

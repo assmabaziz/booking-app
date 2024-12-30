@@ -55,7 +55,7 @@ import { MatSelectModule } from '@angular/material/select';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatMenuModule,SeperatorPipe
+    MatMenuModule,SeperatorPipe,
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,

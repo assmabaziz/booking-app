@@ -15,7 +15,6 @@ import { DeleteItemComponent } from '../../../../shared/components/delete-item/d
 })
 export class AdsComponent implements OnInit {
   readonly dialog = inject(MatDialog);
-
   moduleName: string = 'Ads';
   dataSource!: IAds[];
   displayedColumns: string[] = [

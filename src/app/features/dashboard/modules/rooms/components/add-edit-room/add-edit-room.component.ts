@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { RoomsService } from './../../services/rooms.service';
+import { Component, inject } from '@angular/core';
 import { IFacilities, IRoom } from '../../interfaces/iroom';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { RoomsService } from '../../services/rooms.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteItemComponent } from '../../../../../../shared/components/delete-item/delete-item.component';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-add-edit-room',
@@ -20,6 +23,10 @@ export class AddEditRoomComponent {
   imgSrc: any;
   facilities: IFacilities[] | any = [];
   facilityId: any[] | undefined = [];
+  params = {
+    page: 1,
+    size: 5,
+  };
   constructor(
     private _RoomsService: RoomsService,
     private _ToastrService: ToastrService,
@@ -63,7 +70,7 @@ export class AddEditRoomComponent {
     // myData.append('facilities', data.value.facilities)
   //  myData.append('imgs', this.imgSrc, this.imgSrc['name'])
   for (const facility of data.value.facilities) {
-    myData.append('facilities', facility);
+    myData.append('facilities', facility._id);
   }
     if (this.RoomsId) {
       this._RoomsService.onEditRoom(myData, this.RoomsId).subscribe({
@@ -128,7 +135,6 @@ export class AddEditRoomComponent {
     this.imgSrc = event.addedFiles;
     this.files.push(...event.addedFiles);
   }
-
   onRemove(event: any) {
     this.files.splice(this.files.indexOf(event), 1);
   }

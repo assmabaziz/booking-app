@@ -4,6 +4,7 @@ import {
   Input,
   OnChanges,
   OnInit,
+  output,
   Output,
 } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
@@ -25,21 +26,59 @@ export class TableSharedComponent implements OnChanges {
   @Output() AdsViewed = new EventEmitter<any>();
   @Output() AdsEdit = new EventEmitter<any>();
   @Output() AdsDelete = new EventEmitter<any>();
-ngOnChanges(): void {
+  @Output() roomsViewed = new EventEmitter<any>();
+  @Output() roomsEdit = new EventEmitter<any>();
+  @Output() roomsDelte = new EventEmitter<any>();
+
+  ngOnChanges(): void {
     this.data = new MatTableDataSource(this.dataSource);
     console.log(this.dataSource);
     // console.log(this._ShredDataService.myData);
     for (const element of this.dataSource) {
       this.myfacilities = element.facilities;
       console.log(this.myfacilities);
-    }}
-  onView(dataView: IAds) {
-    this.AdsViewed.emit(dataView);
+    }
   }
-  onEdit(dataEdit: IAds) {
-    this.AdsEdit.emit(dataEdit);
+  onView(dataView: any) {
+    switch (this.moduleName) {
+      case 'rooms':
+        this.roomsViewed.emit(dataView);
+
+        break;
+      case 'Ads':
+        this.AdsViewed.emit(dataView);
+        break;
+      case 'facilities':
+        // Code to be executed if expression matches value3
+        break;
+    }
   }
-  onDelete(dataDelete: IAds) {
-    this.AdsDelete.emit(dataDelete);
+  onEdit(dataEdit: any) {
+    switch (this.moduleName) {
+      case 'rooms':
+        this.roomsEdit.emit(dataEdit);
+        break;
+      case 'Ads':
+        this.AdsEdit.emit(dataEdit);
+        break;
+      case 'facilities':
+        // Code to be executed if expression matches value3
+        break;
+    }
+
+  }
+  onDelete(dataDelete: any) {
+    switch (this.moduleName) {
+      case 'rooms':
+        this.roomsDelte.emit(dataDelete);
+        break;
+      case 'Ads':
+        this.AdsDelete.emit(dataDelete);
+        break;
+      case 'facilities':
+        // Code to be executed if expression matches value3
+        break;
+    }
+
   }
 }
