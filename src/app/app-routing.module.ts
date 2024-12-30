@@ -22,7 +22,8 @@ const routes: Routes = [
         (m) => m.LandingPageModule
       ),
   },
-   
+ 
+
 ];
 
 @NgModule({
