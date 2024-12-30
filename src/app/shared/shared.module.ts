@@ -14,10 +14,20 @@ import { DeleteItemComponent } from './components/delete-item/delete-item.compon
 import { MatDialogModule } from '@angular/material/dialog';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SeperatorPipe } from './pipes/seperator.pipe';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 @NgModule({
-  declarations: [SidebarComponent, NavbarComponent, DeleteItemComponent, NotFoundComponent],
+  declarations: [
+    SidebarComponent,
+    NavbarComponent,
+    DeleteItemComponent,
+    NotFoundComponent,
+    SeperatorPipe,
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -32,6 +42,11 @@ import {MatInputModule} from '@angular/material/input';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
     MatInputModule
   ],
   exports: [
@@ -43,6 +58,14 @@ import {MatInputModule} from '@angular/material/input';
     NgOptimizedImage,
     MatTableModule,
     MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatMenuModule,SeperatorPipe,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,

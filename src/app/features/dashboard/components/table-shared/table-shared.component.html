@@ -12,30 +12,32 @@
 
     <ng-container [ngSwitch]="moduleName">
       <ng-container *ngSwitchCase="'Ads'">
-        <ng-container *ngIf="column === 'userName'">
-          <td mat-cell *matCellDef="let row">
-            {{ row.createdBy.userName }}
-          </td>
-        </ng-container>
-        <ng-container *ngIf="column === 'roomNumber'">
-          <td mat-cell *matCellDef="let row">
-            {{ row.room.roomNumber }}
-          </td>
-        </ng-container>
-        <ng-container *ngIf="column === 'discount'">
-          <td mat-cell *matCellDef="let row">
-            {{ row.room.discount }}
-          </td>
-        </ng-container>
-        <ng-container *ngIf="column === 'capacity'">
-          <td mat-cell *matCellDef="let row">
-            {{ row.room.capacity }}
-          </td>
-        </ng-container>
-        <ng-container *ngIf="column === 'price'">
-          <td mat-cell *matCellDef="let row">
-            {{ row.room.price }}
-          </td>
+        <ng-container [ngSwitch]="column">
+          <ng-container *ngSwitchCase="'userName'">
+            <td mat-cell *matCellDef="let row">
+              {{ row.createdBy.userName }}
+            </td>
+          </ng-container>
+          <ng-container *ngSwitchCase="'roomNumber'">
+            <td mat-cell *matCellDef="let row">
+              {{ row.room.roomNumber }}
+            </td>
+          </ng-container>
+          <ng-container *ngSwitchCase="'discount'">
+            <td mat-cell *matCellDef="let row">
+              {{ row.room.discount }}
+            </td>
+          </ng-container>
+          <ng-container *ngSwitchCase="'capacity'">
+            <td mat-cell *matCellDef="let row">
+              {{ row.room.capacity }}
+            </td>
+          </ng-container>
+          <ng-container *ngSwitchCase="'price'">
+            <td mat-cell *matCellDef="let row">
+              {{ row.room.price }}
+            </td>
+          </ng-container>
         </ng-container>
       </ng-container>
 
@@ -43,6 +45,25 @@
         <ng-container *ngIf="column === 'profileImage'">
           <td mat-cell *matCellDef="let row">
             <img [src]="row[column]" class="rounded-circle py-1" alt="" />
+          </td>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="'rooms'">
+        <ng-container *ngIf="column === 'images'">
+          <td mat-cell *matCellDef="let row">
+            <img [src]="row[column]" class="rounded-circle py-1" alt="" />
+          </td>
+        </ng-container>
+        <ng-container *ngIf="column === 'facilities'">
+          <td mat-cell *matCellDef="let row">
+            <ng-container *ngFor="let item of myfacilities">
+              {{ item.name | seperator }}
+            </ng-container>
+            <ng-container *ngFor="let element of dataSource">
+              <ng-container *ngFor="let item of element.facilities">
+                {{ item.name | seperator }}
+              </ng-container>
+            </ng-container>
           </td>
         </ng-container>
       </ng-container>
@@ -90,9 +111,10 @@
                 mat-menu-item
                 class="justify-content-center text-secondary"
                 *ngIf="action.name === 'Edit'"
+                (click)="onEdit(row)"
               >
                 <mat-icon class="text-secondary">{{ action.icon }}</mat-icon>
-                <span>{{ action.name }}</span>
+                <span >{{ action.name }}</span>
               </button>
             </ng-container>
             <ng-container>
@@ -101,6 +123,7 @@
                 class="justify-content-center"
                 *ngIf="action.name === 'Delete'"
                 class="text-danger"
+                (click)="onDelete(row)"
               >
                 <mat-icon class="text-danger">{{ action.icon }}</mat-icon>
                 <span>{{ action.name }}</span>
@@ -111,6 +134,7 @@
                 class="justify-content-center blue-main"
                 mat-menu-item
                 *ngIf="action.name === 'View'"
+                (click)="onView(row)"
               >
                 <mat-icon class="blue-main">{{ action.icon }}</mat-icon>
                 <span>{{ action.name }}</span>

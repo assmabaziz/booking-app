@@ -13,4 +13,29 @@ export class AdsService {
       params: parms,
     });
   }
+
+  getAllRooms(): Observable<any> {
+    let myparms = {
+      page: 1,
+      size: 1000,
+    };
+    return this._HttpClient.get(`/api/v0/admin/rooms`, {
+      params: myparms,
+    });
+  }
+
+  onAddAds(data: any): Observable<any> {
+    return this._HttpClient.post(`/api/v0/admin/ads`, data);
+  }
+
+  onGetAdsById(id: number): Observable<any> {
+    return this._HttpClient.get(`/api/v0/admin/ads/${id}`);
+  }
+
+  onDeleteAdsById(id: string): Observable<any> {
+    return this._HttpClient.delete(`/api/v0/admin/ads/${id}`);
+  }
+  onUpdateAdsById(id: string, data: any): Observable<any> {
+    return this._HttpClient.put(`/api/v0/admin/ads/${id}`, data);
+  }
 }

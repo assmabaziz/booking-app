@@ -1,0 +1,63 @@
+<section class="">
+  <div class="container-fluid">
+    <mat-dialog-content>
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="h6 my-auto">Ads</h2>
+        <div>
+          <mat-icon (click)="onNoClick()" class="text-danger">cancel</mat-icon>
+        </div>
+      </div>
+
+      <div
+        class="d-flex flex-column align-items-center justify-content-center gap-3 mt-2 border border-end-0 border-start-0 border-top-0 border-1 border-black pb-5"
+      >
+        <mat-form-field class="w-100">
+          <mat-label>Number Room </mat-label>
+          <mat-select
+            [disabled]="data.disable || data?.edit"
+            [(ngModel)]="data.room"
+          >
+            @for (room of data.rooms; track $index) {
+            <mat-option [value]="room._id">{{ room.roomNumber }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <mat-label>Discount</mat-label>
+          <!-- [(ngModel)]="animal" -->
+          <input
+            matInput
+            [disabled]="data.disable"
+            [(ngModel)]="data.discount"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <mat-label>Status</mat-label>
+          <mat-select [disabled]="data.disable" [(ngModel)]="data.isActive">
+            <mat-option [value]="true">Active</mat-option>
+            <mat-option [value]="false">Inactive</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions class="float-end">
+      <button
+        *ngIf="!data.disable"
+        mat-button
+        [mat-dialog-close]="data"
+        class="text-main text-white"
+        cdkFocusInitial
+        [disabled]="
+          data.room == '' ||
+          data.discount == '' ||
+          (data.isActive == '' && data.disable)
+        "
+      >
+        <span *ngIf="!data?.edit">add</span>
+        <span *ngIf="data.edit">Edit</span>
+      </button>
+    </mat-dialog-actions>
+  </div>
+</section>

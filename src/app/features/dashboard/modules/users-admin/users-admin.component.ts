@@ -3,6 +3,7 @@ import { UsersAdminService } from './services/users-admin.service';
 import { IusersAdmin } from './interfaces/IusersAdmin';
 import { PageEvent } from '@angular/material/paginator';
 import { IAds } from '../ads/interfaces/iads';
+import { take } from 'rxjs';
 @Component({
   selector: 'app-users-admin',
   templateUrl: './users-admin.component.html',
@@ -39,6 +40,7 @@ export class UsersAdminComponent {
   getAllUsers() {
     this._UsersAdminService.getAllUser(this.params).subscribe({
       next: (res) => {
+        console.log(res);
         this.dataSource = res.data.users;
         this.numRows = res.data.totalCount;
       },

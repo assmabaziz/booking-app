@@ -11,133 +11,66 @@
     <div class="card-auth">
       <div class="inputs-auth">
         <form [formGroup]="addRoomForm" (ngSubmit)="onSubmit(addRoomForm)">
-          <div class="form-group mb-3">
-            <label *ngIf="isEditMode || isViewMode" for="roomNumber"
-              >Room Number</label
-            >
-            <input
-              type="text"
-              formControlName="roomNumber"
-              class="form-control"
-              id="roomNumber"
-              placeholder="Room Number"
-            />
-            <span
-              class="text-danger mb-3"
-              *ngIf="
-                addRoomForm.get('roomNumber')?.errors &&
-                addRoomForm.get('roomNumber')?.touched
-              "
-            >
-              <span *ngIf="addRoomForm.get('roomNumber')?.getError('required')"
-                >roomNumber is required</span
-              >
-            </span>
+          <div class="mb-3">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label >Room Number</mat-label>
+              <input type="text" formControlName="roomNumber" matInput placeholder="Room Number">
+              <mat-error *ngIf="addRoomForm.get('roomNumber')?.errors &&
+                addRoomForm.get('roomNumber')?.touched">
+                <p *ngIf="addRoomForm.get('roomNumber')?.getError('required')">
+                 Room number required
+                </p>
+              </mat-error>
+            </mat-form-field>
           </div>
           <div class="row gap-2 flex-nowrap mb-3">
             <div class="col-md-6">
-              <div class="form-group">
-                <label *ngIf="isEditMode || isViewMode" for="price"
-                  >Price</label
-                >
-                <input
-                  type="text"
-                  formControlName="price"
-                  class="form-control"
-                  id="price"
-                  placeholder="Price"
-                />
-                <span
-                  class="text-danger mb-3"
-                  *ngIf="
-                    addRoomForm.get('price')?.errors &&
-                    addRoomForm.get('price')?.touched
-                  "
-                >
-                  <span *ngIf="addRoomForm.get('price')?.getError('required')"
-                    >price is required</span
-                  >
-                </span>
-              </div>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Price</mat-label>
+                <input type="number" formControlName="price" matInput placeholder="Price">
+                <mat-error *ngIf="addRoomForm.get('price')?.errors &&
+                  addRoomForm.get('price')?.touched">
+                  <p *ngIf="addRoomForm.get('price')?.getError('required')">
+                   Price required
+                  </p>
+                </mat-error>
+              </mat-form-field>
             </div>
             <div class="col-md-6">
-              <div class="form-group">
-                <label *ngIf="isEditMode || isViewMode" for="capacity"
-                  >Capacity</label
-                >
-                <input
-                  type="text"
-                  formControlName="capacity"
-                  class="form-control"
-                  id="capacity"
-                  placeholder="capacity"
-                />
-                <span
-                  class="text-danger mb-3"
-                  *ngIf="
-                    addRoomForm.get('capacity')?.errors &&
-                    addRoomForm.get('capacity')?.touched
-                  "
-                >
-                  <span
-                    *ngIf="addRoomForm.get('capacity')?.getError('required')"
-                    >capacity is required</span
-                  >
-                </span>
-              </div>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Capacity</mat-label>
+                <input type="number" formControlName="capacity" matInput placeholder="Capacity">
+                <mat-error *ngIf="addRoomForm.get('capacity')?.errors &&
+                  addRoomForm.get('capacity')?.touched">
+                  <p *ngIf="addRoomForm.get('capacity')?.getError('required')">
+                   Capacity is  required
+                  </p>
+                </mat-error>
+              </mat-form-field>
             </div>
           </div>
           <div class="row gap-2 flex-nowrap mb-3">
             <div class="col-md-6">
-              <div class="form-group">
-                <label *ngIf="isEditMode || isViewMode" for="discount"
-                  >Discount</label
-                >
-                <input
-                  type="text"
-                  formControlName="discount"
-                  class="form-control"
-                  id="discount"
-                  placeholder="Discount"
-                />
-                <span
-                  *ngIf="
-                    addRoomForm.get('discount')?.errors &&
-                    addRoomForm.get('discount')?.touched
-                  "
-                  class="text-danger mb-3"
-                >
-                  <span
-                    *ngIf="addRoomForm.get('discount')?.errors?.['required']"
-                    class="mb-0"
-                    >discount is required</span
-                  >
-                </span>
-              </div>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Discount</mat-label>
+                <input type="number" formControlName="discount" matInput placeholder="Discount">
+                <mat-error *ngIf="addRoomForm.get('discount')?.errors &&
+                  addRoomForm.get('discount')?.touched">
+                  <p *ngIf="addRoomForm.get('discount')?.getError('required')">
+                    Discount required
+                  </p>
+                </mat-error>
+              </mat-form-field>
             </div>
             <div class="col-md-6">
-
-              <div class="form-group">
-                  <label class="input-group-text" *ngIf="isEditMode || isViewMode" for="facilities"
-                    >Facility</label
-                  >
-                <select
-                formControlName="facilities"
-                id="facilities"
-                  class="form-select"
-                  aria-label="facilities"
-                >
-                  <option *ngFor="let item of facilities" [value]="item._id" >
-                    {{ item.name }}
-                  </option>
-                </select>
-                <span class="text-danger mb-3 " *ngIf="
-                addRoomForm.get('facilities')?.errors &&
-                addRoomForm.get('facilities')?.touched
-              ">
-              <span *ngIf="addRoomForm.get('facilities')?.getError('required')">facilities is required</span>
-            </span>
-              </div>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Facility</mat-label>
+                <mat-select formControlName="facilities" multiple>
+                  @for (facility of facilities; track facility) {
+                    <mat-option [value]="facility">{{facility.name}}</mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
             </div>
           </div>
           <div>
