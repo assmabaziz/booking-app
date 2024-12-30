@@ -13,4 +13,18 @@ export class AdsService {
       params: parms,
     });
   }
+
+  getAllRooms(): Observable<any> {
+    let myparms = {
+      page: 1,
+      size: 1000,
+    };
+    return this._HttpClient.get(`/api/v0/admin/rooms`, {
+      params: myparms,
+    });
+  }
+
+  onAddAds(data: any): Observable<any> {
+    return this._HttpClient.post(`/api/v0/admin/ads`, data);
+  }
 }

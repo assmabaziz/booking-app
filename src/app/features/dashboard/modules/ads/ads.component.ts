@@ -1,7 +1,11 @@
+import { ToastrService } from 'ngx-toastr';
 import { PageEvent } from '@angular/material/paginator';
 import { IAds } from './interfaces/iads';
 import { AdsService } from './services/ads.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { AddEditAdsComponent } from './components/add-edit-ads/add-edit-ads.component';
+import { MatDialog } from '@angular/material/dialog';
+import { IRoom } from '../rooms/interfaces/iroom';
 
 @Component({
   selector: 'app-ads',
@@ -9,6 +13,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './ads.component.scss',
 })
 export class AdsComponent implements OnInit {
+  readonly dialog = inject(MatDialog);
+
   moduleName: string = 'Ads';
   dataSource!: IAds[];
   displayedColumns: string[] = [
@@ -39,17 +45,24 @@ export class AdsComponent implements OnInit {
     size: 5,
   };
   numRows!: number;
+  rooms: IRoom[] = [];
+  flagRoom: boolean = false;
 
-  constructor(private _AdsService: AdsService) {}
+  constructor(
+    private _AdsService: AdsService,
+    private _ToastrService: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.getAllAds();
+    this.getAllRooms();
   }
 
   getAllAds() {
     this._AdsService.getAllAds(this.params).subscribe({
       next: (res) => {
         console.log(res);
+
         this.numRows = res.data.totalCount;
         this.dataSource = res.data.ads;
       },
@@ -58,9 +71,50 @@ export class AdsComponent implements OnInit {
       },
     });
   }
+
+  getAllRooms() {
+    this._AdsService.getAllRooms().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.rooms = res.data.rooms;
+        this.flagRoom = true;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
   handlePageEvent(e: PageEvent) {
     this.params.size = e.pageSize;
     this.params.page = e.pageIndex + 1;
     this.getAllAds();
+  }
+
+  addAds() {
+    console.log('rr', this.rooms);
+    const dialogRef = this.dialog.open(AddEditAdsComponent, {
+      width: '30%',
+      data: { rooms: this.rooms, room: '', discount: '', isActive: '' },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      if (result) {
+        console.log(result);
+        delete result.rooms;
+        console.log(result);
+        this._AdsService.onAddAds(result).subscribe({
+          next: (res) => {
+            console.log(res);
+            this._ToastrService.success(res.message);
+            this.getAllAds();
+          },
+          error: (err) => {
+            console.log(err);
+            this._ToastrService.error(err.error.message);
+          },
+        });
+      }
+    });
   }
 }
