@@ -7,6 +7,7 @@ import { AddEditRoomComponent } from './components/add-edit-room/add-edit-room.c
 import { ViewRoomComponent } from './components/view-room/view-room.component';
 import { SharedModule } from '../../../../shared/shared.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { DashboardModule } from "../../dashboard.module";
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   ],
   imports: [
     CommonModule,
-    RoomsRoutingModule, SharedModule, MatPaginatorModule
-  ]
+    RoomsRoutingModule, SharedModule, MatPaginatorModule,
+    DashboardModule
+]
 })
 export class RoomsModule { }

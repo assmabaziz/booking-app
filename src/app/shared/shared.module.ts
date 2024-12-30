@@ -14,16 +14,17 @@ import { DeleteItemComponent } from './components/delete-item/delete-item.compon
 import { MatDialogModule } from '@angular/material/dialog';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SeperatorPipe } from './pipes/seperator.pipe';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-
 @NgModule({
   declarations: [
     SidebarComponent,
     NavbarComponent,
     DeleteItemComponent,
     NotFoundComponent,
+    SeperatorPipe,
   ],
   imports: [
     CommonModule,
@@ -54,6 +55,7 @@ import { MatSelectModule } from '@angular/material/select';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatMenuModule,SeperatorPipe
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
