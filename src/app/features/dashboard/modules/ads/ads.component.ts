@@ -174,7 +174,7 @@ export class AdsComponent implements OnInit {
 
   AdsDelete(data: IAds) {
     const dialogRef = this.dialog.open(DeleteItemComponent, {
-      data: data,
+      data: { text: 'Ads', id: data._id }
     });
     dialogRef.afterClosed().subscribe((result) => {
       console.log(result);

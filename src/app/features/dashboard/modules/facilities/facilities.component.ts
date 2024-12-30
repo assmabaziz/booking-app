@@ -94,7 +94,7 @@ resMessage = '';
   }
   FacilityDelete(data: IFacilities) {
     const dialogRef = this.dialog.open(DeleteItemComponent, {
-      data: data,
+      data: { text: 'Facility', id: data._id }
     });
     dialogRef.afterClosed().subscribe((result) => {
       console.log(result);

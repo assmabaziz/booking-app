@@ -1,4 +1,4 @@
-<div class="auth p-5">
+<!-- <div class="auth p-5">
   <div class="text-end mb-3">
     <span (click)="onNoClick()"
       ><i class="pointer fa-regular fa-circle-xmark text-danger fa-2x"></i
@@ -31,4 +31,19 @@
       </button>
     </div>
   </div>
+</div> -->
+<h1 mat-dialog-title [align]="'end'">
+  <mat-icon [color]="'warn'" (click)="onNoClick()" class="mat-18">cancel</mat-icon>
+</h1>
+<div mat-dialog-content>
+
+  <div class="text-center">
+    <img  src="../../../../assets/images/shared-module-images/delete-item.png" alt="">
+    <h3> Delete This <span class="main-bg">{{data.text}}</span>  ?</h3>
+    <p>are you sure you want to Delete this item ? if you are sure just <br> click on Delete  it</p>
+  </div>
 </div>
+<div mat-dialog-actions [align]="'end'">
+  <button   mat-button class="bg-danger w-25 ms-auto m-2 text-white" [mat-dialog-close]="data.id" cdkFocusInitial>Delete</button>
+</div>
+

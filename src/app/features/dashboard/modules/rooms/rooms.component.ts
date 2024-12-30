@@ -95,7 +95,7 @@ export class RoomsComponent {
   }
   deleteRoomById(data: IRoom) {
     const dialogRef = this.dialog.open(DeleteItemComponent, {
-      data: data,
+      data: { text: 'Room', id: data._id }
     });
     dialogRef.afterClosed().subscribe((result) => {
       console.log(result);
