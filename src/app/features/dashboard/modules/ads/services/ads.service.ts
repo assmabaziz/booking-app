@@ -27,4 +27,15 @@ export class AdsService {
   onAddAds(data: any): Observable<any> {
     return this._HttpClient.post(`/api/v0/admin/ads`, data);
   }
+
+  onGetAdsById(id: number): Observable<any> {
+    return this._HttpClient.get(`/api/v0/admin/ads/${id}`);
+  }
+
+  onDeleteAdsById(id: number): Observable<any> {
+    return this._HttpClient.delete(`/api/v0/admin/ads/${id}`);
+  }
+  onUpdateAdsById(id: string, data: any): Observable<any> {
+    return this._HttpClient.put(`/api/v0/admin/ads/${id}`, data);
+  }
 }

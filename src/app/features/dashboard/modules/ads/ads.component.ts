@@ -90,18 +90,73 @@ export class AdsComponent implements OnInit {
     this.params.page = e.pageIndex + 1;
     this.getAllAds();
   }
-
-  addAds() {
-    console.log('rr', this.rooms);
+  viewAds(data: IAds) {
     const dialogRef = this.dialog.open(AddEditAdsComponent, {
-      width: '30%',
-      data: { rooms: this.rooms, room: '', discount: '', isActive: '' },
+      width: '40%',
+      data: {
+        rooms: this.rooms,
+        room: data.room._id,
+        discount: data.room.discount,
+        isActive: data.isActive,
+        disable: true,
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
+  }
+  EditAds(data: IAds) {
+    const dialogRef = this.dialog.open(AddEditAdsComponent, {
+      width: '40%',
+      data: {
+        rooms: this.rooms,
+        room: data.room._id,
+        discount: data.room.discount,
+        isActive: data.isActive,
+        disable: false,
+        edit: true,
+      },
     });
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       if (result) {
         console.log(result);
         delete result.rooms;
+        delete result.disable;
+        delete result.edit;
+        delete result.room;
+        console.log(result);
+        this._AdsService.onUpdateAdsById(data._id, result).subscribe({
+          next: (res) => {
+            console.log(res);
+            this._ToastrService.success(res.message);
+            this.getAllAds();
+          },
+          error: (err) => {
+            console.log(err);
+            this._ToastrService.error(err.error.message);
+          },
+        });
+      }
+    });
+  }
+  addAds() {
+    const dialogRef = this.dialog.open(AddEditAdsComponent, {
+      width: '40%',
+      data: {
+        rooms: this.rooms,
+        room: '',
+        discount: '',
+        isActive: '',
+        disable: false,
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      if (result) {
+        console.log(result);
+        delete result.rooms;
+        delete result.disable;
         console.log(result);
         this._AdsService.onAddAds(result).subscribe({
           next: (res) => {
