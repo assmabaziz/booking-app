@@ -97,6 +97,7 @@
                 class="justify-content-center"
                 *ngIf="action.name === 'Delete'"
                 class="text-danger"
+                (click)="onDelete(row)"
               >
                 <mat-icon class="text-danger">{{ action.icon }}</mat-icon>
                 <span>{{ action.name }}</span>

@@ -32,7 +32,7 @@ export class AdsService {
     return this._HttpClient.get(`/api/v0/admin/ads/${id}`);
   }
 
-  onDeleteAdsById(id: number): Observable<any> {
+  onDeleteAdsById(id: string): Observable<any> {
     return this._HttpClient.delete(`/api/v0/admin/ads/${id}`);
   }
   onUpdateAdsById(id: string, data: any): Observable<any> {

@@ -21,6 +21,7 @@
 
   <div class="mt-3">
     <app-table-shared
+      (AdsDelete)="AdsDelete($event)"
       (AdsViewed)="viewAds($event)"
       (AdsEdit)="EditAds($event)"
       [dataSource]="dataSource"

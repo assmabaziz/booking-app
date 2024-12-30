@@ -13,24 +13,24 @@ import { IAds } from '../../modules/ads/interfaces/iads';
   templateUrl: './table-shared.component.html',
   styleUrl: './table-shared.component.scss',
 })
-export class TableSharedComponent implements OnChanges {
+export class TableSharedComponent {
   @Input() dataSource: any[] = [];
   @Input() displayedColumns: string[] = [];
   @Input() actions: any[] = [];
   @Input() moduleName: string = '';
   @Output() AdsViewed = new EventEmitter<any>();
   @Output() AdsEdit = new EventEmitter<any>();
-  data!: any;
+  @Output() AdsDelete = new EventEmitter<any>();
 
   constructor() {}
-  ngOnChanges(): void {
-    // console.log(this.dataSource, this.displayedColumns);
-    this.data = new MatTableDataSource(this.dataSource);
-  }
+
   onView(dataView: IAds) {
     this.AdsViewed.emit(dataView);
   }
-  onEdit(dataView: IAds) {
-    this.AdsEdit.emit(dataView);
+  onEdit(dataEdit: IAds) {
+    this.AdsEdit.emit(dataEdit);
+  }
+  onDelete(dataDelete: IAds) {
+    this.AdsDelete.emit(dataDelete);
   }
 }

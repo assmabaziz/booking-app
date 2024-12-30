@@ -6,6 +6,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { AddEditAdsComponent } from './components/add-edit-ads/add-edit-ads.component';
 import { MatDialog } from '@angular/material/dialog';
 import { IRoom } from '../rooms/interfaces/iroom';
+import { DeleteItemComponent } from '../../../../shared/components/delete-item/delete-item.component';
 
 @Component({
   selector: 'app-ads',
@@ -159,6 +160,30 @@ export class AdsComponent implements OnInit {
         delete result.disable;
         console.log(result);
         this._AdsService.onAddAds(result).subscribe({
+          next: (res) => {
+            console.log(res);
+            this._ToastrService.success(res.message);
+            this.getAllAds();
+          },
+          error: (err) => {
+            console.log(err);
+            this._ToastrService.error(err.error.message);
+          },
+        });
+      }
+    });
+  }
+
+  AdsDelete(data: IAds) {
+    const dialogRef = this.dialog.open(DeleteItemComponent, {
+      data: data,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+      console.log('The dialog was closed');
+      if (result) {
+        console.log(result);
+        this._AdsService.onDeleteAdsById(data._id).subscribe({
           next: (res) => {
             console.log(res);
             this._ToastrService.success(res.message);
