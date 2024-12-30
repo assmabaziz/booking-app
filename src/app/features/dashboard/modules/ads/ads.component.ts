@@ -118,7 +118,6 @@ export class AdsComponent implements OnInit {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
       if (result) {
         console.log(result);
         delete result.rooms;
