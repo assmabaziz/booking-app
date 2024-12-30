@@ -24,9 +24,10 @@ export class TableSharedComponent implements OnChanges {
   @Output() AdsEdit = new EventEmitter<any>();
   @Output() AdsDelete = new EventEmitter<any>();
   @Output() roomsViewed = new EventEmitter<any>();
+  @Output() usersViewed = new EventEmitter<any>();
   @Output() roomsEdit = new EventEmitter<any>();
   @Output() roomsDelte = new EventEmitter<any>();
-
+  @Output() FacilityDelete = new EventEmitter<any>();
   ngOnChanges(): void {
     this.data = new MatTableDataSource(this.dataSource);
     // console.log(this._ShredDataService.myData);
@@ -45,6 +46,9 @@ export class TableSharedComponent implements OnChanges {
         break;
       case 'facilities':
         // Code to be executed if expression matches value3
+        break;
+        case 'users':
+        this.usersViewed.emit(dataView);
         break;
     }
   }
@@ -70,7 +74,8 @@ export class TableSharedComponent implements OnChanges {
       case 'Ads':
         this.AdsDelete.emit(dataDelete);
         break;
-      case 'facilities':
+      case 'Facilities':
+        this.FacilityDelete.emit(dataDelete);
         // Code to be executed if expression matches value3
         break;
     }

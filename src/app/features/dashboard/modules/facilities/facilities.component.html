@@ -19,6 +19,7 @@
 
   <div class="my-3">
     <app-table-shared
+      (FacilityDelete)="FacilityDelete($event)"
       [dataSource]="dataSource"
       [displayedColumns]="displayedColumns"
       [actions]="actions"

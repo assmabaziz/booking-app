@@ -92,4 +92,27 @@ resMessage = '';
     this.params.page = e.pageIndex + 1;
     this.getAllAds();
   }
+  FacilityDelete(data: IFacilities) {
+    const dialogRef = this.dialog.open(DeleteItemComponent, {
+      data: data,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(result);
+      console.log('The dialog was closed');
+      if (result) {
+        console.log(result);
+        this._FacilitiesService.onDeleteFacility(data._id).subscribe({
+          next: (res) => {
+            console.log(res);
+            this._ToastrService.success(res.message);
+            this.getAllAds();
+          },
+          error: (err) => {
+            console.log(err);
+            this._ToastrService.error(err.error.message);
+          },
+        });
+      }
+    });
+  }
 }
