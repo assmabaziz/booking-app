@@ -19,20 +19,20 @@ export class TableSharedComponent implements OnChanges {
   data!: any;
   myfacilities!: any;
   constructor(private _ShredDataService: ShredDataService) {}
-  ngOnChanges(): void {
-    this.data = new MatTableDataSource(this.dataSource);
-    console.log(this.dataSource);
-    // console.log(this._ShredDataService.myData);
-    for (const element of this.dataSource) {
-      this.myfacilities = element.facilities;
-      console.log(this.myfacilities);
-    }
   @Input() displayedColumns: string[] = [];
   @Input() actions: any[] = [];
   @Input() moduleName: string = '';
   @Output() AdsViewed = new EventEmitter<any>();
   @Output() AdsEdit = new EventEmitter<any>();
   @Output() AdsDelete = new EventEmitter<any>();
+ngOnChanges(): void {
+    this.data = new MatTableDataSource(this.dataSource);
+    console.log(this.dataSource);
+    // console.log(this._ShredDataService.myData);
+    for (const element of this.dataSource) {
+      this.myfacilities = element.facilities;
+      console.log(this.myfacilities);
+    }}
   onView(dataView: IAds) {
     this.AdsViewed.emit(dataView);
   }
