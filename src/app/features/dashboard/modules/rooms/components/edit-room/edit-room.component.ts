@@ -33,8 +33,6 @@ export class EditRoomComponent {
       discount: this.data?.discount,
       facilities: this.data?.facilities,
     });
-    console.log(this.editRoomForm.value);
-    console.log(this.imgSrc );
 this.facilities = this.data.facilities
   }
   onNoClick(): void {
