@@ -13,7 +13,7 @@
         <form [formGroup]="addRoomForm" (ngSubmit)="onSubmit(addRoomForm)">
           <div class="mb-3">
             <mat-form-field appearance="outline" class="w-100">
-              <mat-label>Room Number</mat-label>
+              <mat-label >Room Number</mat-label>
               <input type="text" formControlName="roomNumber" matInput placeholder="Room Number">
               <mat-error *ngIf="addRoomForm.get('roomNumber')?.errors &&
                 addRoomForm.get('roomNumber')?.touched">

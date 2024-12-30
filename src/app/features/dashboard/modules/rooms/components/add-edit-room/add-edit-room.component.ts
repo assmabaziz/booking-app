@@ -68,42 +68,41 @@ export class AddEditRoomComponent {
     myData.append('capacity', data.value.capacity);
     myData.append('discount', data.value.discount);
     // myData.append('facilities', data.value.facilities)
-  //  myData.append('imgs', this.imgSrc, this.imgSrc['name'])
+    for (const item of this.imgSrc) {
+      myData.append('imgs', item, item.name);
+    }
   for (const facility of data.value.facilities) {
     myData.append('facilities', facility._id);
   }
-    if (this.RoomsId) {
-      this._RoomsService.onEditRoom(myData, this.RoomsId).subscribe({
-        next: (res) => {},
-        error: (err) => {
-          this._ToastrService.error(err.error.message, 'failed');
-        },
-        complete: () => {
-          this._Router.navigate(['/dashboard/rooms']);
-          this._ToastrService.success('Rooms Updated Successfully');
-        },
-      });
-    } else {
-      console.log(data.value);
-      console.log(myData);
-      this._RoomsService.onAddRoom(myData).subscribe({
-        next: (res) => {console.log(res);
-        },
-        error: (err) => {
-          this._ToastrService.error(err.error.message, 'Faild');
-        },
-        complete: () => {
-          this._Router.navigate(['dashboard/rooms']);
-          this._ToastrService.success('Room Added Successfully');
-        },
-      });
-    }
+  this._RoomsService.onAddRoom(myData).subscribe({
+    next: (res) => {},
+    error: (err) => {
+      this._ToastrService.error(err.error.message, 'Faild');
+    },
+    complete: () => {
+      this._Router.navigate(['dashboard/rooms']);
+      this._ToastrService.success('Room Added Successfully');
+    },
+  });
+    // if (this.RoomsId) {
+    //   this._RoomsService.onEditRoom(myData, this.RoomsId).subscribe({
+    //     next: (res) => {},
+    //     error: (err) => {
+    //       this._ToastrService.error(err.error.message, 'failed');
+    //     },
+    //     complete: () => {
+    //       this._Router.navigate(['/dashboard/rooms']);
+    //       this._ToastrService.success('Rooms Updated Successfully');
+    //     },
+    //   });
+    // } else {
+
+    // }
   }
   getAllFacilitest() {
     this._RoomsService.onGetFacilities().subscribe({
       next: (res) => {
         this.facilities = res.data.facilities;
-        console.log(this.facilities);
       },
       error: (err) => {
         console.log(err);

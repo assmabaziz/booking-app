@@ -2,12 +2,12 @@ import { Component, inject } from '@angular/core';
 import { IFacilities, IRoom } from './interfaces/iroom';
 import { RoomsService } from './services/rooms.service';
 import { ToastrService } from 'ngx-toastr';
-import { Iparams } from '../users-admin/interfaces/Iparams';
 import { ShredDataService } from '../../../../shared/services/shred-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteItemComponent } from '../../../../shared/components/delete-item/delete-item.component';
 import { Router } from '@angular/router';
 import { ViewRoomComponent } from './components/view-room/view-room.component';
+import { EditRoomComponent } from './components/edit-room/edit-room.component';
 
 @Component({
   selector: 'app-rooms',
@@ -74,7 +74,7 @@ export class RoomsComponent {
         this.dataSource = res.data.rooms;
         this.totalCount = res.data.totalCount
         this.facilities = res.data.facilities
-        console.log(res.data);
+        // console.log(res.data);
       },
       error: (err) => {
         // console.log(err);
@@ -117,16 +117,41 @@ export class RoomsComponent {
     });
   }
   uppdateRoom(data:IRoom) {
-    this._RoomsService.onEditRoom(data, data._id).subscribe({
-      next: (res) => {},
-        error: (err) => {
-          this._ToastrService.error(err.error.message, 'failed');
-        },
-        complete: () => {
-          this._Router.navigate(['/dashboard/rooms']);
-          this._ToastrService.success('Rooms Updated Successfully');
-        },
-    })
+// console.log(data);
+// this._Router.navigate(['/dashboard/rooms/edit-room', data._id])
+    const dialogRef = this.dialog.open(EditRoomComponent, {
+      width: '50%',
+      data: data
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log(result);
+        this._RoomsService.onEditRoom(data._id, result).subscribe({
+          next: (res) => {
+            this._ToastrService.success(res.message);
+            this.getAllRooms();
+          },
+          error: (err) => {
+            console.log(err);
+            this._ToastrService.error(err.error.message);
+          },
+        });
+      }
+    });
+
+
+
+
+    // this._RoomsService.onEditRoom(data._id, data).subscribe({
+    //   next: (res) => {},
+    //     error: (err) => {
+    //       this._ToastrService.error(err.error.message, 'failed');
+    //     },
+    //     complete: () => {
+    //       this._Router.navigate(['/dashboard/rooms']);
+    //       this._ToastrService.success('Rooms Updated Successfully');
+    //     },
+    // })
   }
   viewRoom(data: IRoom) {
     const dialogRef = this.dialog.open(ViewRoomComponent, {

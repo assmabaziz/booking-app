@@ -3,13 +3,10 @@ import {
   EventEmitter,
   Input,
   OnChanges,
-  OnInit,
-  output,
   Output,
 } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ShredDataService } from '../../../../shared/services/shred-data.service';
-import { IAds } from '../../modules/ads/interfaces/iads';
 @Component({
   selector: 'app-table-shared',
   templateUrl: './table-shared.component.html',
@@ -32,11 +29,9 @@ export class TableSharedComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.data = new MatTableDataSource(this.dataSource);
-    console.log(this.dataSource);
     // console.log(this._ShredDataService.myData);
     for (const element of this.dataSource) {
       this.myfacilities = element.facilities;
-      console.log(this.myfacilities);
     }
   }
   onView(dataView: any) {
