@@ -15,7 +15,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SeperatorPipe } from './pipes/seperator.pipe';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -37,6 +39,9 @@ import { SeperatorPipe } from './pipes/seperator.pipe';
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
   ],
   exports: [
     SidebarComponent,
@@ -51,6 +56,10 @@ import { SeperatorPipe } from './pipes/seperator.pipe';
     ReactiveFormsModule,
     MatButtonModule,
     MatMenuModule,SeperatorPipe
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
   ],
 })
 export class SharedModule {}

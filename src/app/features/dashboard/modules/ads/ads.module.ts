@@ -6,9 +6,10 @@ import { AdsComponent } from './ads.component';
 import { DashboardModule } from '../../dashboard.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { SharedModule } from '../../../../shared/shared.module';
+import { AddEditAdsComponent } from './components/add-edit-ads/add-edit-ads.component';
 
 @NgModule({
-  declarations: [AdsComponent],
+  declarations: [AdsComponent, AddEditAdsComponent],
   imports: [
     CommonModule,
     AdsRoutingModule,
