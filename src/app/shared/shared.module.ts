@@ -14,7 +14,8 @@ import { DeleteItemComponent } from './components/delete-item/delete-item.compon
 import { MatDialogModule } from '@angular/material/dialog';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [SidebarComponent, NavbarComponent, DeleteItemComponent, NotFoundComponent],
   imports: [
@@ -28,7 +29,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ImageCropperModule,
     NgOptimizedImage,
     MatDialogModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports: [
     SidebarComponent,
@@ -39,7 +43,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgOptimizedImage,
     MatTableModule,
     MatDialogModule,
-    FormsModule, ReactiveFormsModule, MatButtonModule, MatMenuModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
 })
 export class SharedModule {}
