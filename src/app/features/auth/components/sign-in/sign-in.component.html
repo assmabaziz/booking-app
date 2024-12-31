@@ -108,7 +108,7 @@
                   forget password ?</a
                 >
               </div>
-              <button type="submit" class="primary btn w-100 my-3">
+              <button type="submit" class="primary btn w-100 my-3"[disabled]="!signInForm.valid">
                 Sign in
               </button>
             </form>

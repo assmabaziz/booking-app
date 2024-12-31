@@ -18,6 +18,7 @@ import { SeperatorPipe } from './pipes/seperator.pipe';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { NoDataComponent } from './components/no-data/no-data.component';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -25,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
     DeleteItemComponent,
     NotFoundComponent,
     SeperatorPipe,
+    NoDataComponent,
   ],
   imports: [
     CommonModule,
@@ -59,7 +61,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule,
+    MatSelectModule, NoDataComponent
   ],
 })
 export class SharedModule {}
