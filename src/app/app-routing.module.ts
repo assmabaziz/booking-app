@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { authGuard } from './core/guards/auth guard/auth.guard';
+import { adminGuard } from './core/guards/admin guard/admin.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
@@ -9,7 +11,7 @@ const routes: Routes = [
       import('./features/auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'dashboard',
+    path: 'dashboard',canActivate: [authGuard, adminGuard],
     loadChildren: () =>
       import('./features/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
@@ -22,7 +24,7 @@ const routes: Routes = [
         (m) => m.LandingPageModule
       ),
   },
-   
+
 ];
 
 @NgModule({

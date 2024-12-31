@@ -1,6 +1,5 @@
 @mixin divCenter {
   display: flex;
-  // flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -83,22 +82,7 @@
       }
       }
 
-      button {
-        border-radius: $border-reduis;
-        padding: 0.5rem;
-        transition: all 0.3s ease-in;
-        &.primary {
-          background: $bg-mainColor;
-          color: $text-whiteColor;
-        }
-        &.outline-primary {
-          color: $text-mainColor;
-          border: 2px solid $text-mainColor;
-        }
-        &:hover {
-          opacity: 0.9;
-        }
-      }
+      
     }
     .caption {
       color: $text-whiteColor;
