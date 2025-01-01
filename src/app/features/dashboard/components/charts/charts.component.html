@@ -1,7 +1,10 @@
 <section>
-  <div class="row align-items-center mt-3">
+  <div class="row align-items-center mt-5">
     <div class="col-md-6">
-      <div class="chart-container" *ngIf="chartOptionsBooking">
+      <div
+        class="chart-container shadow-lg py-0 bg-white w-75 mx-auto rounded-4"
+        *ngIf="chartOptionsBooking"
+      >
         <div
           echarts
           [options]="chartOptionsBooking"

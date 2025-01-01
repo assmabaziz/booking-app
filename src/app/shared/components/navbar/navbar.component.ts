@@ -1,14 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../../features/auth/services/auth.service';
+import { ProfileComponent } from '../profile/profile.component';
+import { MatDialog } from '@angular/material/dialog';
+import { IProfile } from '../../interfaces/iprofile';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  styleUrl: './navbar.component.scss',
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+  readonly dialog = inject(MatDialog);
+  profileData!: IProfile;
   constructor(private _AuthService: AuthService) {}
+  ngOnInit(): void {
+    this._AuthService.getProfieDetails().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.profileData = res.data.user;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
   logout() {
     this._AuthService.onLogout();
+  }
+  showProfile() {
+    const dialogRef = this.dialog.open(ProfileComponent, {
+      width: '40%',
+      // height: '50%',
+      data: this.profileData,
+    });
   }
 }

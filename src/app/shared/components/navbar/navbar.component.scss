@@ -9,4 +9,11 @@ section {
     width: 2.5rem;
     border-radius: 50%;
   }
+
+  .btn-navbar {
+    &:hover {
+      background-color: $text-hover-gray;
+      cursor: pointer;
+    }
+  }
 }

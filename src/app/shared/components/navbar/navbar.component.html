@@ -1,36 +1,50 @@
 <section class="">
   <div
-    class="d-flex justify-content-end align-items-center p-2 rounded-4 m-3 navbar"
+    class="d-flex justify-content-between align-items-center navbar p-2 rounded-4 m-3"
   >
-    <div class="pt-2">
-      <mat-icon class="me-4 text-warning">notifications</mat-icon>
-    </div>
-    <div class="">
+    <div>
       <img
-        src="../../../../assets/images/auth-images/backgound-sign-in.svg"
-        class="profile-image"
+        src="../../../../assets/images/dasboard-images/logo.png"
+        class="w-100"
         alt=""
       />
     </div>
-    <span class="ps-3 pt-1">Hosam</span>
-    <div class="">
-      <button
-        mat-icon-button
-        [matMenuTriggerFor]="menu"
-        aria-label="Example icon-button with a menu"
-      >
-        <mat-icon>arrow_drop_down</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          <mat-icon>person</mat-icon>
-          Profile
-        </button>
-        <button mat-menu-item>
-          <mat-icon>lock_open</mat-icon> Change Password
-        </button>
-        <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon> Logout</button>
-      </mat-menu>
+    <div class="d-flex align-items-center">
+      <div class="pt-2">
+        <mat-icon class="me-4 text-warning">notifications</mat-icon>
+      </div>
+      <div class="">
+        <img
+          src="../../../../assets/images/auth-images/backgound-sign-in.svg"
+          class="profile-image"
+          alt=""
+        />
+      </div>
+
+      <div class="">
+        <div
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+          class="btn-navbar d-flex gap-2 justify-content-center align-items-center p-3 rounded-5 ms-2"
+        >
+          <span class="">Hosam</span>
+
+          <mat-icon>arrow_drop_down</mat-icon>
+        </div>
+        <mat-menu #menu="matMenu">
+          <button (click)="showProfile()" mat-menu-item>
+            <mat-icon>person</mat-icon>
+            Profile
+          </button>
+          <button mat-menu-item>
+            <mat-icon>lock_open</mat-icon> Change Password
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon> Logout
+          </button>
+        </mat-menu>
+      </div>
     </div>
   </div>
 </section>
