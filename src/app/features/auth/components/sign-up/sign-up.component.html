@@ -21,6 +21,31 @@
           </div>
           <div class="inputs-auth">
             <form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm)">
+              <div class="row justify-content-center">
+                <div class="col-md-6">
+                  <div>
+<ngx-dropzone
+                    (change)="onSelect($event)"
+                    [multiple]="false"
+                    class="circle-preview"
+                  >
+                    <ngx-dropzone-label class="text-main p-3">
+                      <i class="fa-solid fa-upload fa-3x mb-3"></i>
+                      <p>uppload image</p>
+                    </ngx-dropzone-label>
+                    <ngx-dropzone-image-preview
+                      ngProjectAs="ngx-dropzone-preview"
+                      [removable]="true"
+                      (removed)="onRemove(f)"
+                      *ngFor="let f of files"
+                      [file]="f"
+                    >
+                    </ngx-dropzone-image-preview>
+                  </ngx-dropzone>
+                  </div>
+
+                </div>
+              </div>
               <div class="form-group mb-3">
                 <label for="exampleInputUserName" class="text-secondryColor"
                   >User name</label
@@ -31,7 +56,7 @@
                   class="form-control"
                   id="exampleInputUserName"
                   aria-describedby="userName"
-                  placeholder="Ente user name"
+                  placeholder="User name"
                 />
                 <small
                   id="userName"
@@ -69,7 +94,7 @@
                       class="form-control"
                       id="exampleInputPhoneNumber"
                       aria-describedby="phoneNumber"
-                      placeholder="Enter phone number"
+                      placeholder="Phone number"
                     />
                     <small
                       id="phoneNumber"
@@ -137,7 +162,7 @@
                   class="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
-                  placeholder="Enter email"
+                  placeholder="Email"
                 />
                 <small
                   id="emailHelp"
@@ -214,7 +239,7 @@
                     [type]="hideConfirmPassword ? 'password' : 'text'"
                     class="form-control"
                     id="exampleInputPassword2"
-                    placeholder="Confirm password"
+                    placeholder="Repassword"
                   />
                   <span
                     (click)="hideConfirmPassword = !hideConfirmPassword"
@@ -251,30 +276,8 @@
                   </p>
                 </small>
               </div>
-              <div class="row justify-content-center">
-                <div class="col-md-6">
-                  <ngx-dropzone
-                    (change)="onSelect($event)"
-                    [multiple]="false"
-                    class="circle-preview"
-                  >
-                    <ngx-dropzone-label class="text-main p-3">
-                      <i class="fa-solid fa-upload fa-3x mb-3"></i>
-                      <p>uppload image</p>
-                    </ngx-dropzone-label>
-                    <ngx-dropzone-image-preview
-                      ngProjectAs="ngx-dropzone-preview"
-                      class="img-fluid"
-                      [removable]="true"
-                      (removed)="onRemove(f)"
-                      *ngFor="let f of files"
-                      [file]="f"
-                    >
-                    </ngx-dropzone-image-preview>
-                  </ngx-dropzone>
-                </div>
-              </div>
-              <button type="submit" class="primary btn w-100 my-3">
+
+              <button type="submit" class="primary btn w-100 my-3" [disabled]="!signUpForm.valid">
                 Sign up
               </button>
             </form>
