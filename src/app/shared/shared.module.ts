@@ -19,6 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { NoDataComponent } from './components/no-data/no-data.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -27,6 +28,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     NotFoundComponent,
     SeperatorPipe,
     NoDataComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     CommonModule,
