@@ -13,8 +13,9 @@
       <div class="pt-2">
         <mat-icon class="me-4 text-warning">notifications</mat-icon>
       </div>
+
       <div class="border border-1 border-secondary p-1 rounded-circle">
-        <img [src]="profileData.profileImage" class="profile-image" alt="" />
+        <img [src]="profileData?.profileImage" class="profile-image" alt="" />
       </div>
 
       <div class="">
@@ -24,7 +25,7 @@
           aria-label="Example icon-button with a menu"
           class="btn-navbar d-flex gap-2 justify-content-center align-items-center p-3 rounded-5 ms-2"
         >
-          <span class="">{{ profileData.userName }}</span>
+          <span class="">{{ profileData?.userName }}</span>
 
           <mat-icon>arrow_drop_down</mat-icon>
         </div>

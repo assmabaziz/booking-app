@@ -28,10 +28,12 @@ export class TableSharedComponent implements OnChanges {
   @Output() roomsDelte = new EventEmitter<any>();
 
   ngOnChanges(): void {
-    this.data = new MatTableDataSource(this.dataSource);
-    // console.log(this._ShredDataService.myData);
-    for (const element of this.dataSource) {
-      this.myfacilities = element.facilities;
+    // this.data = new MatTableDataSource(this.dataSource);
+    console.log(this.dataSource);
+    if (this.dataSource) {
+      for (const element of this.dataSource) {
+        this.myfacilities = element.facilities;
+      }
     }
   }
   onView(dataView: any) {
@@ -60,7 +62,6 @@ export class TableSharedComponent implements OnChanges {
         // Code to be executed if expression matches value3
         break;
     }
-
   }
   onDelete(dataDelete: any) {
     switch (this.moduleName) {
@@ -74,6 +75,5 @@ export class TableSharedComponent implements OnChanges {
         // Code to be executed if expression matches value3
         break;
     }
-
   }
 }

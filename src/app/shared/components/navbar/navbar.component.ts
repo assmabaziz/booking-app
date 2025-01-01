@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { AuthService } from '../../../features/auth/services/auth.service';
 import { ProfileComponent } from '../profile/profile.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,19 +11,26 @@ import { IProfile } from '../../interfaces/iprofile';
 })
 export class NavbarComponent implements OnInit {
   readonly dialog = inject(MatDialog);
-  profileData!: IProfile;
-  constructor(private _AuthService: AuthService) {}
-  ngOnInit(): void {
-    this._AuthService.getProfieDetails().subscribe({
-      next: (res) => {
-        console.log(res);
-        this.profileData = res.data.user;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+  @Input() profileData!: IProfile | null;
+
+  constructor(private _AuthService: AuthService) {
+    // this._AuthService.getProfieDetails().subscribe({
+    //   next: (res) => {
+    //     console.log(res);
+    //     this.profileData = res.data.user;
+    //     this.profileImage = this.profileData.profileImage;
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //   },
+    // });
   }
+
+  ngOnChanges(): void {
+    console.log(this.profileData);
+  }
+
+  ngOnInit(): void {}
   logout() {
     this._AuthService.onLogout();
   }
