@@ -1,0 +1,32 @@
+<section>
+  <div class="container">
+    <div class="d-flex mt-4 justify-content-between align-items-center">
+      <h2 class="h3 my-auto text-secondary">Profile Details:</h2>
+      <div>
+        <mat-icon (click)="onNoClick()" class="text-danger">cancel</mat-icon>
+      </div>
+    </div>
+
+    <div class="text-center mb-4">
+      <img
+        [src]="data.profileImage"
+        width="100px"
+        height="100px"
+        class="rounded-circle border border-1 p-1 border-secondary-subtle"
+        alt=""
+      />
+    </div>
+
+    <div class="row px-2 text-secondary justify-content-between">
+      <div class="col-md-6">
+        <p>UserName: {{ data.userName }}</p>
+        <p>Email: {{ data.email }}</p>
+        <p>Created At: {{ data.createdAt | date }}</p>
+      </div>
+      <div class="col-md-6 ps-3">
+        <p>Role: {{ data.role }}</p>
+        <p>Country: {{ data.country }}</p>
+      </div>
+    </div>
+  </div>
+</section>

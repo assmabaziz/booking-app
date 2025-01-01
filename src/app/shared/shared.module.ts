@@ -29,6 +29,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     SeperatorPipe,
     NoDataComponent,
     ChangePasswordComponent,
+
   ],
   imports: [
     CommonModule,
