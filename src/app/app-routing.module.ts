@@ -7,11 +7,13 @@ const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
   {
     path: 'auth',
+    canActivate: [authGuard],
     loadChildren: () =>
       import('./features/auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'dashboard',canActivate: [authGuard, adminGuard],
+    path: 'dashboard',
+    canActivate: [adminGuard],
     loadChildren: () =>
       import('./features/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
@@ -24,7 +26,6 @@ const routes: Routes = [
         (m) => m.LandingPageModule
       ),
   },
-
 ];
 
 @NgModule({
