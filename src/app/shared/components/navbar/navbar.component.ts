@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
   }
   showProfile() {
     const dialogRef = this.dialog.open(ProfileComponent, {
-      width: '40%',
+      width: '45%',
       // height: '50%',
       data: this.profileData,
     });
