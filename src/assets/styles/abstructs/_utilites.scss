@@ -1,23 +1,18 @@
-.btn-save {
-  background-color: $bg-mainColor ;
-  color: $text-whiteColor;
+button {
+  border-radius: $border-reduis;
   padding: 0.5rem 1rem;
-  border-radius:$raduis;
-  border: none;
-  transition:$main-transition  ;
-  &:hover {
-    background-color: $blue-main ;
+  transition: all 0.3s ease-in;
+  &.primary {
+    background: $bg-mainColor;
+    color: $text-whiteColor;
   }
-}
-.btn-cancel {
-  background-color: $text-whiteColor;
-  color:  $bg-mainColor ;
-  padding: 0.5rem 1rem;
-  border-radius:$raduis;
-  border: 1px solid $bg-mainColor;
-  transition: $main-transition  ;
-  &:hover {
-    background-color:$text-whiteColor   ;
-    color: $bg-mainColor;
+  &.outline-primary {
+    color: $text-mainColor;
+    border: 2px solid $text-mainColor;
+    background-color: $text-whiteColor;
+  }
+  &:disabled {
+    opacity: 0.9;
+    cursor: not-allowed;
   }
 }

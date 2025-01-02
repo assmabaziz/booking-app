@@ -12,18 +12,29 @@ import { IReset } from '../interfaces/ireset';
 })
 export class AuthService {
   role: string | null = '';
-  constructor(private _HttpClient: HttpClient, private _Router: Router) {}
+  constructor(private _HttpClient: HttpClient, private _Router: Router) {
+    this.getProfile();
+  }
   getProfile() {
     let finalToken: any = localStorage.getItem('userToken');
     let decodedToken: any = jwtDecode(finalToken);
     localStorage.setItem('userRole', decodedToken.role);
+    localStorage.setItem('id', decodedToken._id);
     this.setRole();
   }
   setRole() {
     if (localStorage.getItem('userToken') && localStorage.getItem('userRole')) {
       this.role = localStorage.getItem('userRole');
+      localStorage.getItem('id');
     }
   }
+
+  getProfieDetails(): Observable<any> {
+    return this._HttpClient.get(
+      `/api/v0/admin/users/${localStorage.getItem('id')}`
+    );
+  }
+
   onSignUp(data: any): Observable<any> {
     return this._HttpClient.post<any>('/api/v0/admin/users', data);
   }

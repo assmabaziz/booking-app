@@ -7,6 +7,11 @@ import { AddEditAdsComponent } from './components/add-edit-ads/add-edit-ads.comp
 import { MatDialog } from '@angular/material/dialog';
 import { IRoom } from '../rooms/interfaces/iroom';
 import { DeleteItemComponent } from '../../../../shared/components/delete-item/delete-item.component';
+import {
+  IadsAddEdit,
+  IadsDelete,
+  IApiRespose,
+} from '../../../../shared/interfaces/iapi-respose';
 
 @Component({
   selector: 'app-ads',
@@ -60,11 +65,16 @@ export class AdsComponent implements OnInit {
 
   getAllAds() {
     this._AdsService.getAllAds(this.params).subscribe({
-      next: (res) => {
-        console.log(res);
+      next: (res: IApiRespose<IAds>) => {
+        // console.log(res);
+        const key = Object.keys(res.data).find((k) =>
+          Array.isArray(res.data[k])
+        );
+        const ads: IAds[] = key ? (res.data[key] as IAds[]) : [];
+        // console.log(ads);
 
         this.numRows = res.data.totalCount;
-        this.dataSource = res.data.ads;
+        this.dataSource = ads;
       },
       error: (err) => {
         console.log(err);
@@ -76,7 +86,13 @@ export class AdsComponent implements OnInit {
     this._AdsService.getAllRooms().subscribe({
       next: (res) => {
         console.log(res);
-        this.rooms = res.data.rooms;
+        const key = Object.keys(res.data).find((k) =>
+          Array.isArray(res.data[k])
+        );
+        const rooms: IRoom[] = key ? (res.data[key] as IRoom[]) : [];
+        console.log(rooms);
+
+        this.rooms = rooms;
         this.flagRoom = true;
       },
       error: (err) => {
@@ -126,7 +142,7 @@ export class AdsComponent implements OnInit {
         delete result.room;
         console.log(result);
         this._AdsService.onUpdateAdsById(data._id, result).subscribe({
-          next: (res) => {
+          next: (res: IApiRespose<IadsAddEdit>) => {
             console.log(res);
             this._ToastrService.success(res.message);
             this.getAllAds();
@@ -158,7 +174,7 @@ export class AdsComponent implements OnInit {
         delete result.disable;
         console.log(result);
         this._AdsService.onAddAds(result).subscribe({
-          next: (res) => {
+          next: (res: IApiRespose<IadsAddEdit>) => {
             console.log(res);
             this._ToastrService.success(res.message);
             this.getAllAds();
@@ -182,7 +198,7 @@ export class AdsComponent implements OnInit {
       if (result) {
         console.log(result);
         this._AdsService.onDeleteAdsById(data._id).subscribe({
-          next: (res) => {
+          next: (res: IApiRespose<IadsDelete>) => {
             console.log(res);
             this._ToastrService.success(res.message);
             this.getAllAds();

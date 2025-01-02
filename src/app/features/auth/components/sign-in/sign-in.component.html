@@ -15,7 +15,7 @@
             <p>
               You can
               <a
-                class="text-decoration-none"
+                class="text-decoration-none text-danger"
                 routerLink="/auth/signup"
                 >Register here !
               </a>
@@ -33,7 +33,7 @@
                   class="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
-                  placeholder="Enter email"
+                  placeholder="Email"
                 />
                 <small
                   id="emailHelp"
@@ -108,7 +108,7 @@
                   forget password ?</a
                 >
               </div>
-              <button type="submit" class="primary btn w-100 my-3">
+              <button type="submit" class="primary btn w-100 my-3"[disabled]="!signInForm.valid">
                 Sign in
               </button>
             </form>

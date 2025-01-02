@@ -93,7 +93,7 @@ export class ChartsComponent {
             {
               name: 'Tasks',
               type: 'pie',
-              radius: ['62%', '70%'],
+              radius: ['40%', '70%'],
               avoidLabelOverlap: false,
               label: {
                 show: false,

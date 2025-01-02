@@ -6,7 +6,14 @@ section {
   }
 
   .profile-image {
-    width: 2.5rem;
+    width: 3rem;
     border-radius: 50%;
+  }
+
+  .btn-navbar {
+    &:hover {
+      background-color: $text-hover-gray;
+      cursor: pointer;
+    }
   }
 }

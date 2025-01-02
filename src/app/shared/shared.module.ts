@@ -19,6 +19,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { NoDataComponent } from './components/no-data/no-data.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { UppdatePasswordComponent } from './components/uppdate-password/uppdate-password.component';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -27,6 +29,8 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     NotFoundComponent,
     SeperatorPipe,
     NoDataComponent,
+    ProfileComponent,
+    UppdatePasswordComponent
   ],
   imports: [
     CommonModule,
@@ -71,8 +75,8 @@ import { NoDataComponent } from './components/no-data/no-data.component';
     MatButtonModule,
     MatMenuModule,
     MatFormFieldModule,
-    MatInputModule,
     NoDataComponent
+    MatSelectModule, ProfileComponent
   ],
 })
 export class SharedModule {}
