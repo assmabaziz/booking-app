@@ -5,7 +5,7 @@ export interface IProfile {
   phoneNumber: number;
   country: string;
   role: string;
-  profileImage: string;
+  profileImage?: string;
   verified: boolean;
   createdAt: string;
   updatedAt: string;

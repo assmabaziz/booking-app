@@ -1,6 +1,13 @@
+import { IRoom } from './../../rooms/interfaces/iroom';
+import {
+  IadsAddEdit,
+  IadsDelete,
+  IApiRespose,
+} from './../../../../../shared/interfaces/iapi-respose';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IAds } from '../interfaces/iads';
 
 @Injectable({
   providedIn: 'root',
@@ -8,34 +15,38 @@ import { Observable } from 'rxjs';
 export class AdsService {
   constructor(private _HttpClient: HttpClient) {}
 
-  getAllAds(parms: any): Observable<any> {
-    return this._HttpClient.get(`/api/v0/admin/ads`, {
+  getAllAds(parms: any): Observable<IApiRespose<IAds>> {
+    return this._HttpClient.get<IApiRespose<IAds>>(`/api/v0/admin/ads`, {
       params: parms,
     });
   }
 
-  getAllRooms(): Observable<any> {
+  getAllRooms(): Observable<IApiRespose<IRoom>> {
     let myparms = {
       page: 1,
       size: 1000,
     };
-    return this._HttpClient.get(`/api/v0/admin/rooms`, {
+    return this._HttpClient.get<IApiRespose<IRoom>>(`/api/v0/admin/rooms`, {
       params: myparms,
     });
   }
 
-  onAddAds(data: any): Observable<any> {
-    return this._HttpClient.post(`/api/v0/admin/ads`, data);
+  onAddAds(data: any): Observable<IApiRespose<IadsAddEdit>> {
+    return this._HttpClient.post<IApiRespose<IadsAddEdit>>(
+      `/api/v0/admin/ads`,
+      data
+    );
   }
 
-  onGetAdsById(id: number): Observable<any> {
-    return this._HttpClient.get(`/api/v0/admin/ads/${id}`);
+  onDeleteAdsById(id: string): Observable<IApiRespose<IadsDelete>> {
+    return this._HttpClient.delete<IApiRespose<IadsDelete>>(
+      `/api/v0/admin/ads/${id}`
+    );
   }
-
-  onDeleteAdsById(id: string): Observable<any> {
-    return this._HttpClient.delete(`/api/v0/admin/ads/${id}`);
-  }
-  onUpdateAdsById(id: string, data: any): Observable<any> {
-    return this._HttpClient.put(`/api/v0/admin/ads/${id}`, data);
+  onUpdateAdsById(id: string, data: any): Observable<IApiRespose<IadsAddEdit>> {
+    return this._HttpClient.put<IApiRespose<IadsAddEdit>>(
+      `/api/v0/admin/ads/${id}`,
+      data
+    );
   }
 }
