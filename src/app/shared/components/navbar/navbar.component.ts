@@ -12,7 +12,7 @@ import { UppdatePasswordComponent } from '../uppdate-password/uppdate-password.c
 })
 export class NavbarComponent implements OnInit {
   public dialog = inject(MatDialog);
-  profileData!: IProfile;
+  @Input() profileData!: IProfile | null;
   constructor(private _AuthService: AuthService) {}
   ngOnInit(): void {
     this._AuthService.getProfieDetails().subscribe({
@@ -24,13 +24,10 @@ export class NavbarComponent implements OnInit {
         console.log(err);
       },
     });
-  @Input() profileData!: IProfile | null;
   }
   ngOnChanges(): void {
     console.log(this.profileData);
   }
-
-  ngOnInit(): void {}
   logout() {
     this._AuthService.onLogout();
   }
