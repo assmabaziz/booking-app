@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { IProfile } from '../../interfaces/iprofile';
 import { AuthService } from '../../../features/auth/services/auth.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { AddEditAdsComponent } from '../../../features/dashboard/modules/ads/components/add-edit-ads/add-edit-ads.component';
 
 @Component({
@@ -16,6 +16,5 @@ export class ProfileComponent {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
   constructor(private _AuthService: AuthService) {}
 }

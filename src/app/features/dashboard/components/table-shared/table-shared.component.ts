@@ -28,6 +28,9 @@ export class TableSharedComponent implements OnChanges {
   @Output() roomsDelte = new EventEmitter<any>();
 
   ngOnChanges(): void {
+    this.data = new MatTableDataSource(this.dataSource);
+    // console.log(this._ShredDataService.myData);
+    // console.log(this.dataSource );
     // this.data = new MatTableDataSource(this.dataSource);
     console.log(this.dataSource);
     if (this.dataSource) {
@@ -35,6 +38,7 @@ export class TableSharedComponent implements OnChanges {
         this.myfacilities = element.facilities;
       }
     }
+
   }
   onView(dataView: any) {
     switch (this.moduleName) {
