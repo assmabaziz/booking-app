@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { AuthService } from '../../../features/auth/services/auth.service';
 import { ProfileComponent } from '../profile/profile.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -24,13 +24,19 @@ export class NavbarComponent implements OnInit {
         console.log(err);
       },
     });
+  @Input() profileData!: IProfile | null;
   }
+  ngOnChanges(): void {
+    console.log(this.profileData);
+  }
+
+  ngOnInit(): void {}
   logout() {
     this._AuthService.onLogout();
   }
   showProfile() {
     const dialogRef = this.dialog.open(ProfileComponent, {
-      width: '40%',
+      width: '45%',
       data: this.profileData,
     });
   }

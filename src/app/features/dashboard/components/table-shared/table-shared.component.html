@@ -2,11 +2,7 @@
   <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
     <th mat-header-cell *matHeaderCellDef>
       <div class="d-flex">
-        <span>{{ column | titlecase }}</span
-        ><i
-          *ngIf="column !== 'actions'"
-          class="fa-solid fa-arrow-right-arrow-left fa-rotate-90 fa-sm text-warning"
-        ></i>
+        <span>{{ column | titlecase }}</span>
       </div>
     </th>
 
@@ -83,7 +79,7 @@
                 (click)="onEdit(row)"
               >
                 <mat-icon class="text-secondary">{{ action.icon }}</mat-icon>
-                <span >{{ action.name }}</span>
+                <span>{{ action.name }}</span>
               </button>
             </ng-container>
             <ng-container>
@@ -113,7 +109,7 @@
         </mat-menu>
       </td>
     </ng-container>
-    <ng-container *ngIf="dataSource.length == 0">
+    <!-- <ng-container *ngIf="dataSource.length == 0">
 <td [colSpan]="displayedColumns.length">
   <div class="row justify-content-center align-items-center">
     <div class="col-md-7">
@@ -121,7 +117,7 @@
     </div>
   </div>
 </td>
-    </ng-container>
+    </ng-container> -->
     <td #default mat-cell *matCellDef="let row">
       {{ row[column] }}
     </td>

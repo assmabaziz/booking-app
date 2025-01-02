@@ -31,16 +31,12 @@ export class TableSharedComponent implements OnChanges {
     this.data = new MatTableDataSource(this.dataSource);
     // console.log(this._ShredDataService.myData);
     // console.log(this.dataSource );
-
-    for (const element of this.dataSource) {
-      this.myfacilities = element.facilities;
-// console.log(element);
-// console.log(element.facilities);
-for (const element of this.myfacilities) {
-  console.log(element.name);
-
-}
-
+    // this.data = new MatTableDataSource(this.dataSource);
+    console.log(this.dataSource);
+    if (this.dataSource) {
+      for (const element of this.dataSource) {
+        this.myfacilities = element.facilities;
+      }
     }
 
   }
@@ -70,7 +66,6 @@ for (const element of this.myfacilities) {
         // Code to be executed if expression matches value3
         break;
     }
-
   }
   onDelete(dataDelete: any) {
     switch (this.moduleName) {
@@ -84,6 +79,5 @@ for (const element of this.myfacilities) {
         // Code to be executed if expression matches value3
         break;
     }
-
   }
 }
