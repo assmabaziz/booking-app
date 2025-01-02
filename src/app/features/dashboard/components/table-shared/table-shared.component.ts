@@ -30,9 +30,19 @@ export class TableSharedComponent implements OnChanges {
   ngOnChanges(): void {
     this.data = new MatTableDataSource(this.dataSource);
     // console.log(this._ShredDataService.myData);
+    // console.log(this.dataSource );
+
     for (const element of this.dataSource) {
       this.myfacilities = element.facilities;
+// console.log(element);
+// console.log(element.facilities);
+for (const element of this.myfacilities) {
+  console.log(element.name);
+
+}
+
     }
+
   }
   onView(dataView: any) {
     switch (this.moduleName) {

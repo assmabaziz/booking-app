@@ -10,3 +10,9 @@ export interface IusersAdmin {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface IChangePassword {
+  oldPassword: string,
+  newPassword: string,
+  confirmPassword: string
+  }

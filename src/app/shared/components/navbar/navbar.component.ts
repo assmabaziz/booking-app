@@ -3,6 +3,7 @@ import { AuthService } from '../../../features/auth/services/auth.service';
 import { ProfileComponent } from '../profile/profile.component';
 import { MatDialog } from '@angular/material/dialog';
 import { IProfile } from '../../interfaces/iprofile';
+import { UppdatePasswordComponent } from '../uppdate-password/uppdate-password.component';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ import { IProfile } from '../../interfaces/iprofile';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent implements OnInit {
-  readonly dialog = inject(MatDialog);
+  public dialog = inject(MatDialog);
   profileData!: IProfile;
   constructor(private _AuthService: AuthService) {}
   ngOnInit(): void {
@@ -30,8 +31,12 @@ export class NavbarComponent implements OnInit {
   showProfile() {
     const dialogRef = this.dialog.open(ProfileComponent, {
       width: '40%',
-      // height: '50%',
       data: this.profileData,
+    });
+  }
+  openDialogCahngePassword() {
+    const dialogRef = this.dialog.open(UppdatePasswordComponent, {
+      width: '40%',
     });
   }
 }

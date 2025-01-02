@@ -19,7 +19,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { NoDataComponent } from './components/no-data/no-data.component';
-import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { UppdatePasswordComponent } from './components/uppdate-password/uppdate-password.component';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -28,7 +29,8 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     NotFoundComponent,
     SeperatorPipe,
     NoDataComponent,
-    ChangePasswordComponent,
+    ProfileComponent,
+    UppdatePasswordComponent
 
   ],
   imports: [
@@ -64,7 +66,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule, NoDataComponent
+    MatSelectModule, NoDataComponent, ProfileComponent
   ],
 })
 export class SharedModule {}
