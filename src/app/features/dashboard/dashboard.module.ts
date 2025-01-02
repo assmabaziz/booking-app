@@ -34,6 +34,8 @@ import { MatMenuModule } from '@angular/material/menu';
       echarts: () => import('echarts'),
     }),
   ],
-  exports: [TableSharedComponent],
+  exports: [TableSharedComponent,
+    MatPaginatorModule
+  ],
 })
 export class DashboardModule {}

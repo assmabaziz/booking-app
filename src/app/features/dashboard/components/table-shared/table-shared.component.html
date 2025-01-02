@@ -63,6 +63,13 @@
           </td>
         </ng-container>
       </ng-container>
+      <ng-container *ngSwitchCase="'Facilities'">
+        <ng-container *ngIf="column === 'createdBy'">
+          <td mat-cell *matCellDef="let row">
+            {{ row.createdBy.userName }}
+          </td>
+        </ng-container>
+      </ng-container>
     </ng-container>
     <ng-container *ngIf="column === 'actions'">
       <td mat-cell *matCellDef="let row">

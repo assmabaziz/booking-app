@@ -31,7 +31,6 @@ import { UppdatePasswordComponent } from './components/uppdate-password/uppdate-
     NoDataComponent,
     ProfileComponent,
     UppdatePasswordComponent
-
   ],
   imports: [
     CommonModule,
@@ -49,6 +48,10 @@ import { UppdatePasswordComponent } from './components/uppdate-password/uppdate-
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports: [
     SidebarComponent,
@@ -66,7 +69,14 @@ import { UppdatePasswordComponent } from './components/uppdate-password/uppdate-
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule, NoDataComponent, ProfileComponent
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    NoDataComponent
+    MatSelectModule, ProfileComponent
   ],
 })
 export class SharedModule {}

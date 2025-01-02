@@ -3,9 +3,10 @@
     <h4 class="mb-0">Users table details</h4>
     <p>You can check all details</p>
   </div>
-  <div class="container-fluid">
+  <div class="container-fluid mb-3">
     <div class="row">
       <app-table-shared
+        (usersViewed)="openViewDialog($event)"
         [moduleName]="moduleName"
         [displayedColumns]="displayedColumns"
         [dataSource]="dataSource"
@@ -22,3 +23,4 @@
   >
   </mat-paginator>
 </section>
+<app-no-data *ngIf="dataSource?.length === 0" header="user"></app-no-data>

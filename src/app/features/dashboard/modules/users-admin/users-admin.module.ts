@@ -5,9 +5,10 @@ import { UsersAdminComponent } from './users-admin.component';
 import { DashboardModule } from '../../dashboard.module';
 import { SharedModule } from '../../../../shared/shared.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ViewUserComponent } from './components/view-user/view-user.component';
 
 @NgModule({
-  declarations: [UsersAdminComponent],
+  declarations: [UsersAdminComponent, ViewUserComponent],
   imports: [
     CommonModule,
     UsersAdminRoutingModule,

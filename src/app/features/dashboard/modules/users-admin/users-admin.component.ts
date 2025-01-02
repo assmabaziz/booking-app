@@ -4,6 +4,8 @@ import { IusersAdmin } from './interfaces/IusersAdmin';
 import { PageEvent } from '@angular/material/paginator';
 import { IAds } from '../ads/interfaces/iads';
 import { take } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ViewUserComponent } from './components/view-user/view-user.component';
 @Component({
   selector: 'app-users-admin',
   templateUrl: './users-admin.component.html',
@@ -33,7 +35,7 @@ export class UsersAdminComponent {
     size: 5,
   };
   numRows!: number;
-  constructor(private _UsersAdminService: UsersAdminService) {}
+  constructor(private dialog: MatDialog,private _UsersAdminService: UsersAdminService) {}
   ngOnInit(): void {
     this.getAllUsers();
   }
@@ -53,5 +55,12 @@ export class UsersAdminComponent {
     this.params.size = e.pageSize;
     this.params.page = e.pageIndex + 1;
     this.getAllUsers();
+  }
+  openViewDialog(item: IusersAdmin): void {
+    const dialogRef = this.dialog.open(ViewUserComponent, {
+      width: '45%',
+      data: { item },
+    });
+    dialogRef.afterClosed().subscribe();
   }
 }

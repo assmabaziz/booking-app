@@ -4,26 +4,22 @@
       <div class="row gap-2 flex-nowrap">
         <div class="col-md-8">
           <div class="section-text">
-            <h4>ADS Table Details</h4>
+            <h4>Facilities Table Details</h4>
             <p>You can check all details</p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="section-btn">
-            <button (click)="addAds()" [disabled]="!flagRoom">
-              Add new Ads
-            </button>
+            <button (click)="openDialog()">Add New Facility</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="mt-3">
+  <div class="my-3">
     <app-table-shared
-      (AdsDelete)="AdsDelete($event)"
-      (AdsViewed)="viewAds($event)"
-      (AdsEdit)="EditAds($event)"
+      (FacilityDelete)="FacilityDelete($event)"
       [dataSource]="dataSource"
       [displayedColumns]="displayedColumns"
       [actions]="actions"
@@ -39,4 +35,4 @@
   >
   </mat-paginator>
 </section>
-<app-no-data *ngIf="dataSource?.length === 0" header="ad"></app-no-data>
+<app-no-data *ngIf="dataSource?.length === 0" header="facilities"></app-no-data>

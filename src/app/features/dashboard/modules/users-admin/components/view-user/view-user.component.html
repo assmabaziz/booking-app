@@ -1,0 +1,21 @@
+<div class="card mb-1 border-0 col-9  w-100 " >
+  <div class="row  py-5 p-2 w-100">
+    <div class="col-md-6  mx-auto"  >
+      <div class="w-75 m-auto align-items-center ">
+        <img [src]="data.item.profileImage" height="220px" onerror="this.src='assets/images/svg/profile-picture-placeholder.svg'" class="w-100 rounded-3" alt="...">
+      </div>
+    </div>
+    <div class="col-md-6 d-flex align-items-center ">
+      <div class="w-100">
+        <ul class="ps-0  ">
+          <li><span class="fs-5">Name :</span>  {{data.item.userName}}</li>
+          <li> <span class="fs-5">Phone :</span>   {{data.item.phoneNumber}}</li>
+          <li> <span class="fs-5">Country :</span>   {{data.item.country}}</li>
+          <li> <span class="fs-5">Role :</span>  {{data.item.role}}</li>
+          <li> <span class="fs-5">Creation Date :</span>  {{ data.item.createdAt | date: "dd/MM/yyyy"}}</li>
+          <li > <span class="fs-5">Email :</span>{{data.item.email}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
