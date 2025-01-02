@@ -75,7 +75,7 @@ import { UppdatePasswordComponent } from './components/uppdate-password/uppdate-
     MatButtonModule,
     MatMenuModule,
     MatFormFieldModule,
-    NoDataComponent
+    NoDataComponent,
     MatSelectModule, ProfileComponent
   ],
 })
