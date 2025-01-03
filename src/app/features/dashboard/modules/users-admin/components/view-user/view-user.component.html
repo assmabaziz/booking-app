@@ -1,21 +1,23 @@
-<div class="card mb-1 border-0 col-9  w-100 " >
-  <div class="row  py-5 p-2 w-100">
-    <div class="col-md-6  mx-auto"  >
-      <div class="w-75 m-auto align-items-center ">
-        <img [src]="data.item.profileImage" height="220px" onerror="this.src='assets/images/svg/profile-picture-placeholder.svg'" class="w-100 rounded-3" alt="...">
+<div class="card mb-1 border-0 col-9  w-100 container-fluid" >
+  <h1 mat-dialog-title [align]="'end'">
+    <mat-icon [color]="'warn'" (click)="onNoClick()" class="mat-18">cancel</mat-icon>
+  </h1>
+  <div class="pb-3 p-1 w-100 ">
+      <div class="w-25 m-auto align-items-center rounded-circle overflow-hidden">
+        <img [src]="data.item.profileImage" height="130px" onerror="this.src='assets/images/svg/profile-picture-placeholder.svg'" class="w-100 rounded-3" alt="...">
       </div>
-    </div>
-    <div class="col-md-6 d-flex align-items-center ">
-      <div class="w-100">
-        <ul class="ps-0  ">
-          <li><span class="fs-5">Name :</span>  {{data.item.userName}}</li>
-          <li> <span class="fs-5">Phone :</span>   {{data.item.phoneNumber}}</li>
-          <li> <span class="fs-5">Country :</span>   {{data.item.country}}</li>
-          <li> <span class="fs-5">Role :</span>  {{data.item.role}}</li>
-          <li> <span class="fs-5">Creation Date :</span>  {{ data.item.createdAt | date: "dd/MM/yyyy"}}</li>
-          <li > <span class="fs-5">Email :</span>{{data.item.email}}</li>
-        </ul>
+      <h2 class="  text-center m-2"> {{data.item.userName}}</h2>
+      <p class="text-center">{{data.item.email}}</p>
+      <div class="row mx-3">
+        <div class="col-6">
+          <h6>Phone : <span>{{data.item.phoneNumber}}</span></h6>
+          <h6>Country : <span>{{data.item.country}}</span></h6>
+          <h6>Creation Date : <span>{{ data.item.createdAt | date: "dd/MM/yyyy"}}</span></h6>
+        </div>
+        <div class="col-6">
+          <h6>Role : <span>{{data.item.role}}</span></h6>
+          <h6>verification : <span>{{data.item.verified  ? 'verified ' : 'not verified'}}</span></h6>
+        </div>
       </div>
-    </div>
   </div>
 </div>

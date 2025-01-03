@@ -21,7 +21,6 @@ export class UsersAdminComponent {
     'phoneNumber',
     'country',
     'role',
-    'verified',
     'actions',
   ];
   actions: any[] = [
@@ -58,7 +57,7 @@ export class UsersAdminComponent {
   }
   openViewDialog(item: IusersAdmin): void {
     const dialogRef = this.dialog.open(ViewUserComponent, {
-      width: '45%',
+      width: '35%',
       data: { item },
     });
     dialogRef.afterClosed().subscribe();
