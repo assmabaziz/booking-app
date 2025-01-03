@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AuthService } from '../../../auth/services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { IProfile } from '../../../../shared/interfaces/iprofile';
+import { UppdatePasswordComponent } from '../../../../shared/components/uppdate-password/uppdate-password.component';
+import { ProfileComponent } from '../../../../shared/components/profile/profile.component';
 
 @Component({
   selector: 'app-nav-auth',
@@ -6,5 +11,34 @@ import { Component } from '@angular/core';
   styleUrl: './nav-auth.component.scss'
 })
 export class NavAuthComponent {
-
+  constructor(private _AuthService : AuthService){}
+  public dialog = inject(MatDialog);
+  profileData!: IProfile | null;
+userRole:any;
+ngOnInit(): void {
+  this._AuthService.getProfieDetails().subscribe({
+    next: (res) => {
+      console.log(res);
+      this.profileData = res.data.user;
+    },
+    error: (err) => {
+      console.log(err);
+    },
+  });
+this.userRole = this._AuthService.role
+}
+logout() {
+  this._AuthService.onLogout();
+}
+showProfile() {
+  const dialogRef = this.dialog.open(ProfileComponent, {
+    width: '45%',
+    data: this.profileData,
+  });
+}
+openDialogCahngePassword() {
+  const dialogRef = this.dialog.open(UppdatePasswordComponent, {
+    width: '40%',
+  });
+}
 }

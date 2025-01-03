@@ -1,1 +1,68 @@
-<p>nav-auth works!</p>
+<nav class="navbar bg-white py-3 shadow-sm">
+  <div class="container">
+    <div class="logo text-decoration-none" > <span class="active">Stay</span><span class="secondery">cation.</span>
+    </div>
+    <div >
+      <ul class="mb-4 mb-lg-0 d-flex gap-3 list-unstyled">
+        <li class="nav-item py-1 px-2 cursor-pointer">
+          <a class="nav-link" aria-current="page" routerLinkActive="active">Home</a>
+        </li>
+
+        <li class="nav-item py-1 px-2 cursor-pointer">
+          <a class="nav-link" routerLinkActive="active">Explore</a>
+        </li>
+        @if(userRole === 'user') {
+          <li class="nav-item py-1 px-2">
+            <a class="nav-link cursor-pointer" routerLinkActive="active" aria-current="page" >Review</a>
+          </li>
+
+          <li class="nav-item py-1 px-2">
+            <a class="nav-link cursor-pointer" routerLinkActive="active">Favorites</a>
+          </li>
+          <li class="d-flex">
+            <div class="border border-1 border-secondary p-1 rounded-circle">
+           <img [src]="profileData?.profileImage" class="profile-image" alt="" />
+         </div>
+
+         <div class="">
+           <div
+             mat-icon-button
+             [matMenuTriggerFor]="menu"
+             aria-label="Example icon-button with a menu"
+             class="btn-navbar d-flex gap-2 justify-content-center align-items-center p-3 rounded-5 ms-2"
+           >
+             <span class="">{{ profileData?.userName }}</span>
+
+             <mat-icon>arrow_drop_down</mat-icon>
+           </div>
+           <mat-menu #menu="matMenu">
+             <button (click)="showProfile()" mat-menu-item>
+               <mat-icon>person</mat-icon>
+               Profile
+             </button>
+             <button mat-menu-item (click)="openDialogCahngePassword()">
+               <mat-icon>lock_open</mat-icon> Change Password
+             </button>
+             <button mat-menu-item (click)="logout()">
+               <mat-icon>logout</mat-icon> Logout
+             </button>
+           </mat-menu>
+         </div>
+           </li>
+        }@else if (userRole === undefined || !userRole) {
+          <li class="nav-item">
+            <button class="nav-link mat-mini-fab primary py-1 px-2" [routerLink]="['/auth/signup']">Register</button>
+          </li>
+
+          <li class="nav-item text-secondryColor">
+            <button class="nav-link mat-mini-fab primary py-1 px-2" [routerLink]="['/auth/signin']">Login now</button>
+          </li>
+        }
+
+      </ul>
+
+    </div>
+  </div>
+
+
+</nav>

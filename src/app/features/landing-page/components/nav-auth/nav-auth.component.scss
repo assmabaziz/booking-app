@@ -1,0 +1,13 @@
+@import "../../../../../assets/styles/abstructs/variables";
+li {
+  transition: $main-transition;
+  &:hover {
+    color: $blue-main;
+  }
+}
+.active {
+  color: $blue-main;
+}
+.secondery {
+  color: $text-secondryColor;
+}

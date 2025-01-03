@@ -1,0 +1,27 @@
+@import "../../../../../../../assets/styles/abstructs/variables";
+.slider-image {
+  border-radius: 15px;
+  border: 2px solid #e5e5e5;
+  img {
+    transform: translate(25px, 25px);
+    border-radius: 15px 15px 100px 15px;
+  }
+}
+.slider-content {
+  h2 {
+    color: $blue-main;
+  }
+  h5, h4 {
+    color:$text-secondryColor;
+  }
+  .stars {
+    i {
+      color: #FFCC47;
+    }
+  }
+.icon-navigation {
+  i{
+    color: $blue-main;
+  }
+}
+}
