@@ -1,0 +1,27 @@
+<section>
+  <div class="p-3 mb-3">
+    <h4 class="mb-0">Users table details</h4>
+    <p>You can check all details</p>
+  </div>
+  <div class="container-fluid mb-3">
+    <div class="row">
+      <app-table-shared
+        (bookingViewed)="openViewDialog($event)"
+        [moduleName]="moduleName"
+        [displayedColumns]="displayedColumns"
+        [dataSource]="dataSource"
+        [actions]="actions"
+      ></app-table-shared>
+    </div>
+  </div>
+  <mat-paginator
+    (page)="handlePageEvent($event)"
+    [length]="numRows"
+    [pageSize]="[params.size]"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</section>
+<app-no-data *ngIf="dataSource?.length === 0" header="booking"></app-no-data>
+
