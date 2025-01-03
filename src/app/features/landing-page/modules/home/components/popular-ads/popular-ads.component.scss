@@ -1,5 +1,8 @@
 @import "../../../../../../../assets/styles/abstructs/variables";
 
+h2 {
+  color: $text-secondryColor;
+}
 .container {
   display: grid;
   gap: 20px;
