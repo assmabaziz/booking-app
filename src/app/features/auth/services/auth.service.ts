@@ -16,11 +16,17 @@ export class AuthService {
     this.getProfile();
   }
   getProfile() {
-    let finalToken: any = localStorage.getItem('userToken');
+    if (typeof window !== 'undefined' && window.localStorage) {
+      let finalToken: any = localStorage.getItem('userToken');
     let decodedToken: any = jwtDecode(finalToken);
     localStorage.setItem('userRole', decodedToken.role);
     localStorage.setItem('id', decodedToken._id);
     this.setRole();
+    return JSON.parse(localStorage.getItem('userToken') || '{}');
+    } else {
+      return null;
+    }
+
   }
   setRole() {
     if (localStorage.getItem('userToken') && localStorage.getItem('userRole')) {

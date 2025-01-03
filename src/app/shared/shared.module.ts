@@ -21,6 +21,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { NoDataComponent } from './components/no-data/no-data.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UppdatePasswordComponent } from './components/uppdate-password/uppdate-password.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -30,7 +31,7 @@ import { UppdatePasswordComponent } from './components/uppdate-password/uppdate-
     SeperatorPipe,
     NoDataComponent,
     ProfileComponent,
-    UppdatePasswordComponent
+    UppdatePasswordComponent,
   ],
   imports: [
     CommonModule,
@@ -51,7 +52,8 @@ import { UppdatePasswordComponent } from './components/uppdate-password/uppdate-
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    CarouselModule,
   ],
   exports: [
     SidebarComponent,
@@ -65,7 +67,8 @@ import { UppdatePasswordComponent } from './components/uppdate-password/uppdate-
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatMenuModule,SeperatorPipe,
+    MatMenuModule,
+    SeperatorPipe,
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
@@ -76,7 +79,9 @@ import { UppdatePasswordComponent } from './components/uppdate-password/uppdate-
     MatMenuModule,
     MatFormFieldModule,
     NoDataComponent,
-    MatSelectModule, ProfileComponent
+    MatSelectModule,
+    ProfileComponent,
+    CarouselModule,
   ],
 })
 export class SharedModule {}

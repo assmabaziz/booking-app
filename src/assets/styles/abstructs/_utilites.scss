@@ -15,4 +15,11 @@ button {
     opacity: 0.9;
     cursor: not-allowed;
   }
+  &:hover {
+    background-color: $blue-main;
+    color: $text-whiteColor;
+  }
+}
+.cursor-pointer {
+  cursor: pointer;
 }
