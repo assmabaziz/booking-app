@@ -25,6 +25,7 @@ export class TableSharedComponent implements OnChanges {
   @Output() AdsDelete = new EventEmitter<any>();
   @Output() roomsViewed = new EventEmitter<any>();
   @Output() usersViewed = new EventEmitter<any>();
+  @Output() bookingViewed = new EventEmitter<any>();
   @Output() roomsEdit = new EventEmitter<any>();
   @Output() roomsDelte = new EventEmitter<any>();
   @Output() FacilityDelete = new EventEmitter<any>();
@@ -56,6 +57,9 @@ export class TableSharedComponent implements OnChanges {
         case 'users':
         this.usersViewed.emit(dataView);
         break;
+        case 'booking':
+          this.bookingViewed.emit(dataView);
+          break;
     }
   }
   onEdit(dataEdit: any) {

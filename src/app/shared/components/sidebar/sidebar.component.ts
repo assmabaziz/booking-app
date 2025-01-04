@@ -41,6 +41,11 @@ export class SidebarComponent {
       icon: 'fa-solid fa-newspaper',
       link: '/dashboard/facilities',
     },
+    {
+      name: 'booking',
+      icon: 'fa-solid fa-newspaper',
+      link: '/dashboard/booking',
+    },
   ];
 
   constructor(private _AuthService: AuthService) {}
