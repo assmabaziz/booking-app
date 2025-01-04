@@ -1,0 +1,126 @@
+@import "../../../../../../../assets/styles/abstructs/variables";
+
+h2 {
+  color: $text-secondryColor;
+}
+.container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr; /* Default to 1 item per row on small screens */
+
+  .parent-layer {
+    position: relative;
+    overflow: hidden;
+
+    .layer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      cursor: pointer;
+      font-size: 19px;
+      color: white;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $bg-eye;
+      border-radius: inherit;
+      transform: translateY(100%);
+
+      transition: 0.4s;
+      span:hover {
+        color: $blue-main;
+      }
+    }
+
+    &:hover {
+      .layer {
+        transform: translateY(0);
+      }
+    }
+
+    .price-room {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      color: white;
+      font-weight: bold;
+      padding-inline: 25px;
+      padding-block: 10px;
+      border-top-right-radius: inherit;
+      border-bottom-left-radius: inherit;
+      background-color: $pink;
+    }
+  }
+}
+
+/* For small screens (<576px), 1 item per row */
+@media (max-width: 575px) {
+  .container {
+    grid-template-columns: 1fr; /* 1 item per row */
+  }
+
+  .p1 {
+    grid-row: span 1;
+  }
+  .p2 {
+    grid-row: span 1;
+  }
+  .p3 {
+    grid-row: span 1;
+  }
+  .p4 {
+    grid-row: span 1;
+  }
+  .p5 {
+    grid-row: span 1;
+  }
+}
+
+/* For medium screens (576px - 992px), 2 items per row */
+@media (min-width: 576px) and (max-width: 992px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+  }
+
+  .p1 {
+    grid-row: span 2;
+  }
+  .p2 {
+    grid-row: span 1;
+  }
+  .p3 {
+    grid-row: span 1;
+  }
+  .p4 {
+    grid-row: span 1;
+  }
+  .p5 {
+    grid-row: span 1;
+  }
+}
+
+/* For large screens (>992px), 3 items per row and the first element spans 2 rows */
+@media (min-width: 992px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+  }
+
+  .p1 {
+    grid-row: span 2; /* The first element spans 2 rows */
+  }
+  .p2 {
+    grid-row: span 1;
+  }
+  .p3 {
+    grid-row: span 1;
+  }
+  .p4 {
+    grid-row: span 1;
+  }
+  .p5 {
+    grid-row: span 1;
+  }
+}

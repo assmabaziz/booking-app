@@ -1,1 +1,22 @@
-<p>popular-ads works!</p>
+<section *ngIf="AdsRooms">
+  <h2 class="h3">Most popular ads</h2>
+  <div class="container my-4">
+    <div
+      *ngFor="let room of AdsRooms.slice(0, limit); let i = index"
+      [ngClass]="'p' + (i + 1)"
+      class="rounded-5 parent-layer"
+    >
+      <img [src]="room.room.images[0]" class="w-100 h-100 rounded-5" alt="" />
+      <div class="layer">
+        <span><i class="fa-solid fa-heart"></i></span>
+        <span><i class="fa-solid fa-eye"></i></span>
+      </div>
+      <div class="price-room">${{ room.room.price }} per night</div>
+      <div
+        class="mb-2 ms-2 fs-4 text-white fa-bold position-absolute bottom-0 start-0"
+      >
+        RoomNumber: {{ room.room.roomNumber }}
+      </div>
+    </div>
+  </div>
+</section>

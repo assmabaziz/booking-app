@@ -1,1 +1,66 @@
-<p>backyard works!</p>
+<section>
+  <h2 class="h3">Houses with beauty backyard</h2>
+  <div class="container">
+    <div class="row my-3">
+      @for (room of Rooms.slice(0,4); track $index) {
+      <div class="col-md-3">
+        <div class="rounded-5 parent-layer h-100">
+          <img [src]="room.images[0]" class="w-100 h-100 rounded-5" alt="" />
+          <div class="layer">
+            <span><i class="fa-solid fa-heart"></i></span>
+            <span><i class="fa-solid fa-eye"></i></span>
+          </div>
+          <div class="price-room">${{ room.price }} per night</div>
+          <div
+            class="mb-1 ms-2 fs-5 text-white fa-bold position-absolute bottom-0 start-0"
+          >
+            RoomNumber: {{ room.roomNumber }}
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+
+    <h2 class="h3">Hotels with large living room</h2>
+    <div class="row">
+      @for (room of Rooms.slice(5,9); track $index) {
+      <div class="col-md-3">
+        <div class="rounded-5 parent-layer h-100">
+          <img [src]="room.images[0]" class="w-100 h-100 rounded-5" alt="" />
+          <div class="layer">
+            <span><i class="fa-solid fa-heart"></i></span>
+            <span><i class="fa-solid fa-eye"></i></span>
+          </div>
+          <div class="price-room">${{ room.price }} per night</div>
+          <div
+            class="mb-1 ms-2 fs-5 text-white fa-bold position-absolute bottom-0 start-0"
+          >
+            RoomNumber: {{ room.roomNumber }}
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+
+    <h2 class="h3">Anothor Rooms</h2>
+    <div class="row">
+      @for (room of Rooms.slice(10,14); track $index) {
+      <div class="col-md-3">
+        <div class="rounded-5 parent-layer h-100">
+          <img [src]="room.images[0]" class="w-100 h-100 rounded-5" alt="" />
+          <div class="layer">
+            <span><i class="fa-solid fa-heart"></i></span>
+            <span><i class="fa-solid fa-eye"></i></span>
+          </div>
+          <div class="price-room">${{ room.price }} per night</div>
+          <div
+            class="mb-1 ms-2 fs-5 text-white fa-bold position-absolute bottom-0 start-0"
+          >
+            RoomNumber: {{ room.roomNumber }}
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</section>

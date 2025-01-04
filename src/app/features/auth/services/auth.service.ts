@@ -13,20 +13,19 @@ import { IReset } from '../interfaces/ireset';
 export class AuthService {
   role: string | null = '';
   constructor(private _HttpClient: HttpClient, private _Router: Router) {
-    this.getProfile();
+    // this.getProfile();
   }
   getProfile() {
     if (typeof window !== 'undefined' && window.localStorage) {
       let finalToken: any = localStorage.getItem('userToken');
-    let decodedToken: any = jwtDecode(finalToken);
-    localStorage.setItem('userRole', decodedToken.role);
-    localStorage.setItem('id', decodedToken._id);
-    this.setRole();
-    return JSON.parse(localStorage.getItem('userToken') || '{}');
+      let decodedToken: any = jwtDecode(finalToken);
+      localStorage.setItem('userRole', decodedToken.role);
+      localStorage.setItem('id', decodedToken._id);
+      this.setRole();
+      return JSON.parse(localStorage.getItem('userToken') || '{}');
     } else {
       return null;
     }
-
   }
   setRole() {
     if (localStorage.getItem('userToken') && localStorage.getItem('userRole')) {
