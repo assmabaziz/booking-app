@@ -91,6 +91,12 @@
         font-weight: 600;
       }
     }
+    button {
+      &:hover {
+    background-color: $blue-main !important;
+    color: $text-whiteColor !important;
+  }
+    }
   }
 }
 @mixin bg-image {
