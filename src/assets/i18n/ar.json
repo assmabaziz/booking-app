@@ -1,11 +1,20 @@
 {
+  "per night": "في الليلة الواحدة",
+  "Room number": "رقم الغرفة",
   "navBar": {
     "Profile": "صفحة شخصية",
     "Change Password": "تغيير كلمة المرور",
     "logout": "تسجيل الخروج"
   },
-  "per night": "في الليلة الواحدة",
-  "Room number": "رقم الغرفة",
+  "nav-auth":{
+    "Home": "الرئيسي",
+    "Explore": "المزيد",
+    "Review": "الاراء",
+    "Favorites": "المفضلة",
+    "Logout": "تسجيل الخروج",
+    "Register":"التسجيل",
+    "Login now":"تسجيل الدخول"
+  },
   "explore": {
     "Forget Busy Work,": "انسى العمل المزدحم,",
     "Start Next Vacation": "ابدأ الإجازة القادمة",
