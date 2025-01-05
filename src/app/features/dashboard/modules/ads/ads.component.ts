@@ -169,13 +169,13 @@ export class AdsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
       if (result) {
-        console.log(result);
+        // console.log(result);
         delete result.rooms;
         delete result.disable;
         console.log(result);
         this._AdsService.onAddAds(result).subscribe({
           next: (res: IApiRespose<IadsAddEdit>) => {
-            console.log(res);
+            // console.log(res);
             this._ToastrService.success(res.message);
             this.getAllAds();
           },
@@ -187,19 +187,18 @@ export class AdsComponent implements OnInit {
       }
     });
   }
-
   AdsDelete(data: IAds) {
     const dialogRef = this.dialog.open(DeleteItemComponent, {
       data: { text: 'Ads', id: data._id }
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
+      // console.log(result);
       console.log('The dialog was closed');
       if (result) {
         console.log(result);
         this._AdsService.onDeleteAdsById(data._id).subscribe({
           next: (res: IApiRespose<IadsDelete>) => {
-            console.log(res);
+            // console.log(res);
             this._ToastrService.success(res.message);
             this.getAllAds();
           },

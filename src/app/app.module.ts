@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, importProvidersFrom, NgModule } from '@angular/core';
 import {
   BrowserModule,
   provideClientHydration,
@@ -11,6 +11,7 @@ import {
   provideHttpClient,
   withFetch,
   HttpClientModule,
+  HttpClient,
 } from '@angular/common/http';
 import { globalInterceptor } from './core/interceptors/global-interceptor/global.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,6 +21,12 @@ import { MatTableModule } from '@angular/material/table';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { LoadingInterceptor } from './core/interceptors/loader-interceptor/loader.interceptor';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import {ApplicationConfig, provideZoneChangeDetection} from "@angular/core";
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -42,7 +49,8 @@ import { LoadingInterceptor } from './core/interceptors/loader-interceptor/loade
     ToastrModule.forRoot(),
     HttpClientModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    TranslateModule
   ],
   providers: [
     provideClientHydration(),
@@ -50,6 +58,13 @@ import { LoadingInterceptor } from './core/interceptors/loader-interceptor/loade
     { provide: HTTP_INTERCEPTORS, useClass: globalInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     provideHttpClient(withFetch()),
+    importProvidersFrom([TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient],
+      },
+    })])
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

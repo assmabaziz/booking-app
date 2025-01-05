@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class globalInterceptor implements HttpInterceptor {
-  private baseUrl = 'https://upskilling-egypt.com:3000'; // Replace with your actual base URL
+  private baseUrl = 'https://upskilling-egypt.com:3000'; 
   newRequest: HttpRequest<unknown> | undefined;
   intercept(
     request: HttpRequest<any>,
@@ -19,14 +19,14 @@ export class globalInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     if (typeof window !== 'undefined' && localStorage.getItem('userToken')) {
       this.newRequest = request.clone({
-        url: this.baseUrl + request.url,
+        url : request.url.includes('assets') ? `${request.url}` : this.baseUrl+ request.url,
         setHeaders: {
           Authorization: `${localStorage.getItem('userToken')}`,
         },
       });
     } else {
       this.newRequest = request.clone({
-        url: this.baseUrl + request.url,
+        url : request.url.includes('assets') ? `${request.url}` : this.baseUrl+ request.url,
       });
     }
     return next.handle(this.newRequest);
