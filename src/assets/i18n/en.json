@@ -1,18 +1,28 @@
 {
+  "per night": "per night",
+  "Room number": "Room number",
   "navBar": {
     "Profile": "Profile",
     "Change Password": "Change password",
     "logout": "Logout"
   },
-  "per night": "per night",
-  "Room number": "Room number",
+  "nav-auth":{
+    "Home": "Home",
+    "Explore": "Explore",
+    "Review": "Review",
+    "Favorites": "Favorites",
+    "Logout": "Logout",
+    "Register":"Register",
+    "Login now":"Login now"
+  },
   "explore": {
     "Forget Busy Work,": "Forget busy work,",
     "Start Next Vacation": "Start next vacation",
     "We provide what you need to enjoy your holiday with family.": "We provide what you need to enjoy your holiday with family.",
     "Time to make another memorable moments.": "Time to make another memorable moments.",
     "Start booking": "Start booking",
-    "Explore": "Explore"
+    "Explore": "Explore",
+      "Capacity" : "Capacity"
   },
   "ads": {
     "Most popular ads": "Most popular ads"

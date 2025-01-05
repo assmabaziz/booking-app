@@ -8,8 +8,8 @@ import {TranslateService} from "@ngx-translate/core";
 export class AppComponent {
   title = 'hotel';
   constructor(private translate: TranslateService) {
-    // translate.addLangs(['ar', 'en']);
+    translate.addLangs(['ar', 'en']);
     translate.setDefaultLang('en');
-    translate.use('ar');
+    translate.use('en');
   }
 }
