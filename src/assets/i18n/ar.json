@@ -1,3 +1,44 @@
 {
-  "hello" : " سفيسيلسيبل "
+  "navBar": {
+    "Profile": "صفحة شخصية",
+    "Change Password": "تغيير كلمة المرور",
+    "logout": "تسجيل الخروج"
+  },
+  "per night": "في الليلة الواحدة",
+  "Room number": "رقم الغرفة",
+  "explore": {
+    "Forget Busy Work,": "انسى العمل المزدحم,",
+    "Start Next Vacation": "ابدأ الإجازة القادمة",
+    "We provide what you need to enjoy your holiday with family.": "نحن نقدم لك ما تحتاجه للاستمتاع بعطلتك مع العائلة.",
+    "Time to make another memorable moments.": "حان الوقت لصنع لحظات لا تنسى أخرى.",
+    "Start booking": "ابدأ الحجز",
+    "Explore": "المزيد"
+  },
+  "ads": {
+    "Most popular ads": "الإعلانات الأكثر شعبية"
+  },
+  "Houses": {
+    "Houses with beauty backyard": "منازل ذات حديقة خلفية جميلة"
+  },
+  "hotels": {
+    "Hotels with large living room": "فنادق ذات صالة معيشة كبيرة"
+  },
+  "rooms": {
+    "Anothor Rooms":"غرف أخرى"
+  },
+  "footer": {
+    "We kaboom your beauty holiday": "نحن ندعم عطلتك الجمالية",
+    "instantly and memorable.": "على الفور ولا تنسى.",
+    "For Beginners": "للمبتدئين",
+    "New Account": "حساب جديد",
+    "Start Booking a Room": "ابدأ بحجز الغرفة",
+    "Use Payments": "استخدم المدفوعات",
+    "Explore Us": "تعرف علينا",
+    "Our Careers": "وظائفنا",
+    "Privacy": "خصوصية",
+    "Terms & Conditions": "الشروط والأحكام",
+    "Connect Us": "اتصل بنا",
+    "support@staycation.id": "support@staycation.id",
+    "Staycation, Kemang, Jakarta": "Staycation, Kemang, Jakarta"
+  }
 }
