@@ -4,6 +4,8 @@
     "Change Password": "Change password",
     "logout": "Logout"
   },
+  "per night": "per night",
+  "Room number": "Room number",
   "explore": {
     "Forget Busy Work,": "Forget busy work,",
     "Start Next Vacation": "Start next vacation",
@@ -15,10 +17,14 @@
   "ads": {
     "Most popular ads": "Most popular ads"
   },
-  "sections": {
-    "Houses with beauty backyard": "Houses with beauty backyard",
-    "Hotels with large living room": "Hotels with large living room",
-    "Anothor Rooms": "Anothor rooms"
+  "Houses": {
+    "Houses with beauty backyard": "Houses with beauty backyard"
+  },
+  "hotels": {
+    "Hotels with large living room": "Hotels with large living room"
+  },
+  "rooms": {
+    "Anothor Rooms":"Othor rooms"
   },
   "footer": {
     "We kaboom your beauty holiday": "We kaboom your beauty holiday",
