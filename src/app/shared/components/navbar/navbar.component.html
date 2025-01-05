@@ -32,13 +32,17 @@
         <mat-menu #menu="matMenu">
           <button (click)="showProfile()" mat-menu-item>
             <mat-icon>person</mat-icon>
-            Profile
+
+            {{'landing-page.navBar.profile' | translate}}
           </button>
           <button mat-menu-item (click)="openDialogCahngePassword()">
-            <mat-icon>lock_open</mat-icon> Change Password
+            <mat-icon>lock_open</mat-icon>
+            {{'landing-page.navBar.Change Password' | translate}}
+
+
           </button>
           <button mat-menu-item (click)="logout()">
-            <mat-icon>logout</mat-icon> Logout
+            <mat-icon>logout</mat-icon> {{'landing-page.navBar.logout' | translate}}
           </button>
         </mat-menu>
       </div>

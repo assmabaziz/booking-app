@@ -22,6 +22,7 @@ import { NoDataComponent } from './components/no-data/no-data.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UppdatePasswordComponent } from './components/uppdate-password/uppdate-password.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -54,6 +55,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     MatFormFieldModule,
     MatInputModule,
     CarouselModule,
+    TranslateModule
   ],
   exports: [
     SidebarComponent,
@@ -81,7 +83,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     NoDataComponent,
     MatSelectModule,
     ProfileComponent,
-    CarouselModule,
+    CarouselModule,TranslateModule
   ],
 })
 export class SharedModule {}

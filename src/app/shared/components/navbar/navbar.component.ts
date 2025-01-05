@@ -17,16 +17,12 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this._AuthService.getProfieDetails().subscribe({
       next: (res) => {
-        console.log(res);
         this.profileData = res.data.user;
       },
       error: (err) => {
         console.log(err);
       },
     });
-  }
-  ngOnChanges(): void {
-    console.log(this.profileData);
   }
   logout() {
     this._AuthService.onLogout();
