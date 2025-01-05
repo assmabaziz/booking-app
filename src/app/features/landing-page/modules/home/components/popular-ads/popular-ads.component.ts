@@ -1,6 +1,7 @@
 import { PortalhomeService } from './../../services/portalhome.service';
 import { Component } from '@angular/core';
 import { IAds } from '../../../../../dashboard/modules/ads/interfaces/iads';
+import { ShredDataService } from '../../../../../../shared/services/shred-data.service';
 
 @Component({
   selector: 'app-popular-ads',
@@ -10,8 +11,8 @@ import { IAds } from '../../../../../dashboard/modules/ads/interfaces/iads';
 export class PopularAdsComponent {
   AdsRooms: IAds[] = [];
   limit: number = 5;
-
-  constructor(private _PortalhomeService: PortalhomeService) {
+defaultLanguage = localStorage.getItem('language')
+  constructor(private _PortalhomeService: PortalhomeService, public _ShredDataService :ShredDataService) {
     _PortalhomeService.getAllAds().subscribe({
       next: (res) => {
         console.log(res);
