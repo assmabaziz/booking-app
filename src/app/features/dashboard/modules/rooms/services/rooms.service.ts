@@ -22,7 +22,7 @@ export class RoomsService {
   onDeleteRoomById(id: any): Observable<any> {
     return this._HttpClient.delete(`/api/v0/admin/rooms/${id}`);
   }
-  onEditRoom(id: string, data: any ): Observable<any> {
+  onEditRoom(id: any, data: any ): Observable<any> {
     return this._HttpClient.put(`/api/v0/admin/rooms/${id}`, data);
   }
 }

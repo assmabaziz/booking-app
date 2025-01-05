@@ -1,3 +1,38 @@
 {
-  "hello" : "HELLO from the hell"
+  "navBar": {
+    "Profile": "Profile",
+    "Change Password": "Change password",
+    "logout": "Logout"
+  },
+  "explore": {
+    "Forget Busy Work,": "Forget busy work,",
+    "Start Next Vacation": "Start next vacation",
+    "We provide what you need to enjoy your holiday with family.": "We provide what you need to enjoy your holiday with family.",
+    "Time to make another memorable moments.": "Time to make another memorable moments.",
+    "Start booking": "Start booking",
+    "Explore": "Explore"
+  },
+  "ads": {
+    "Most popular ads": "Most popular ads"
+  },
+  "sections": {
+    "Houses with beauty backyard": "Houses with beauty backyard",
+    "Hotels with large living room": "Hotels with large living room",
+    "Anothor Rooms": "Anothor rooms"
+  },
+  "footer": {
+    "We kaboom your beauty holiday": "We kaboom your beauty holiday",
+    "instantly and memorable.": "instantly and memorable.",
+    "For Beginners": "For beginners",
+    "New Account": "New account",
+    "Start Booking a Room": "Start booking a room",
+    "Use Payments": "Use payments",
+    "Explore Us": "Explore Us",
+    "Our Careers": "Our Careers",
+    "Privacy": "Privacy",
+    "Terms & Conditions": "Terms & Conditions",
+    "Connect Us": "Contact us",
+    "support@staycation.id": "support@staycation.id",
+    "Staycation, Kemang, Jakarta": "Staycation, Kemang, Jakarta"
+  }
 }

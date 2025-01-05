@@ -15,7 +15,6 @@ export class DashboardComponent {
   constructor(private _AuthService: AuthService) {
     this._AuthService.getProfieDetails().subscribe({
       next: (res) => {
-        console.log(res);
         this.profileData = res.data.user;
         this.profileImage = this.profileData.profileImage;
       },
