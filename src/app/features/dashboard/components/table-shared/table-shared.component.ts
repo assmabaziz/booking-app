@@ -34,7 +34,7 @@ export class TableSharedComponent implements OnChanges {
     // console.log(this._ShredDataService.myData);
     // console.log(this.dataSource );
     // this.data = new MatTableDataSource(this.dataSource);
-    console.log(this.dataSource);
+    // console.log(this.dataSource);
     if (this.dataSource) {
       for (const element of this.dataSource) {
         this.myfacilities = element.facilities;
@@ -46,13 +46,11 @@ export class TableSharedComponent implements OnChanges {
     switch (this.moduleName) {
       case 'rooms':
         this.roomsViewed.emit(dataView);
-
         break;
       case 'Ads':
         this.AdsViewed.emit(dataView);
         break;
       case 'facilities':
-        // Code to be executed if expression matches value3
         break;
         case 'users':
         this.usersViewed.emit(dataView);
@@ -71,7 +69,6 @@ export class TableSharedComponent implements OnChanges {
         this.AdsEdit.emit(dataEdit);
         break;
       case 'facilities':
-        // Code to be executed if expression matches value3
         break;
     }
   }
@@ -85,7 +82,6 @@ export class TableSharedComponent implements OnChanges {
         break;
       case 'Facilities':
         this.FacilityDelete.emit(dataDelete);
-        // Code to be executed if expression matches value3
         break;
     }
   }
