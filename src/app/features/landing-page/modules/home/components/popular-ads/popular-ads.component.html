@@ -2,11 +2,12 @@
   <div class="container">
     <h2 class="h3">{{ "ads.Most popular ads" | translate }}</h2>
   </div>
-  <div class="container my-4">
+  <div class="container my-4"  >
     <div
       *ngFor="let room of AdsRooms.slice(0, limit); let i = index"
       [ngClass]="'p' + (i + 1)"
       class="rounded-5 parent-layer"
+      [class]="defaultLanguage === 'en' ? 'ltr' : 'rtl'"
     >
       <img [src]="room.room.images[0]" class="w-100 h-100 rounded-5" alt="" />
       <div class="layer">

@@ -8,16 +8,15 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
   providedIn: 'root',
 })
 export class ShredDataService {
-  textDir:string='ltr';
+  textDir:string='';
   constructor(private _HttpClient: HttpClient, public translate:TranslateService) {
-    translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      if(event.lang==='en'){
-        this.textDir='ltr'
-      }
-      else{
-        this.textDir='rtl'
-      }
-    });
+if(localStorage.getItem('language')) {
+  if (localStorage.getItem('language') === 'en') {
+    this.textDir='ltr'
+  } else {
+    this.textDir='rtl'
+  }
+}
   }
   public myData = signal<any>('');
   public isViewMode = signal<boolean>(false);
@@ -31,5 +30,7 @@ export class ShredDataService {
     this.translate.setDefaultLang(language);
     this.translate.use(language);
     localStorage.setItem('language', language)
+    console.log(language);
+
   }
 }
