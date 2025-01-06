@@ -8,12 +8,12 @@ export const adminGuard: CanActivateFn = (route, state) => {
 
   if (isPlatformBrowser(_PLATFORM_ID)) {
     if (
-      localStorage.getItem('userToken') &&
-      localStorage.getItem('userRole') == 'admin'
+      localStorage.getItem('userToken')!== null &&
+      localStorage.getItem('userRole') === 'admin'
     ) {
       return true;
     } else {
-      _Router.navigate(['/auth']);
+      _Router.navigate(['/dashboard']);
       return false;
     }
   } else {

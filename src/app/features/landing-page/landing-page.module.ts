@@ -6,6 +6,7 @@ import { NavAuthComponent } from './components/nav-auth/nav-auth.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ExploreComponent } from './components/explore/explore.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { ExploreComponent } from './components/explore/explore.component';
     NavAuthComponent,
     FooterComponent,
     ExploreComponent,
+    FavoritesComponent,
   ],
   imports: [CommonModule, LandingPageRoutingModule, SharedModule],
 })

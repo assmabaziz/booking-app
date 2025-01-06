@@ -1,24 +1,24 @@
 <section class="container my-5">
   <div class="container"  >
-    <div class="row" [class]="_ShredDataService.textDir === 'ltr'?'ms-4':'me-4'">
+    <div class="row" [class]="_ShredDataService.textDir === 'ltr'?'ltr':'rtl'">
       <div class="col-6">
-        <h1>{{'explore.Forget Busy Work,' | translate}}</h1>
-          <h2 class="h1">
+        <h1 class="title">{{'explore.Forget Busy Work,' | translate}}</h1>
+          <h2 class="h1 title" [class]="_ShredDataService.textDir === 'ltr'?'ltr':'rtl'">
 
             {{'explore.Start Next Vacation' | translate}}
 
             </h2>
-          <p>
+          <p [class]="_ShredDataService.textDir === 'ltr'?'ltr':'rtl'">
             {{'explore.We provide what you need to enjoy your holiday with family.' | translate}}</p>
              <p>{{'explore.Time to make another memorable moments.' | translate}}</p>
           <div class="my-4">
-            <h6>
+            <h6 class="title">
               {{'explore.Start booking' | translate}}
 
 
 </h6>
-            <div class="w-75 ">
-              <p class="m-0 p-0">
+            <div class="w-75 " [class]="_ShredDataService.textDir === 'ltr'?'ltr':'rtl'">
+              <p class="m-0 p-0 title">
                 {{'explore.Capacity' | translate}}</p>
               <button  class="bg-danger border-0 text-white px-4 btn-sm">-</button>
               <span class="px-5"> 2 person</span>
