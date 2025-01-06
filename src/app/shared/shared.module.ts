@@ -55,7 +55,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatFormFieldModule,
     MatInputModule,
     CarouselModule,
-    TranslateModule
+    TranslateModule,
+    MatPaginatorModule,
   ],
   exports: [
     SidebarComponent,
@@ -83,7 +84,9 @@ import { TranslateModule } from '@ngx-translate/core';
     NoDataComponent,
     MatSelectModule,
     ProfileComponent,
-    CarouselModule,TranslateModule
+    CarouselModule,
+    TranslateModule,
+    MatPaginatorModule,
   ],
 })
 export class SharedModule {}

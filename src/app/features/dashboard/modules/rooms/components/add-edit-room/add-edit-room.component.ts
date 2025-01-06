@@ -43,14 +43,6 @@ export class AddEditRoomComponent {
       this.isAddMode = false;
       this.setDataToUpdate(this.roomDatda);
     }
-    // this.walo = computed(() => {
-    //   if (this._ShredDataService.isViewMode()) {
-    //     this.roomDatda = this._ShredDataService.myData();
-    //     this.isAddMode = false;
-    //     this.isEditMode = false;
-    //     console.log('View Mode is active!');
-    //   }
-    // });
     if (this._ShredDataService.isViewMode()) {
       this.roomDatda = this._ShredDataService.myData();
         this.isAddMode = false;
@@ -81,10 +73,13 @@ export class AddEditRoomComponent {
       roomData.append('facilities', facility._id);
     }
     if (this._ShredDataService.myData() !== undefined) {
-      console.log(roomData);
-      console.log(this.RoomsId);
+      console.log('edit room');
+      console.log(data.value);
+      // console.log(roomData);
+      // console.log(this.RoomsId);
+      // console.log(this.roomDatda);
 
-      this._RoomsService.onEditRoom(this.roomDatda, this.RoomsId).subscribe({
+      this._RoomsService.onEditRoom(roomData, this.RoomsId).subscribe({
         next: (res) => {
           console.log(res);
         },
@@ -98,6 +93,9 @@ export class AddEditRoomComponent {
       });
     } else {
       console.log('add new room');
+      // console.log(data.value);
+      console.log(roomData);
+      // console.log(this.RoomsId);
       this._RoomsService.onAddRoom(roomData).subscribe({
         next: (res) => {},
         error: (err) => {

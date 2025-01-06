@@ -22,7 +22,6 @@
               ><i class="fa-solid fa-magnifying-glass"></i
             ></span>
             <input
-              (keydown.enter)="getAllRooms()"
               type="text"
               placeholder="Search Here...."
               class="form-control rounded"
@@ -36,8 +35,7 @@
                 >Capicity</label
               >
             </div>
-            <select [(ngModel)]="capacityName"
-              (change)="getAllRooms()"
+            <select
               class="form-select"
               aria-label="Default select example"
             >

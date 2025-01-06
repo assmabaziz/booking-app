@@ -5,17 +5,15 @@ import { LandingPageComponent } from './landing-page.component';
 import { NavAuthComponent } from './components/nav-auth/nav-auth.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SharedModule } from '../../shared/shared.module';
-
+import { ExploreComponent } from './components/explore/explore.component';
 
 @NgModule({
   declarations: [
     LandingPageComponent,
     NavAuthComponent,
     FooterComponent,
+    ExploreComponent,
   ],
-  imports: [
-    CommonModule,
-    LandingPageRoutingModule, SharedModule
-  ]
+  imports: [CommonModule, LandingPageRoutingModule, SharedModule],
 })
-export class LandingPageModule { }
+export class LandingPageModule {}
