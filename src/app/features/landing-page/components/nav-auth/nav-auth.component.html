@@ -1,7 +1,7 @@
 <nav class="navbar bg-white py-3 shadow-sm">
   <div
     class="container"
-    [class]="_ShredDataService.textDir === 'ltr' ? 'ms-4' : 'me-4'"
+    [class]="_ShredDataService.textDir === 'ltr' ? 'ltr' : 'rtl'"
   >
     <div
       class="logo text-decoration-none cursor-pointer"
@@ -68,8 +68,8 @@
         </li>
 
         <li class="nav-item py-1 px-2">
-          <a class="nav-link cursor-pointer" routerLinkActive="active">{{
-            "nav-auth.Favorites" | translate
+          <a class="nav-link cursor-pointer" routerLink="/landing-page/favorites" routerLinkActive="active">{{
+            "nav-auth.Favourites" | translate
           }}</a>
         </li>
         <li class="d-flex">
@@ -80,7 +80,6 @@
               alt=""
             />
           </div>
-
           <div>
             <div
               mat-icon-button

@@ -15,7 +15,7 @@ export class NavAuthComponent {
   constructor(private _AuthService : AuthService, public _ShredDataService :ShredDataService){}
   public dialog = inject(MatDialog);
   profileData!: IProfile | null;
-userRole:any;
+userRole:string| null = localStorage.getItem('userRole');
 ngOnInit(): void {
   this._AuthService.getProfieDetails().subscribe({
     next: (res) => {
@@ -26,7 +26,6 @@ ngOnInit(): void {
       console.log(err);
     },
   });
-this.userRole = this._AuthService.role
 }
 logout() {
   this._AuthService.onLogout();

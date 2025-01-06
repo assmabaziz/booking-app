@@ -10,7 +10,7 @@
     "Home": "الرئيسي",
     "Explore": "المزيد",
     "Review": "الاراء",
-    "Favorites": "المفضلة",
+    "Favourites": "المفضلة",
     "Logout": "تسجيل الخروج",
     "Register":"التسجيل",
     "Login now":"تسجيل الدخول"
@@ -50,5 +50,19 @@
     "Connect Us": "اتصل بنا",
     "support@staycation.id": "support@staycation.id",
     "Staycation, Kemang, Jakarta": "Staycation, Kemang, Jakarta"
+  },
+  "exploreRooms" : {
+    "Explore all rooms": "تصفح جميع الغرف",
+    "All rooms": "جميع الغرف"
+  },
+  "favourites":{
+    "Your favourites" : "قائمتك المفضلة",
+    "Your rooms" : "غرفك المفضلة"
+  },
+  "rating": {
+    "Happy family":"عائلة سعيدة",
+    "What a great trip with my family":"لقد كانت رحلة رائعة مع عائلتي",
+    "I should try again next time soon ...":"ينبغي لي أن أحاول مرة أخرى في المرة القادمة قريبًا ...",
+    "Angga, Product Designer":"أنجا، مصمم منتجات"
   }
 }

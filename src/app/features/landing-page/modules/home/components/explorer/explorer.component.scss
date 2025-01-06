@@ -1,9 +1,9 @@
 @import "../../../../../../../assets/styles/abstructs/variables";
-h1,h6{
+.title{
   color: rgba(21, 44, 91, 1);
 }
 p{
-  color: $text-gray;
+  color: #999999;
 }
 .image {
   border-radius: 15px;
