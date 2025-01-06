@@ -43,16 +43,11 @@ export class RoomsComponent {
   pageSize: number = 5;
   pageNumber: number = 1;
   totalCount: number = 0;
-  searchValue: string = '';
   roomsData: IRoom[] = [];
   facilities: IFacilities[] = [];
-  capacityName: string = '';
   params = {
     page: 1,
     size: 5,
-    roomNumber: this.searchValue,
-    capacity: this.capacityName,
-    facilityId: this.facilities,
   };
   constructor(
     private _RoomsService: RoomsService,
