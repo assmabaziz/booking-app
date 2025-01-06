@@ -9,40 +9,47 @@ import { ShredDataService } from '../../../../shared/services/shred-data.service
 @Component({
   selector: 'app-nav-auth',
   templateUrl: './nav-auth.component.html',
-  styleUrl: './nav-auth.component.scss'
+  styleUrl: './nav-auth.component.scss',
 })
 export class NavAuthComponent {
-  constructor(private _AuthService : AuthService, public _ShredDataService :ShredDataService){}
+  constructor(
+    private _AuthService: AuthService,
+    public _ShredDataService: ShredDataService
+  ) {}
   public dialog = inject(MatDialog);
   profileData!: IProfile | null;
-userRole:any;
-ngOnInit(): void {
-  this._AuthService.getProfieDetails().subscribe({
-    next: (res) => {
-      console.log(res);
-      this.profileData = res.data.user;
-    },
-    error: (err) => {
-      console.log(err);
-    },
-  });
-this.userRole = this._AuthService.role
-}
-logout() {
-  this._AuthService.onLogout();
-}
-showProfile() {
-  const dialogRef = this.dialog.open(ProfileComponent, {
-    width: '45%',
-    data: this.profileData,
-  });
-}
-openDialogCahngePassword() {
-  const dialogRef = this.dialog.open(UppdatePasswordComponent, {
-    width: '40%',
-  });
-}
-changeLanguage(language:string){
-  this._ShredDataService.onchangeLanguage(language)
-}
+  userRole: any;
+  ngOnInit(): void {
+    if (typeof window !== 'undefined') {
+      if (localStorage.getItem('userToken')) {
+        this._AuthService.getProfieDetails().subscribe({
+          next: (res) => {
+            console.log(res);
+            this.profileData = res.data.user;
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
+        this.userRole = this._AuthService.role;
+      }
+    }
+  }
+  logout() {
+    this._AuthService.onLogout();
+  }
+  showProfile() {
+    const dialogRef = this.dialog.open(ProfileComponent, {
+      width: '45%',
+      data: this.profileData,
+    });
+  }
+  openDialogCahngePassword() {
+    const dialogRef = this.dialog.open(UppdatePasswordComponent, {
+      width: '40%',
+    });
+  }
+  changeLanguage(language: string) {
+    this._ShredDataService.onchangeLanguage(language);
+  }
 }

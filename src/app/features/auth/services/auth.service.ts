@@ -13,7 +13,9 @@ import { IReset } from '../interfaces/ireset';
 export class AuthService {
   role: string | null = '';
   constructor(private _HttpClient: HttpClient, private _Router: Router) {
-    // this.getProfile();
+    if (typeof window !== 'undefined') {
+      this.getProfile();
+    }
   }
   getProfile() {
     if (typeof window !== 'undefined' && window.localStorage) {
