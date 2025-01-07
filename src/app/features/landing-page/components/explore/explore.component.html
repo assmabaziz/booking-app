@@ -24,9 +24,16 @@
         />
         }
         <div class="layer">
-          <span (click)="addRoomToFavorites(room._id)"
+          @if(roleUser === 'user') {
+            <span (click)="addRoomToFavorites(room._id)"
             ><i class="fa-solid fa-heart"></i
           ></span>
+          } @else {
+            <span (click)="openDialog('800ms', '300ms')"
+            ><i class="fa-solid fa-heart"></i
+          ></span>
+          }
+
           <span><i class="fa-solid fa-eye"></i></span>
         </div>
         <div class="price-room">
@@ -60,3 +67,5 @@
     </div>
   </div>
 </section>
+
+

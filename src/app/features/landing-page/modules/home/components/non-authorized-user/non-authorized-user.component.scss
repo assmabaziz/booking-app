@@ -1,0 +1,26 @@
+@import "../../../../../../../assets/styles/abstructs/variables";
+section {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  .container {
+    .close-icone {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      border: 1px solid red;
+      color: red;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+      transition: $main-transition;
+      &:hover {
+        color: #fff;
+        background-color: red;
+      }
+    }
+
+  }
+}

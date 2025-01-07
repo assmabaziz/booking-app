@@ -7,6 +7,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ExploreComponent } from './components/explore/explore.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { NonAuthorizedUserComponent } from './modules/home/components/non-authorized-user/non-authorized-user.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
     FooterComponent,
     ExploreComponent,
     FavoritesComponent,
+    NonAuthorizedUserComponent,
   ],
   imports: [CommonModule, LandingPageRoutingModule, SharedModule],
 })

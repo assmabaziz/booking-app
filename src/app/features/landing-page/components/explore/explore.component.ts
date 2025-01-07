@@ -4,6 +4,8 @@ import { IParamsRoom, IRoom } from '../../interfaces/iroom';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { ShredDataService } from '../../../../shared/services/shred-data.service';
+import { MatDialog } from '@angular/material/dialog';
+import { NonAuthorizedUserComponent } from '../../modules/home/components/non-authorized-user/non-authorized-user.component';
 @Component({
   selector: 'app-explore',
   templateUrl: './explore.component.html',
@@ -11,11 +13,16 @@ import { ShredDataService } from '../../../../shared/services/shred-data.service
 })
 export class ExploreComponent {
   constructor(
-    private _ExploreService: ExploreService, 
+    private _ExploreService: ExploreService,
     private _ToastrService: ToastrService,
     private _Router: Router,
-    public _ShredDataService :ShredDataService
-  ) {}
+    public _ShredDataService :ShredDataService,
+    public dialog: MatDialog
+  ) {
+    if (localStorage) {
+      this.roleUser = localStorage.getItem('userRole');
+    }
+  }
   roomsList: IRoom[] = [];
   startDate: Date | null = null;
   endDate: Date | null = null;
@@ -27,9 +34,6 @@ export class ExploreComponent {
   roleUser: string | null = '';
   ngOnInit(): void {
     this.getAllRooms();
-    if (localStorage) {
-      this.roleUser = localStorage.getItem('userRole');
-    }
   }
   getAllRooms() {
     if (this.startDate == null) {
@@ -56,14 +60,10 @@ export class ExploreComponent {
     console.log(id);
     this._ExploreService.onAddRoomToFav(id).subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
       },
       error: (err) => {
-        console.log(err);
-        if (err.error.message === 'Unauthorized') {
-        this._ToastrService.error('please login firstly', err.error.message);
-          this._Router.navigate(['/auth/signin']);
-        }
+        // console.log(err);
       },
       complete: () => {
         this._ToastrService.success('Room added to favorites successfully');
@@ -78,5 +78,11 @@ export class ExploreComponent {
     this.pageNumber = e.pageIndex + 1;
     this.getAllRooms();
   }
-
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(NonAuthorizedUserComponent, {
+      width: '60%',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
 }
