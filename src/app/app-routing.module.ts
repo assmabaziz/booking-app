@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth guard/auth.guard';
 import { adminGuard } from './core/guards/admin guard/admin.guard';
 import { userGuard } from './core/guards/user guard/user.guard';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
         ),
       },
       { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
+      {path:'**', component:NotFoundComponent}
 ];
 
 @NgModule({
