@@ -12,19 +12,21 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
+    canActivate: [adminGuard],
     loadChildren: () =>
       import('./features/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
-    },
-    {
-      path: 'landing-page',
-      loadChildren: () =>
-        import('./features/landing-page/landing-page.module').then(
-          (m) => m.LandingPageModule
-        ),
-      },
-      { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
+  },
+  {
+    canActivate: [userGuard],
+    path: 'landing-page',
+    loadChildren: () =>
+      import('./features/landing-page/landing-page.module').then(
+        (m) => m.LandingPageModule
+      ),
+  },
+  { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
 ];
 
 @NgModule({

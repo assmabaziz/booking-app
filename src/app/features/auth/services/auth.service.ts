@@ -29,9 +29,9 @@ export class AuthService {
       localStorage.setItem('userRole', decodedToken.role);
       localStorage.setItem('id', decodedToken._id);
       this.setRole();
-      return JSON.parse(localStorage.getItem('userToken') || '{}');
+      // return JSON.parse(localStorage.getItem('userToken') || '{}');
     } else {
-      return null;
+      // return null;
     }
   }
   setRole() {
