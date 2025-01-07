@@ -1,24 +1,29 @@
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
 import { ILogin } from '../interfaces/ilogin';
 import { IRegister } from '../interfaces/iregister';
 import { IReset } from '../interfaces/ireset';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   role: string | null = '';
-  constructor(private _HttpClient: HttpClient, private _Router: Router) {
-    if (typeof window !== 'undefined') {
+  constructor(
+    private _HttpClient: HttpClient,
+    private _Router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    if (isPlatformBrowser(platformId)) {
       this.getProfile();
     }
   }
   getProfile() {
-    if (typeof window !== 'undefined' && window.localStorage) {
+    if (localStorage.getItem('userToken')) {
       let finalToken: any = localStorage.getItem('userToken');
       let decodedToken: any = jwtDecode(finalToken);
       localStorage.setItem('userRole', decodedToken.role);
