@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './landing-page.component';
 import { ExploreComponent } from './components/explore/explore.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { CommentsComponent } from './components/comments/comments.component';
 
 const routes: Routes = [{ path: '', component: LandingPageComponent, children: [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,8 +15,9 @@ const routes: Routes = [{ path: '', component: LandingPageComponent, children: [
         (mod) => mod.HomeModule
       ),
   },
-  {path:"explore", component:ExploreComponent}, 
-  {path:"favorites", component: FavoritesComponent}
+  {path:"explore", component:ExploreComponent},
+  {path:"favorites", component: FavoritesComponent},
+  {path: "review/:_id", component:CommentsComponent}
 ],},];
 
 @NgModule({
