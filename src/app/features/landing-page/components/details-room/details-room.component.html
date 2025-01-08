@@ -1,19 +1,100 @@
-<section>
-  <div class="container-fluid">
-    <div class="bg-info d-flex">
-      <!-- <div class="bg-warning texts-path d-flex">
-        <span>Home </span><span>/</span>
-        <p>Room Details</p>
-      </div> -->
-
-      <div class="bg-warning d-flex align-items-center justify-content-center">
-        <span>Home </span><span>/</span>
-        <p>Room Details</p>
-      </div>
-
-      <div class="bg-secondary mx-auto pe-5">
+<section *ngIf="room">
+  <div class="container">
+    <div class="mb-3">
+      <div class="mx-auto text-center">
         <h1>Village Angga</h1>
         <span>Bogor, Indonesia</span>
+      </div>
+    </div>
+
+    <div class="row gap-0 g-2" *ngIf="room?.images?.length">
+      <div class="col-md-8">
+        <owl-carousel-o [options]="customOptions">
+          @for (imgRoom of room.images.slice(0,room.images.length-2); track
+          $index) {
+          <ng-template carouselSlide
+            ><img class="w-100 rounded-4" [src]="imgRoom" alt=""
+          /></ng-template>
+          }
+        </owl-carousel-o>
+      </div>
+      <div class="col-md-4">
+        <div class="d-flex flex-md-column gap-2">
+          <div>
+            <img
+              class="w-100 rounded-4"
+              [src]="room.images[room.images.length - 2]"
+              alt=""
+            />
+          </div>
+          <div>
+            <img
+              class="w-100 rounded-4"
+              height="235.5px"
+              [src]="room.images[room.images.length - 1]"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row my-4">
+      <div class="col-md-8 py-4">
+        <div class="lead">
+          <p>
+            Minimal techno is a minimalist subgenre of techno music. It is
+            characterized by a stripped-down aesthetic that exploits the use of
+            repetition and understated development. Minimal techno is thought to
+            have been originally developed in the early 1990s by Detroit-based
+            producers Robert Hood and Daniel Bell.
+          </p>
+          <p>
+            Such trends saw the demise of the soul-infused techno that typified
+            the original Detroit sound. Robert Hood has noted that he and Daniel
+            Bell both realized something was missing from techno in the
+            post-rave era.
+          </p>
+          <p>
+            Design is a plan or specification for the construction of an object
+            or system or for the implementation of an activity or process, or
+            the result of that plan or specification in the form of a prototype,
+            product or process. The national agency for design: enabling
+            Singapore to use design for economic growth and to make lives
+            better.
+          </p>
+        </div>
+
+        <div class="row g-0">
+          @for (fac of Facilities; track $index) {
+          <div class="col-sm-3 col-6">
+            <div>
+              <span><i class="fa-solid fa-feather"></i></span>
+              <p>{{ fac.name }}</p>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      <div class="col-md-4 py-3">
+        <div
+          class="border border-1 border-secondary px-5 pb-2 pt-5 d-flex flex-column justify-content-between h-100"
+        >
+          <div>
+            <h2 class="h3 title-booking">Start Booking</h2>
+            <p class="price">
+              <span>$ {{ room.price }}</span> per night
+            </p>
+            <span>Discount {{ room.discount }}% Off </span>
+          </div>
+
+          <div>
+            <p>Pick a Date</p>
+            <h2>date</h2>
+            <p>You will pay <span>$480 USD</span> per<span> 2 Person</span></p>
+            <button>Continue Book</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

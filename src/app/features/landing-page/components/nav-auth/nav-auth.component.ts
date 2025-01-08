@@ -24,7 +24,7 @@ export class NavAuthComponent {
       if (localStorage.getItem('userToken')) {
         this._AuthService.getProfieDetails().subscribe({
           next: (res) => {
-            console.log(res);
+            // console.log(res);
             this.profileData = res.data.user;
           },
           error: (err) => {

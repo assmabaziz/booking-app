@@ -12,14 +12,14 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    canActivate: [adminGuard],
+    // canActivate: [adminGuard],
     loadChildren: () =>
       import('./features/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
   },
   {
-    canActivate: [userGuard],
+    // canActivate: [userGuard],
     path: 'landing-page',
     loadChildren: () =>
       import('./features/landing-page/landing-page.module').then(
