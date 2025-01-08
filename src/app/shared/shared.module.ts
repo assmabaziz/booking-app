@@ -52,8 +52,6 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     CarouselModule,

@@ -57,11 +57,12 @@
             >{{ "nav-auth.Explore" | translate }}</a
           >
         </li>
-        
+
         @if(userRole === 'user') {
         <li class="nav-item py-1 px-2">
           <a
             class="nav-link cursor-pointer"
+            routerLink="/landing-page/review"
             routerLinkActive="active"
             aria-current="page"
             >{{ "nav-auth.Review" | translate }}</a
