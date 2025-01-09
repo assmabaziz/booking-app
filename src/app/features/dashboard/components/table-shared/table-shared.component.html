@@ -52,9 +52,6 @@
         </ng-container>
         <ng-container *ngIf="column === 'facilities'">
           <td mat-cell *matCellDef="let row">
-            <!-- @for(item of dataSource; track item) {
-{{dataSource[item].facilities[0].name}}
-} -->
             <ng-container *ngFor="let room of row.facilities">
               {{ room.name }} ,
             </ng-container>
@@ -67,6 +64,17 @@
             {{ row.createdBy.userName }}
           </td>
         </ng-container>
+        <ng-container *ngIf="column === 'createdAt'">
+          <td mat-cell *matCellDef="let row">
+            {{ row.createdAt | date : "short" }}
+          </td>
+        </ng-container>
+
+        <ng-container *ngIf="column === 'updatedAt'">
+          <td mat-cell *matCellDef="let row">
+            {{ row.updatedAt | date : "short" }}
+          </td>
+        </ng-container>
       </ng-container>
       <ng-container *ngSwitchCase="'booking'">
         <ng-container *ngIf="column === 'user'">
@@ -77,6 +85,17 @@
         <ng-container *ngIf="column === 'room'">
           <td mat-cell *matCellDef="let row">
             {{ row.room.roomNumber }}
+          </td>
+        </ng-container>
+        <ng-container *ngIf="column === 'startDate'">
+          <td mat-cell *matCellDef="let row">
+            {{ row.startDate | date : "short" }}
+          </td>
+        </ng-container>
+
+        <ng-container *ngIf="column === 'endDate'">
+          <td mat-cell *matCellDef="let row">
+            {{ row.endDate | date : "short" }}
           </td>
         </ng-container>
       </ng-container>

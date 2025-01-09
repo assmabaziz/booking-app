@@ -7,10 +7,10 @@ export const authGuard: CanActivateFn = (route, state) => {
   const _PLATFORM_ID = inject(PLATFORM_ID);
 
   if (isPlatformBrowser(_PLATFORM_ID)) {
-    if (!localStorage.getItem('userToken')) {
+    if (localStorage.getItem('userToken')!== null) {
       return true;
     } else {
-      _Router.navigate(['/dashboard/home']);
+      _Router.navigate(['/landing-page/home']);
       return false;
     }
   } else {

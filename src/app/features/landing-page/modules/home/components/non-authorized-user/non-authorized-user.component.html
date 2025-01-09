@@ -1,0 +1,19 @@
+<section>
+  <div class="container position-relative">
+    <span class="close-icone" (click)="onNoClick()">
+      <mat-icon>close</mat-icon>
+    </span>
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-5">
+        <h2>Oooops!</h2>
+        <h3>may be you forgot something </h3>
+        <p>You need to login or register</p>
+        <button class="primary d-block" (click)="onNoClick()" routerLink="/auth/signin">Login now</button>
+        you haven't account? <a routerLink="/auth/signup" (click)="onNoClick()" class="text-danger fw-semibold">register here!</a>
+      </div>
+      <div class="col-md-7">
+        <img src="../../../../../../../assets/images/non-authorized-user-alert/non-authorized-user.gif" class="w-100" alt="non authorized user">
+      </div>
+    </div>
+  </div>
+</section>

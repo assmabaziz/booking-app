@@ -1,33 +1,78 @@
 <nav class="navbar bg-white py-3 shadow-sm">
-  <div class="container">
-    <div class="logo text-decoration-none">
+  <div
+    class="container"
+    [class]="_ShredDataService.textDir === 'ltr' ? 'ltr' : 'rtl'"
+  >
+    <div
+      class="logo text-decoration-none cursor-pointer"
+      [routerLink]="['/landing-page/home']"
+    >
       <span class="active">Stay</span><span class="secondery">cation.</span>
     </div>
     <div>
-      <ul class="mb-4 mb-lg-0 d-flex gap-3 list-unstyled">
+      <ul class="mb-4 mb-lg-0 d-flex gap-3 list-unstyled align-items-center">
+        <li>
+          <div class="d-flex gap-2 align-items-center">
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+            >
+              <mat-icon>translate</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="changeLanguage('ar')">
+                <img
+                  src="../../../../../assets/images/language-images/dz.svg"
+                  class="me-2"
+                  alt="Arabic language"
+                />
+                <span>Arabic</span>
+              </button>
+              <button mat-menu-item (click)="changeLanguage('en')">
+                <img
+                  src="../../../../../assets/images/language-images/sh.svg"
+                  class="me-2"
+                  alt="English language"
+                />
+                <span>English</span>
+              </button>
+            </mat-menu>
+          </div>
+        </li>
         <li class="nav-item py-1 px-2 cursor-pointer">
-          <a class="nav-link" aria-current="page" routerLinkActive="active"
-            >Home</a
+          <a
+            class="nav-link"
+            aria-current="page"
+            routerLink="/landing-page/home"
+            routerLinkActive="active"
+            >{{ "nav-auth.Home" | translate }}</a
+          >
+        </li>
+        <li class="nav-item py-1 px-2 cursor-pointer">
+          <a
+            class="nav-link"
+            routerLink="/landing-page/explore"
+            routerLinkActive="active"
+            >{{ "nav-auth.Explore" | translate }}</a
           >
         </li>
 
-        <li class="nav-item py-1 px-2 cursor-pointer">
-          <a class="nav-link" routerLinkActive="active">Explore</a>
-        </li>
         @if(userRole === 'user') {
         <li class="nav-item py-1 px-2">
           <a
             class="nav-link cursor-pointer"
+            routerLink="/landing-page/review"
             routerLinkActive="active"
             aria-current="page"
-            >Review</a
+            >{{ "nav-auth.Review" | translate }}</a
           >
         </li>
 
         <li class="nav-item py-1 px-2">
-          <a class="nav-link cursor-pointer" routerLinkActive="active"
-            >Favorites</a
-          >
+          <a class="nav-link cursor-pointer" routerLink="/landing-page/favorites" routerLinkActive="active">{{
+            "nav-auth.Favourites" | translate
+          }}</a>
         </li>
         <li class="d-flex">
           <div class="border border-1 border-secondary p-1 rounded-circle">
@@ -37,8 +82,7 @@
               alt=""
             />
           </div>
-
-          <div class="">
+          <div>
             <div
               mat-icon-button
               [matMenuTriggerFor]="menu"
@@ -58,7 +102,7 @@
                 <mat-icon>lock_open</mat-icon> Change Password
               </button>
               <button mat-menu-item (click)="logout()">
-                <mat-icon>logout</mat-icon> Logout
+                <mat-icon>logout</mat-icon> {{ "nav-auth.Logout" | translate }}
               </button>
             </mat-menu>
           </div>
@@ -69,7 +113,7 @@
             class="nav-link mat-mini-fab primary py-1 px-2"
             [routerLink]="['/auth/signup']"
           >
-            Register
+            {{ "nav-auth.Register" | translate }}
           </button>
         </li>
 
@@ -78,7 +122,7 @@
             class="nav-link mat-mini-fab primary py-1 px-2"
             [routerLink]="['/auth/signin']"
           >
-            Login now
+            {{ "nav-auth.Login now" | translate }}
           </button>
         </li>
         }

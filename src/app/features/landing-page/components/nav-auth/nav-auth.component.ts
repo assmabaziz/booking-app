@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { IProfile } from '../../../../shared/interfaces/iprofile';
 import { UppdatePasswordComponent } from '../../../../shared/components/uppdate-password/uppdate-password.component';
 import { ProfileComponent } from '../../../../shared/components/profile/profile.component';
+import { ShredDataService } from '../../../../shared/services/shred-data.service';
 
 @Component({
   selector: 'app-nav-auth',
@@ -11,10 +12,10 @@ import { ProfileComponent } from '../../../../shared/components/profile/profile.
   styleUrl: './nav-auth.component.scss'
 })
 export class NavAuthComponent {
-  constructor(private _AuthService : AuthService){}
+  constructor(private _AuthService : AuthService, public _ShredDataService :ShredDataService){}
   public dialog = inject(MatDialog);
   profileData!: IProfile | null;
-userRole:any;
+userRole:string| null = localStorage.getItem('userRole');
 ngOnInit(): void {
   this._AuthService.getProfieDetails().subscribe({
     next: (res) => {
@@ -25,7 +26,6 @@ ngOnInit(): void {
       console.log(err);
     },
   });
-this.userRole = this._AuthService.role
 }
 logout() {
   this._AuthService.onLogout();
@@ -40,5 +40,8 @@ openDialogCahngePassword() {
   const dialogRef = this.dialog.open(UppdatePasswordComponent, {
     width: '40%',
   });
+}
+changeLanguage(language:string){
+  this._ShredDataService.onchangeLanguage(language)
 }
 }

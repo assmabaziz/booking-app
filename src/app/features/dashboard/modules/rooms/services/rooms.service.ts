@@ -16,13 +16,13 @@ export class RoomsService {
   onGetFacilities(): Observable<any> {
     return this._HttpClient.get('/api/v0/admin/room-facilities');
   }
-  onGetRoomById(id: string) {
-    return this._HttpClient.get(`/api/v0/admin/rooms/${id}`);
-  }
   onDeleteRoomById(id: any): Observable<any> {
     return this._HttpClient.delete(`/api/v0/admin/rooms/${id}`);
   }
-  onEditRoom(id: any, data: any ): Observable<any> {
+  onEditRoom( data: any, id : string ): Observable<any> {
     return this._HttpClient.put(`/api/v0/admin/rooms/${id}`, data);
+  }
+  onGetRoomById(id:string): Observable<any>  {
+    return this._HttpClient.get(`/api/v0/admin/rooms/${id}`);
   }
 }

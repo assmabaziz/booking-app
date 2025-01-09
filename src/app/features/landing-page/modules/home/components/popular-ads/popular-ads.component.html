@@ -1,22 +1,36 @@
 <section *ngIf="AdsRooms">
-  <h2 class="h3">Most popular ads</h2>
-  <div class="container my-4">
-    <div
+  <div class="container my-4"  >
+    <h2 class="h3 title">{{ "ads.Most popular ads" | translate }}</h2>
+    <div class="contetnt-rooms">
+      <div
       *ngFor="let room of AdsRooms.slice(0, limit); let i = index"
       [ngClass]="'p' + (i + 1)"
       class="rounded-5 parent-layer"
+      [class]="defaultLanguage === 'en' ? 'ltr' : 'rtl'"
     >
       <img [src]="room.room.images[0]" class="w-100 h-100 rounded-5" alt="" />
       <div class="layer">
-        <span><i class="fa-solid fa-heart"></i></span>
+        @if(roleUser === 'user') {
+          <span (click)="addRoomToFavorites(room._id)"
+          ><i class="fa-solid fa-heart"></i
+        ></span>
+        } @else {
+          <span (click)="openDialog('800ms', '300ms')"
+          ><i class="fa-solid fa-heart"></i
+        ></span>
+        }
         <span><i class="fa-solid fa-eye"></i></span>
       </div>
-      <div class="price-room">${{ room.room.price }} per night</div>
+      <div class="price-room">
+        ${{ room.room.price }} {{ "per night" | translate }}
+      </div>
       <div
         class="mb-2 ms-2 fs-4 text-white fa-bold position-absolute bottom-0 start-0"
       >
-        RoomNumber: {{ room.room.roomNumber }}
+        {{ "Room number" | translate }}: {{ room.room.roomNumber }}
       </div>
     </div>
+    </div>
+
   </div>
 </section>

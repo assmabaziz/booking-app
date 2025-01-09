@@ -1,0 +1,32 @@
+@import "../../../../../assets/styles/abstructs/variables";
+section {
+button {
+  &:hover {
+    background-color: $text-mainColor;
+  }
+}
+.comments {
+  .card-comment {
+    border-bottom: 1px solid $text-hover-gray;
+    .card-comment-header {
+      img {
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+      }
+      .header-title {
+        color: $blue-main;
+      }
+    }
+.card-comment-footer {
+  a {
+    color: $blue-main;
+    transition: $main-transition;
+    &:hover {
+    color: $text-secondryColor;
+    }
+  }
+}
+  }
+}
+}
