@@ -6,14 +6,14 @@
     "Change Password": "تغيير كلمة المرور",
     "logout": "تسجيل الخروج"
   },
-  "nav-auth":{
+  "nav-auth": {
     "Home": "الرئيسي",
     "Explore": "المزيد",
     "Review": "الاراء",
     "Favourites": "المفضلة",
     "Logout": "تسجيل الخروج",
-    "Register":"التسجيل",
-    "Login now":"تسجيل الدخول"
+    "Register": "التسجيل",
+    "Login now": "تسجيل الدخول"
   },
   "explore": {
     "Forget Busy Work,": "انسى العمل المزدحم,",
@@ -22,7 +22,7 @@
     "Time to make another memorable moments.": "حان الوقت لصنع لحظات لا تنسى أخرى.",
     "Start booking": "ابدأ الحجز",
     "Explore": "المزيد",
-    "Capacity" : "سعة الاستيعاب"
+    "Capacity": "سعة الاستيعاب"
   },
   "ads": {
     "Most popular ads": "الإعلانات الأكثر شعبية"
@@ -34,7 +34,7 @@
     "Hotels with large living room": "فنادق ذات صالة معيشة كبيرة"
   },
   "rooms": {
-    "Anothor Rooms":"غرف أخرى"
+    "Anothor Rooms": "اعلانات لغرف"
   },
   "footer": {
     "We kaboom your beauty holiday": "نحن ندعم عطلتك الجمالية",

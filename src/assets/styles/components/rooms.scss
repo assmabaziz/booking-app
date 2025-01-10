@@ -1,67 +1,70 @@
 @import "../abstructs/variables";
 
+* {
+  box-sizing: border-box;
+}
+
 .title {
   color: $text-secondryColor;
 }
-  .contetnt-rooms {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 1fr; /* Default to 1 item per row on small screens */
+.contetnt-rooms {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr; /* Default to 1 item per row on small screens */
 
-    .parent-layer {
-      position: relative;
-      overflow: hidden;
+  .parent-layer {
+    position: relative;
+    overflow: hidden;
 
-      .layer {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 9px;
-        cursor: pointer;
-        font-size: 19px;
-        color: white;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: $bg-eye;
-        border-radius: inherit;
-        transform: translateY(100%);
+    .layer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      cursor: pointer;
+      font-size: 19px;
+      color: white;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $bg-eye;
+      border-radius: inherit;
+      transform: translateY(100%);
 
-        transition: 0.4s;
-        span:hover {
-          color: $blue-main;
-        }
-      }
-
-      &:hover {
-        .layer {
-          transform: translateY(0);
-        }
-      }
-
-      .price-room {
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        color: white;
-        font-weight: bold;
-        padding-inline: 25px;
-        padding-block: 10px;
-        border-top-right-radius: inherit;
-        border-bottom-left-radius: inherit;
-        background-color: $pink;
+      transition: 0.4s;
+      span:hover {
+        color: $blue-main;
       }
     }
+
+    &:hover {
+      .layer {
+        transform: translateY(0);
+      }
+    }
+
+    .price-room {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      color: white;
+      font-weight: bold;
+      padding-inline: 25px;
+      padding-block: 10px;
+      border-top-right-radius: inherit;
+      border-bottom-left-radius: inherit;
+      background-color: $pink;
+    }
   }
-
-
+}
 
 /* For small screens (<576px), 1 item per row */
 @media (max-width: 575px) {
-  .contetnt-rooms  {
-    grid-template-columns: 1fr; /* 1 item per row */
+  .contetnt-rooms {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .p1 {
@@ -83,7 +86,8 @@
 
 /* For medium screens (576px - 992px), 2 items per row */
 @media (min-width: 576px) and (max-width: 992px) {
-  .contetnt-rooms  {
+  .contetnt-rooms {
+    height: 36.25rem;
     grid-template-columns: repeat(2, 1fr); /* 2 items per row */
   }
 
@@ -106,7 +110,9 @@
 
 /* For large screens (>992px), 3 items per row and the first element spans 2 rows */
 @media (min-width: 992px) {
-  .contetnt-rooms  {
+  .contetnt-rooms {
+    height: 36.25rem;
+
     grid-template-columns: repeat(3, 1fr); /* 3 items per row */
   }
 

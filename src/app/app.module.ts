@@ -1,4 +1,8 @@
-import { CUSTOM_ELEMENTS_SCHEMA, importProvidersFrom, NgModule } from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  importProvidersFrom,
+  NgModule,
+} from '@angular/core';
 import {
   BrowserModule,
   provideClientHydration,
@@ -19,17 +23,19 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingInterceptor } from './core/interceptors/loader-interceptor/loader.interceptor';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import {ApplicationConfig, provideZoneChangeDetection} from "@angular/core";
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { RouterModule, Routes } from '@angular/router';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    RouterModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -50,7 +56,7 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
-    TranslateModule
+    TranslateModule,
   ],
   providers: [
     provideClientHydration(),
@@ -58,13 +64,15 @@ export function createTranslateLoader(http: HttpClient) {
     { provide: HTTP_INTERCEPTORS, useClass: globalInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     provideHttpClient(withFetch()),
-    importProvidersFrom([TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient],
-      },
-    })])
+    importProvidersFrom([
+      TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useFactory: createTranslateLoader,
+          deps: [HttpClient],
+        },
+      }),
+    ]),
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

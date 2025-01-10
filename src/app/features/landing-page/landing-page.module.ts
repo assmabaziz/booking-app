@@ -6,6 +6,7 @@ import { NavAuthComponent } from './components/nav-auth/nav-auth.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ExploreComponent } from './components/explore/explore.component';
+import { DetailsRoomComponent } from './components/details-room/details-room.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { NonAuthorizedUserComponent } from './modules/home/components/non-authorized-user/non-authorized-user.component';
 import { CommentsComponent } from './components/comments/comments.component';
@@ -17,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavAuthComponent,
     FooterComponent,
     ExploreComponent,
+    DetailsRoomComponent,
     FavoritesComponent,
     NonAuthorizedUserComponent,
     CommentsComponent,
