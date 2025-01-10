@@ -36,7 +36,6 @@ export class PopularAdsComponent {
     }
   _PortalhomeService.getAllAds().subscribe({
     next: (res) => {
-        console.log(res);
         this.AdsRooms = res.data.ads;
       },
       error: (err) => {
@@ -45,7 +44,6 @@ export class PopularAdsComponent {
     })
     _PortalhomeService.getAllRooms().subscribe({
       next: (res) => {
-        console.log(res);
         this.Rooms = res.data.rooms;
       },
       error: (err) => {

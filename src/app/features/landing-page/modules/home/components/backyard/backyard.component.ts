@@ -27,7 +27,6 @@ AdsRooms: IAds[] = [];
   ) {
      _PortalhomeService.getAllAds().subscribe({
       next: (res) => {
-        console.log(res);
         this.AdsRooms = res.data.ads;
       },
       error: (err) => {
@@ -36,7 +35,6 @@ AdsRooms: IAds[] = [];
     });
     _PortalhomeService.getAllRooms().subscribe({
       next: (res) => {
-        console.log(res);
         this.Rooms = res.data.rooms;
       },
       error: (err) => {
@@ -51,10 +49,9 @@ AdsRooms: IAds[] = [];
     console.log(id);
     this._ExploreService.onAddRoomToFav(id).subscribe({
       next: (res) => {
-        // console.log(res);
       },
       error: (err) => {
-        // console.log(err);
+        this._ToastrService.error(err.error.message)
       },
       complete: () => {
         this._ToastrService.success('Room added to favorites successfully');

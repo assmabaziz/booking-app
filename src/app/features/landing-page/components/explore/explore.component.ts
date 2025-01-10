@@ -57,13 +57,13 @@ export class ExploreComponent {
     });
   }
   addRoomToFavorites(id: string) {
-    console.log(id);
     this._ExploreService.onAddRoomToFav(id).subscribe({
       next: (res) => {
         // console.log(res);
       },
       error: (err) => {
-        // console.log(err);
+        this._ToastrService.error(err.error.message)
+        console.log(err);
       },
       complete: () => {
         this._ToastrService.success('Room added to favorites successfully');

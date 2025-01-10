@@ -22,12 +22,12 @@ const routes: Routes = [
       },
       { path: 'explore', component: ExploreComponent },
       { path: 'Details-Room', component: DetailsRoomComponent },
-      {path:"favorites", component: FavoritesComponent},
-  {path: "review/:_id", component:CommentsComponent}
+      { path: 'favorites', component: FavoritesComponent },
+      { path: 'review/:_id', component: CommentsComponent },
     ],
   },
 ];
-  
+
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
