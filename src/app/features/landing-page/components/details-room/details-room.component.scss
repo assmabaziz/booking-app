@@ -1,0 +1,32 @@
+@import "../../../../../assets/styles/abstructs/variables";
+
+section {
+  .container {
+    .title-booking {
+      color: $text-secondryColor;
+    }
+    .price {
+      font-size: 36px;
+      font-weight: 300;
+      color: #b0b0b0;
+      span {
+        color: $light-green;
+        font-weight: 500;
+      }
+      & + span {
+        color: red;
+      }
+    }
+    button {
+      background-color: $text-mainColor;
+      color: white;
+      border: 0;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 1 5 6 6 black;
+        background-color: $blue-main;
+      }
+    }
+  }
+}

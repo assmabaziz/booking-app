@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PortalhomeService } from '../../services/portalhome.service';
 import { IRoom } from '../../../../../dashboard/modules/rooms/interfaces/iroom';
+import { IAds } from '../../../../../dashboard/modules/ads/interfaces/iads';
 import { ExploreService } from '../../../../services/explore.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -16,7 +17,7 @@ export class BackyardComponent {
   Rooms: IRoom[] = [];
   limit: number = 5;
   roleUser: string | null = '';
-
+AdsRooms: IAds[] = [];
   constructor(
     private _PortalhomeService: PortalhomeService,
     private _ExploreService: ExploreService,
@@ -24,6 +25,15 @@ export class BackyardComponent {
     private _Router: Router,
     public dialog: MatDialog
   ) {
+     _PortalhomeService.getAllAds().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.AdsRooms = res.data.ads;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
     _PortalhomeService.getAllRooms().subscribe({
       next: (res) => {
         console.log(res);

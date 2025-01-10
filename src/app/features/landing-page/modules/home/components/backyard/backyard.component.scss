@@ -8,6 +8,12 @@ h2 {
   gap: 20px;
   grid-template-columns: 1fr; /* Default to 1 item per row on small screens */
 
+  .row {
+    .col-md-3 {
+      height: 300px;
+    }
+  }
+
   .parent-layer {
     position: relative;
     overflow: hidden;

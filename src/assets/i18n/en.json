@@ -6,14 +6,14 @@
     "Change Password": "Change password",
     "logout": "Logout"
   },
-  "nav-auth":{
+  "nav-auth": {
     "Home": "Home",
     "Explore": "Explore",
     "Review": "Review",
     "Favourites": "Favourites",
     "Logout": "Logout",
-    "Register":"Register",
-    "Login now":"Login now"
+    "Register": "Register",
+    "Login now": "Login now"
   },
   "explore": {
     "Forget Busy Work,": "Forget busy work,",
@@ -22,7 +22,7 @@
     "Time to make another memorable moments.": "Time to make another memorable moments.",
     "Start booking": "Start booking",
     "Explore": "Explore",
-      "Capacity" : "Capacity"
+    "Capacity": "Capacity"
   },
   "ads": {
     "Most popular ads": "Most popular ads"
@@ -34,7 +34,7 @@
     "Hotels with large living room": "Hotels with large living room"
   },
   "rooms": {
-    "Anothor Rooms":"Othor rooms"
+    "Anothor Rooms": "Ads"
   },
   "footer": {
     "We kaboom your beauty holiday": "We kaboom your beauty holiday",
