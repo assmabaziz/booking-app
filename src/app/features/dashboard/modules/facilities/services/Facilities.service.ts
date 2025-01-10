@@ -15,9 +15,12 @@ constructor(private _HttpClient: HttpClient) {}
     });
   }
   addFacility(facility:string):Observable<any>{
-    return this._HttpClient.post(`/api/v0/admin/room-facilities`,facility)
+    return this._HttpClient.post(`/api/v0/admin/room-facilities/`,facility)
   }
   onDeleteFacility(id: number): Observable<any> {
     return this._HttpClient.delete(`/api/v0/admin/room-facilities/${id}`);
+  }
+  onEditFacility(id: number, data: any): Observable<any> {
+    return this._HttpClient.put(`/api/v0/admin/room-facilities/${id}`,data);
   }
 }

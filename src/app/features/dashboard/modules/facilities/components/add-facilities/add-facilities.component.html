@@ -1,14 +1,14 @@
 <div class="p-2">
-  <h1 mat-dialog-title>Add Facility</h1>
+  <h1 mat-dialog-title *ngIf="data.type != 'view'|| data.type=='edit'">Add Facility</h1>
   <div mat-dialog-content>
     <mat-form-field class="w-100 my-3">
       <mat-label>Facility Name</mat-label>
-      <input [disabled]="data.ReadOnly" matInput  [(ngModel)]="data.name" placeholder="Ex. TV">
+      <input [disabled]="data.ReadOnly" matInput  [(ngModel)]="data.name" >
     </mat-form-field>
   </div>
   <div mat-dialog-actions [align]="'end'">
     <button class="btn-cancel" mat-button (click)="onNoClick()">Close</button>
-    <button class="btn-save" mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+    <button *ngIf="data.type != 'view'" class="btn-save" mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
   </div>
 </div>
 

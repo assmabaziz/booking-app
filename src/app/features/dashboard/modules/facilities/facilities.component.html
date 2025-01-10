@@ -20,6 +20,8 @@
   <div class="my-3">
     <app-table-shared
       (FacilityDelete)="FacilityDelete($event)"
+      (facilityViewed)="viewFacility($event)"
+      (facilityEdit)="editFacility($event)"
       [dataSource]="dataSource"
       [displayedColumns]="displayedColumns"
       [actions]="actions"

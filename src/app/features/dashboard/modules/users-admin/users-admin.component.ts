@@ -20,7 +20,6 @@ export class UsersAdminComponent {
     'email',
     'phoneNumber',
     'country',
-    'role',
     'actions',
   ];
   actions: any[] = [

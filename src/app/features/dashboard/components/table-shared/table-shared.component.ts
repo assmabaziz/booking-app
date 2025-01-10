@@ -24,9 +24,11 @@ export class TableSharedComponent implements OnChanges {
   @Output() AdsEdit = new EventEmitter<any>();
   @Output() AdsDelete = new EventEmitter<any>();
   @Output() roomsViewed = new EventEmitter<any>();
+  @Output() facilityViewed = new EventEmitter<any>();
   @Output() usersViewed = new EventEmitter<any>();
   @Output() bookingViewed = new EventEmitter<any>();
   @Output() roomsEdit = new EventEmitter<any>();
+  @Output() facilityEdit = new EventEmitter<any>();
   @Output() roomsDelte = new EventEmitter<any>();
   @Output() FacilityDelete = new EventEmitter<any>();
   ngOnChanges(): void {
@@ -41,7 +43,8 @@ export class TableSharedComponent implements OnChanges {
       case 'Ads':
         this.AdsViewed.emit(dataView);
         break;
-      case 'facilities':
+      case 'Facilities':
+        this.facilityViewed.emit(dataView);
         break;
         case 'users':
         this.usersViewed.emit(dataView);
@@ -59,7 +62,8 @@ export class TableSharedComponent implements OnChanges {
       case 'Ads':
         this.AdsEdit.emit(dataEdit);
         break;
-      case 'facilities':
+      case 'Facilities':
+        this.facilityEdit.emit(dataEdit);
         break;
     }
   }
