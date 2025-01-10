@@ -8,7 +8,7 @@
         class="rounded-5 parent-layer"
         [class]="defaultLanguage === 'en' ? 'ltr' : 'rtl'"
     >
-      <img [src]="room.room.images[0]" class="w-100 h-100 rounded-5" alt="" />
+      <img [src]="room.images[0]" class="w-100 h-100 rounded-5" alt="" />
       <div class="layer">
         @if(roleUser === 'user') {
           <span (click)="addRoomToFavorites(room._id)"
@@ -22,7 +22,7 @@
         <span><i class="fa-solid fa-eye"></i></span>
       </div>
       <div class="price-room">
-        ${{ room.room.price }} {{ "per night" | translate }}
+        ${{ room.price }} {{ "per night" | translate }}
       </div>
       <div
         class="mb-2 ms-2 fs-4 text-white fa-bold position-absolute bottom-0 start-0"
@@ -42,5 +42,6 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </section>

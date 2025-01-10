@@ -20,7 +20,7 @@ export class PopularAdsComponent {
   Rooms: IRoom[] = [];
  AdsRooms: IAds[] = [];
   limit: number = 5;
-  roleUser: string | null = '';
+  roleUser: any;
   constructor(
     private _PortalhomeService: PortalhomeService,
     public _ShredDataService: ShredDataService,
@@ -42,14 +42,7 @@ export class PopularAdsComponent {
       error: (err) => {
         console.log(err);
       },
-    });next: (res) => {
-        console.log(res);
-        this.AdsRooms = res.data.ads;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+    })
     _PortalhomeService.getAllRooms().subscribe({
       next: (res) => {
         console.log(res);
@@ -59,12 +52,12 @@ export class PopularAdsComponent {
         console.log(err);
       },
     });
-    
+
     if (localStorage) {
       this.roleUser = localStorage.getItem('userRole');
     }
   }
-        
+
   addRoomToFavorites(id: string) {
     console.log(id);
     this._ExploreService.onAddRoomToFav(id).subscribe({
