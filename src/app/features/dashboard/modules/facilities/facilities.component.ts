@@ -46,10 +46,10 @@ resMessage = '';
   constructor(private _FacilitiesService: FacilitiesService, public dialog : MatDialog ,private _ToastrService:ToastrService) {}
 
   ngOnInit(): void {
-    this.getAllAds();
+    this.getAllFacilities();
   }
 
-  getAllAds() {
+  getAllFacilities() {
     this._FacilitiesService.getAllFacilities(this.params).subscribe({
       next: (res) => {
         console.log(res);
@@ -83,14 +83,14 @@ resMessage = '';
       },
       complete:()=> {
         this._ToastrService.success(this.resMessage);
-        this.getAllAds()
+        this.getAllFacilities()
       },
     })
   }
   handlePageEvent(e: PageEvent) {
     this.params.size = e.pageSize;
     this.params.page = e.pageIndex + 1;
-    this.getAllAds();
+    this.getAllFacilities();
   }
   FacilityDelete(data: IFacilities) {
     const dialogRef = this.dialog.open(DeleteItemComponent, {
@@ -105,7 +105,7 @@ resMessage = '';
           next: (res) => {
             console.log(res);
             this._ToastrService.success(res.message);
-            this.getAllAds();
+            this.getAllFacilities();
           },
           error: (err) => {
             console.log(err);
@@ -114,5 +114,37 @@ resMessage = '';
         });
       }
     });
+  }
+  viewFacility(data: IFacilities) {
+      const dialogRef = this.dialog.open(AddFacilitiesComponent, {
+        data: {data:data,ReadOnly:true,name:data.name,type:'view'},
+        width: '400px',
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        console.log('The dialog was closed');
+      });
+  }
+  editFacility(data:IFacilities){
+    const dialogRef = this.dialog.open(AddFacilitiesComponent, {
+          width: '400px',
+          data: {data:data,ReadOnly:false,name:data.name },
+        });
+        dialogRef.afterClosed().subscribe(result => {
+          console.log(result,'hhh')
+          if (result) {
+            this._FacilitiesService.addFacility(result).subscribe({
+              next:(res)=>{
+                this.resMessage = res.message;
+              },
+              error:(err)=>{
+                this._ToastrService.error(err.error.message);
+              },
+              complete:()=> {
+                this._ToastrService.success(this.resMessage);
+                this.getAllFacilities()
+              },
+            })
+          }
+        });
   }
 }

@@ -11,7 +11,7 @@ import { AddFacilitiesComponent } from './components/add-facilities/add-faciliti
 @NgModule({
   declarations: [
     FacilitiesComponent,
-    AddFacilitiesComponent
+    AddFacilitiesComponent,
   ],
   imports: [
     CommonModule,
