@@ -1,13 +1,11 @@
+import { IRoom } from './../../interfaces/iroom';
 import { RoomsService } from './../../services/rooms.service';
 import { Component, computed, inject } from '@angular/core';
-import { IFacilities, IRoom } from '../../interfaces/iroom';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-import { DeleteItemComponent } from '../../../../../../shared/components/delete-item/delete-item.component';
-import { PageEvent } from '@angular/material/paginator';
 import { ShredDataService } from '../../../../../../shared/services/shred-data.service';
+import { IFacility } from '../../../../../landing-page/interfaces/iroom';
 
 @Component({
   selector: 'app-add-edit-room',
@@ -16,14 +14,14 @@ import { ShredDataService } from '../../../../../../shared/services/shred-data.s
 })
 export class AddEditRoomComponent {
   isViewModeValue: boolean = false;
-  walo: any;
   isEditMode: boolean = false;
   isAddMode: boolean = true;
   roomDatda: any;
+  roomDetails: any;
   RoomsId: string = '';
   files: File[] = [];
   imgSrc: any;
-  facilities: any;
+  facilities:IFacility[] = [];
   facilityId: any[] | undefined = [];
   params = {
     page: 1,
@@ -32,7 +30,6 @@ export class AddEditRoomComponent {
   constructor(
     private _RoomsService: RoomsService,
     private _ToastrService: ToastrService,
-    private _ActivatedRoute: ActivatedRoute,
     private _Router: Router,
     public _ShredDataService: ShredDataService
   ) {
@@ -41,12 +38,12 @@ export class AddEditRoomComponent {
       this.RoomsId = this.roomDatda._id;
       this.isEditMode = true;
       this.isAddMode = false;
-      this.setDataToUpdate(this.roomDatda);
+      this.getRoomById(this.RoomsId);
     }
     if (this._ShredDataService.isViewMode()) {
       this.roomDatda = this._ShredDataService.myData();
-        this.isAddMode = false;
-        this.isEditMode = false;
+      this.isAddMode = false;
+      this.isEditMode = false;
       console.log('room redy to view mode');
     }
   }
@@ -61,7 +58,9 @@ export class AddEditRoomComponent {
     this.getAllFacilitest();
   }
   onSubmit(data: FormGroup) {
-    let roomData = new FormData();
+    if (this.RoomsId) {
+      console.log(data.value);
+      let roomData = new FormData();
     roomData.append('roomNumber', data.value.roomNumber);
     roomData.append('price', data.value.price);
     roomData.append('capacity', data.value.capacity);
@@ -72,16 +71,12 @@ export class AddEditRoomComponent {
     for (const facility of data.value.facilities) {
       roomData.append('facilities', facility._id);
     }
-    if (this._ShredDataService.myData() !== undefined) {
-      console.log('edit room');
-      console.log(data.value);
-      // console.log(roomData);
-      // console.log(this.RoomsId);
-      // console.log(this.roomDatda);
+    console.log(roomData);
 
       this._RoomsService.onEditRoom(roomData, this.RoomsId).subscribe({
         next: (res) => {
           console.log(res);
+
         },
         error: (err) => {
           this._ToastrService.error(err.error.message);
@@ -89,13 +84,21 @@ export class AddEditRoomComponent {
         complete: () => {
           this._Router.navigate(['/dashboard/rooms']);
           this._ToastrService.success('Room updated successfully');
+          console.log(roomData);
         },
       });
     } else {
-      console.log('add new room');
-      // console.log(data.value);
-      console.log(roomData);
-      // console.log(this.RoomsId);
+      let roomData = new FormData();
+    roomData.append('roomNumber', data.value.roomNumber);
+    roomData.append('price', data.value.price);
+    roomData.append('capacity', data.value.capacity);
+    roomData.append('discount', data.value.discount);
+    for (const item of this.imgSrc) {
+      roomData.append('imgs', item, item.name);
+    }
+    for (const facility of data.value.facilities) {
+      roomData.append('facilities', facility._id);
+    }
       this._RoomsService.onAddRoom(roomData).subscribe({
         next: (res) => {},
         error: (err) => {
@@ -108,16 +111,46 @@ export class AddEditRoomComponent {
       });
     }
   }
-  setDataToUpdate(data: any) {
-    (this.imgSrc = data?.images),
-      this.addRoomForm.patchValue({
-        roomNumber: data?.roomNumber,
-        price: data?.price,
-        capacity: data?.capacity,
-        discount: data?.discount,
-        facilities: data?.facilities,
-      });
-    this.facilities = data.facilities;
+  getRoomById(id: string) {
+    this._RoomsService.onGetRoomById(id).subscribe({
+      next: (res) => {
+        this.roomDetails = res.data.room;
+        // console.log(this.roomDetails);
+      },
+      error: (err) => {
+        console.log(err);
+      },complete :()=> {
+        // console.log(this.roomDetails);
+
+        this.imgSrc = this.roomDetails?.images
+// console.log(this.imgSrc);
+        if (this.roomDetails?.facilities) {
+          // console.log(this.roomDetails?.facilities);
+
+          for (const facility of this.roomDetails.facilities) {
+            // console.log(facility);
+            this.facilities.push(facility)
+// console.log(this.facilities);
+
+          }
+          // console.log(this.facilities);
+
+          // this.roomDetails.facilities.forEach((facility: any) => {
+
+          //   return this.facilities.push(facility);
+          // });
+        };
+        this.addRoomForm.patchValue({
+          roomNumber: this.roomDetails?.roomNumber,
+          price: this.roomDetails?.price,
+          capacity: this.roomDetails?.capacity,
+          discount: this.roomDetails?.discount,
+          facilities: this.roomDetails?.facilities
+        });
+        console.log(this.roomDetails.facilities);
+
+      }
+    });
   }
   getAllFacilitest() {
     this._RoomsService.onGetFacilities().subscribe({
@@ -138,7 +171,7 @@ export class AddEditRoomComponent {
   }
   ngOnDestroy(): void {
     if (this._ShredDataService.isViewMode()) {
-      this._ShredDataService.isViewMode.set(false)
+      this._ShredDataService.isViewMode.set(false);
     }
   }
 }

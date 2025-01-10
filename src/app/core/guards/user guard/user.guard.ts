@@ -8,13 +8,13 @@ export const userGuard: CanActivateFn = (route, state) => {
 
   if (isPlatformBrowser(_PLATFORM_ID)) {
     if (
-      localStorage.getItem('userToken') &&
-      localStorage.getItem('userRole') == 'admin'
+      localStorage.getItem('userToken')!== null  &&
+      localStorage.getItem('userRole') == 'user'
     ) {
-      _Router.navigate(['/auth']);
+      return true
+    } else { 
+      _Router.navigate(['/landing-page/home']);
       return false;
-    } else {
-      return true;
     }
   } else {
     return false;

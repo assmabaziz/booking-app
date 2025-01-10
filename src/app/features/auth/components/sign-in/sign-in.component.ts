@@ -44,7 +44,6 @@ export class SignInComponent {
         if (this._AuthService.role === 'admin') {
           this._Router.navigate(['/dashboard']);
         } else {
-          //this route will be changed
           this._Router.navigate(['/landing-page/home']);
         }
       },

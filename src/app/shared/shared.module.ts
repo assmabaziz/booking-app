@@ -23,6 +23,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { UppdatePasswordComponent } from './components/uppdate-password/uppdate-password.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TranslateModule } from '@ngx-translate/core';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -50,13 +52,11 @@ import { TranslateModule } from '@ngx-translate/core';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     CarouselModule,
     TranslateModule,
-    MatPaginatorModule,
+    MatPaginatorModule,NzButtonModule, NzDatePickerModule
   ],
   exports: [
     SidebarComponent,
@@ -86,7 +86,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ProfileComponent,
     CarouselModule,
     TranslateModule,
-    MatPaginatorModule,
+    MatPaginatorModule,NzButtonModule, NzDatePickerModule
   ],
 })
 export class SharedModule {}

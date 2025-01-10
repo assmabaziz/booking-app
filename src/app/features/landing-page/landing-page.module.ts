@@ -7,6 +7,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ExploreComponent } from './components/explore/explore.component';
 import { DetailsRoomComponent } from './components/details-room/details-room.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
+import { NonAuthorizedUserComponent } from './modules/home/components/non-authorized-user/non-authorized-user.component';
+import { CommentsComponent } from './components/comments/comments.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,10 @@ import { DetailsRoomComponent } from './components/details-room/details-room.com
     FooterComponent,
     ExploreComponent,
     DetailsRoomComponent,
+    FavoritesComponent,
+    NonAuthorizedUserComponent,
+    CommentsComponent,
   ],
-  imports: [CommonModule, LandingPageRoutingModule, SharedModule],
+  imports: [CommonModule, LandingPageRoutingModule,ReactiveFormsModule, SharedModule],
 })
 export class LandingPageModule {}

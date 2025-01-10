@@ -1,0 +1,52 @@
+<section>
+  <div class="row">
+    <div class="col-md-12 d-flex flex-column justify-content-between">
+      <h2 class="my-2">Add your comment</h2>
+      <form
+        [formGroup]="addCommentForm"
+        (ngSubmit)="addComment(addCommentForm)"
+        class="mb-3"
+      >
+        <textarea
+          placeholder="Add your comment"
+          formControlName="comment"
+          class="w-100 rounded-3 p-3"
+          rows="4"
+        >
+        </textarea>
+        <button type="submit" class="btn primary w-50 p-2">Send</button>
+      </form>
+    </div>
+    <div class="col-md-12">
+      <div class="comments">
+        <div class="row">
+          <div class="col-md-12">
+            @for( comment of roomComments; track $index) {
+            <div class="card-comment ">
+              <div class="card-comment-header d-flex gap-3 align-items-center">
+                <img [src]="comment.user.profileImage" alt="profile image" />
+                <div class="header-title py-1">
+                  <h5>{{ comment.user.userName }}</h5>
+                </div>
+              </div>
+              <div class="card-comment-body">
+                <p class="h5">{{comment.comment}}</p>
+                <p class="">{{comment.updatedAt | date: 'short'}}</p>
+              </div>
+              <div class="card-comment-footer d-flex gap-3 py-1">
+                <span >
+                  <a>uppdate</a>
+                </span>
+                <span (click)="removeComment(comment._id)">
+                  <a>delete</a>
+
+                </span>
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

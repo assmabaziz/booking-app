@@ -1,0 +1,53 @@
+<section>
+  <div class="container py-5">
+    <h1 class="title mb-4 text-center" [ngClass]="_ShredDataService.textDir === 'ltr'?'ltr':'rtl'">
+      {{'favourites.Your favourites' | translate}}
+    </h1>
+  </div>
+  <div class="container my-4">
+    <h3 class="title mb-4" [ngClass]="_ShredDataService.textDir === 'ltr'?'ltr':'rtl'">
+      {{'favourites.Your rooms' | translate}}
+    </h3>
+    <div class="contetnt-rooms mb-4">
+      @for (room of roomList; track $index) {
+      <div class="rounded-5 parent-layer">
+        <img
+          [src]="room.images[0]"
+          class="w-100 h-100 rounded-5"
+          alt="room image"
+        />
+        @if(!room.images[0]) {
+        <img
+          src="../../../../../assets/images/dasboard-images/dummy-image.png"
+          class="w-100 h-100 rounded-5"
+          alt="room image"
+        />
+        }
+        <div class="layer">
+          <span (click)="deleteFromFavourites(room._id)"><i class="fa-solid fa-heart-crack"></i
+          ></span>
+          <span><i class="fa-solid fa-eye"></i></span>
+        </div>
+        <div class="price-room">
+          {{ room.price | currency }} {{ "per night" | translate }}
+        </div>
+        <div
+          class="mb-2 ms-2 fs-4 text-white fa-bold position-absolute bottom-0 start-0"
+        >
+          {{ "Room number" | translate }}: {{ room.roomNumber }}
+        </div>
+      </div>
+
+      }
+    </div>
+    @if(roomList.length === 0) {
+    <div class="d-flex justify-content-center align-items-center vh-100">
+      <app-no-data></app-no-data>
+    </div>
+    }
+    <div
+      class="paginator d-flex align-items-center justify-content-center py-4"
+    >
+    </div>
+  </div>
+</section> 

@@ -1,9 +1,13 @@
 <section>
   <div class="container py-5">
-    <h1 class="title mb-4 text-center">Explore all rooms</h1>
+    <h1 class="title mb-4 text-center">
+      {{ "exploreRooms.Explore all rooms" | translate }}
+    </h1>
   </div>
   <div class="container my-4">
-    <h3 class="title mb-4">All rooms</h3>
+    <h3 class="title mb-4" [class]="_ShredDataService.textDir === 'ltr'?'ltr':'rtl'">
+      {{ "exploreRooms.All rooms" | translate }}
+    </h3>
     <div class="contetnt-rooms mb-4 h-100">
       @for (room of roomsList; track $index) {
       <div class="rounded-5 parent-layer">
@@ -20,8 +24,20 @@
         />
         }
         <div class="layer">
-          <span><i class="fa-solid fa-heart"></i></span>
-          <span><i class="fa-solid fa-eye"></i></span>
+          @if(roleUser === 'user') {
+            <span (click)="addRoomToFavorites(room._id)"
+            ><i class="fa-solid fa-heart"></i
+          ></span>
+          <span><i class="fa-solid fa-eye" [routerLink]="['/landing-page/review', room._id]"></i></span>
+
+          } @else {
+            <span (click)="openDialog('800ms', '300ms')"
+            ><i class="fa-solid fa-heart"></i
+          ></span>
+          <span (click)="openDialog('800ms', '300ms')"><i class="fa-solid fa-eye"></i></span>
+          }
+
+
         </div>
         <div class="price-room">
           {{ room.price | currency }} {{ "per night" | translate }}
@@ -54,3 +70,5 @@
     </div>
   </div>
 </section>
+
+

@@ -52,4 +52,5 @@ export class NavAuthComponent {
   changeLanguage(language: string) {
     this._ShredDataService.onchangeLanguage(language);
   }
+
 }
