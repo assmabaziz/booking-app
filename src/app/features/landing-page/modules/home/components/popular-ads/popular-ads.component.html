@@ -25,21 +25,9 @@
         ${{ room.price }} {{ "per night" | translate }}
       </div>
       <div
-        class="mb-2 ms-2 fs-4 text-white fa-bold position-absolute bottom-0 start-0"
+        class="mb-1 ms-2 fs-5 text-white fa-bold position-absolute bottom-0 start-0"
       >
-        <img [src]="room.images[0]" class="w-100 h-100 rounded-5" alt="" />
-        <div class="layer">
-          <span><i class="fa-solid fa-heart"></i></span>
-          <span><i class="fa-solid fa-eye"></i></span>
-        </div>
-        <div class="price-room">
-          ${{ room.price }} {{ "per night" | translate }}
-        </div>
-        <div
-          class="mb-2 ms-2 fs-4 text-white fa-bold position-absolute bottom-0 start-0"
-        >
-          {{ "Room number" | translate }}: {{ room.roomNumber }}
-        </div>
+        {{ "Room number" | translate }}: {{ room.roomNumber }}
       </div>
     </div>
   </div>
