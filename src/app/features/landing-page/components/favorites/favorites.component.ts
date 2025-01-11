@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ExploreService } from '../../services/explore.service';
+import { ExploreService } from '../../services/explore-service/explore.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { IRoom } from '../../interfaces/iroom';

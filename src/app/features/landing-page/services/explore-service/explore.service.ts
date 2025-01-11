@@ -20,4 +20,7 @@ onGetUserFavourites(): Observable<any>{
 onDeleteFavourite(roomId:string): Observable<any>{
   return this._HttpClient.delete(`/api/v0/portal/favorite-rooms/${roomId}`,{body:{'roomId':roomId}});
 }
+onGetAllAds(): Observable<any> {
+  return this._HttpClient.get('/api/v0/portal/ads')
+}
 }

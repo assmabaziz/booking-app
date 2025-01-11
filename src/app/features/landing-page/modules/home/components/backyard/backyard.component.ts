@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { PortalhomeService } from '../../services/portalhome.service';
 import { IRoom } from '../../../../../dashboard/modules/rooms/interfaces/iroom';
 import { IAds } from '../../../../../dashboard/modules/ads/interfaces/iads';
-import { ExploreService } from '../../../../services/explore.service';
+import { ExploreService } from '../../../../services/explore-service/explore.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';

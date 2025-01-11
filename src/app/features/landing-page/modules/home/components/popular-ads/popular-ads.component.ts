@@ -5,7 +5,7 @@ import { ShredDataService } from '../../../../../../shared/services/shred-data.s
 import { isPlatformBrowser } from '@angular/common';
 import { IRoom } from '../../../../interfaces/iroom';
 import { ToastrService } from 'ngx-toastr';
-import { ExploreService } from '../../../../services/explore.service';
+import { ExploreService } from '../../../../services/explore-service/explore.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { NonAuthorizedUserComponent } from '../non-authorized-user/non-authorized-user.component';

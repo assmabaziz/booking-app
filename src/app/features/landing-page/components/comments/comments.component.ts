@@ -75,6 +75,7 @@ export class CommentsComponent {
           },
           error: (err) => {
             console.log(err);
+            this._ToastrService.error(err.error.message)
           },
           complete: () => {
             this._ToastrService.success('Comment deleted successfully');
@@ -96,6 +97,7 @@ export class CommentsComponent {
       },
       error: (err) => {
         console.log(err);
+        this._ToastrService.error(err.error.message)
       },
       complete: () => {
         this._ToastrService.success('Comment updated successfully');

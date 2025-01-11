@@ -31,12 +31,10 @@ export class SignInComponent {
   onSubmit(data: FormGroup) {
     this._AuthService.onSignin(data.value).subscribe({
       next: (res) => {
-        console.log(res);
         localStorage.setItem('userToken', res.data.token);
         this._AuthService.getProfile();
       },
       error: (err) => {
-        console.log(err);
         this._ToastrService.error(err.error.message);
       },
       complete: () => {
@@ -44,7 +42,7 @@ export class SignInComponent {
         if (this._AuthService.role === 'admin') {
           this._Router.navigate(['/dashboard']);
         } else {
-          this._Router.navigate(['/landing-page/home']);
+          this._Router.navigate(['/landing-page']);
         }
       },
     });

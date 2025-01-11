@@ -1,5 +1,5 @@
 import { FacilitiesComponent } from './../../../dashboard/modules/facilities/facilities.component';
-import { DetailsRoomService } from './../../services/details-room.service';
+import { DetailsRoomService } from '../../services/room-details-service/details-room.service';
 import { Component } from '@angular/core';
 import { _ } from '@ngx-translate/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';

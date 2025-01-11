@@ -10,7 +10,7 @@ export class DetailsRoomService {
 
   getDetailsRoom(): Observable<any> {
     return this._HttpClient.get(
-      `/api/v0/portal/rooms/66f9e0fc6475e2d50da9d89f`
+      `/api/v0/portal/rooms/678093f4c01e1856618e0a01`
     );
   }
 }
