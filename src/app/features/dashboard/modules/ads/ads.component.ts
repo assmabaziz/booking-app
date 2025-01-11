@@ -134,7 +134,7 @@ export class AdsComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        // console.log(result);
+        console.log(result);
         delete result.rooms;
         delete result.disable;
         delete result.edit;
@@ -188,7 +188,7 @@ export class AdsComponent implements OnInit {
   }
   AdsDelete(data: IAds) {
     const dialogRef = this.dialog.open(DeleteItemComponent, {
-      data: { text: 'Ads', id: data._id }
+      data: { text: 'Ads', id: data._id },
     });
     dialogRef.afterClosed().subscribe((result) => {
       // console.log(result);

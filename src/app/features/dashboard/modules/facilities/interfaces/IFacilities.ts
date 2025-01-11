@@ -1,9 +1,9 @@
-import { CreatedBy } from "../../ads/interfaces/iads";
+import { CreatedBy } from '../../ads/interfaces/iads';
 
 export interface IFacilities {
-  _id: number,
-  name:string ,
+  _id: string;
+  name: string;
   createdBy: CreatedBy;
-  createdAt: string,
-  updatedAt:string
+  createdAt: string;
+  updatedAt: string;
 }
