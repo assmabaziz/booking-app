@@ -11,6 +11,8 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 import { NonAuthorizedUserComponent } from './modules/home/components/non-authorized-user/non-authorized-user.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DeleteCommentComponent } from './components/delete-comment/delete-comment.component';
+import { EditCommentComponent } from './components/edit-comment/edit-comment.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FavoritesComponent,
     NonAuthorizedUserComponent,
     CommentsComponent,
+    DeleteCommentComponent,
+    EditCommentComponent,
   ],
   imports: [CommonModule, LandingPageRoutingModule,ReactiveFormsModule, SharedModule],
 })

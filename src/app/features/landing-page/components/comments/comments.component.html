@@ -34,7 +34,7 @@
                 <p class="">{{comment.updatedAt | date: 'short'}}</p>
               </div>
               <div class="card-comment-footer d-flex gap-3 py-1">
-                <span >
+                <span (click)="uppdateComment(comment)">
                   <a>uppdate</a>
                 </span>
                 <span (click)="removeComment(comment._id)">

@@ -20,7 +20,7 @@ export class RoomsService {
     return this._HttpClient.delete(`/api/v0/portal/room-comments/${roomId}`)
   }
   onUppdateComment(data:string, roomId : string):Observable<any> {
-    return this._HttpClient.patch(`/api/v0/portal/room-comments/${roomId}`, data)
+    return this._HttpClient.patch(`/api/v0/portal/room-comments/${roomId}`, {comment: data})
 
   }
 }

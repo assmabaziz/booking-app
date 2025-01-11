@@ -1,0 +1,14 @@
+<section class="p-3">
+  <h2 mat-dialog-title>Edit comment</h2>
+  <form [formGroup]="editCommentForm">
+     <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Comment</mat-label>
+    <textarea matInput formControlName="comment" ></textarea>
+  </mat-form-field>
+  </form>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>cancel</button>
+    <button mat-button mat-dialog-close cdkFocusInitial [mat-dialog-close]="editCommentForm.value">save</button>
+  </mat-dialog-actions>
+</section>
+

@@ -4,8 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { RoomsService } from '../../services/rooms-service/rooms.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NonAuthorizedUserComponent } from '../../modules/home/components/non-authorized-user/non-authorized-user.component';
-import { IRoomComment } from '../../interfaces/iroom';
+import { Icomment, IRoomComment } from '../../interfaces/iroom';
 import { ToastrService } from 'ngx-toastr';
+import { DeleteCommentComponent } from '../delete-comment/delete-comment.component';
+import { EditCommentComponent } from '../edit-comment/edit-comment.component';
 
 @Component({
   selector: 'app-comments',
@@ -26,7 +28,7 @@ export class CommentsComponent {
   roomComments: IRoomComment[] = [];
   addCommentForm = new FormGroup({
     roomId: new FormControl(this.roomId),
-    comment: new FormControl(null),
+    comment: new FormControl(''),
   });
   ngOnInit(): void {
     this.getAllComments();
@@ -34,7 +36,6 @@ export class CommentsComponent {
   getAllComments(): void {
     this._RoomsService.onGetAllRoomComments(this.roomId).subscribe({
       next: (res) => {
-        console.log(res);
         this.roomComments = res.data.roomComments;
       },
       error: (err) => {
@@ -46,7 +47,6 @@ export class CommentsComponent {
     if (this.userRole) {
       this._RoomsService.onAddComment(data.value).subscribe({
         next: (res) => {
-          console.log(res);
         },
         error: (err) => {
           console.log(err);
@@ -59,35 +59,50 @@ export class CommentsComponent {
         },
       });
     } else {
-      console.log('not authorized');
       this.openDialog();
     }
   }
   removeComment(id: string): void {
-    this._RoomsService.onRemoveComment(id).subscribe({
-      next: (res) => {
-        console.log(res);
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => {
-        this._ToastrService.success('comment deleted');
-        this.getAllComments();
-      },
+    const dialogRef = this.dialog.open(DeleteCommentComponent, {
+      width: '300px',
+      data: id,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this._RoomsService.onRemoveComment(result).subscribe({
+          next: (res) => {
+          },
+          error: (err) => {
+            console.log(err);
+          },
+          complete: () => {
+            this._ToastrService.success('Comment deleted successfully');
+            this.getAllComments();
+          },
+        });
+      }
     });
   }
-  uppdateComment(comment: string, id: string) {
-    this._RoomsService.onUppdateComment(comment, id).subscribe({
+  uppdateComment(commentDetails: IRoomComment) {
+    const dialogRef = this.dialog.open(EditCommentComponent, {
+      width: '500px',
+      data: commentDetails,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+    this._RoomsService.onUppdateComment(result.comment, commentDetails._id).subscribe({
       next: (res) => {
-        console.log(res);
       },
       error: (err) => {
         console.log(err);
       },
       complete: () => {
-        this._ToastrService.success('comment uppdated ');
+        this._ToastrService.success('Comment updated successfully');
+        this.getAllComments()
       },
+    });
+      }
     });
   }
   openDialog(): void {
