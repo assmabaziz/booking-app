@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule, JsonPipe, NgOptimizedImage } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -25,6 +25,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -56,7 +57,11 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     MatInputModule,
     CarouselModule,
     TranslateModule,
-    MatPaginatorModule,NzButtonModule, NzDatePickerModule
+    MatPaginatorModule,
+    NzButtonModule,
+    NzDatePickerModule,
+    MatDatepickerModule,
+    JsonPipe,
   ],
   exports: [
     SidebarComponent,
@@ -86,7 +91,11 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     ProfileComponent,
     CarouselModule,
     TranslateModule,
-    MatPaginatorModule,NzButtonModule, NzDatePickerModule
+    MatPaginatorModule,
+    NzButtonModule,
+    NzDatePickerModule,
+    MatDatepickerModule,
+    JsonPipe,
   ],
 })
 export class SharedModule {}

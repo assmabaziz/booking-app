@@ -11,6 +11,8 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 import { NonAuthorizedUserComponent } from './modules/home/components/non-authorized-user/non-authorized-user.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxStarsModule } from 'ngx-stars';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     NonAuthorizedUserComponent,
     CommentsComponent,
   ],
-  imports: [CommonModule, LandingPageRoutingModule,ReactiveFormsModule, SharedModule],
+  imports: [
+    CommonModule,
+    LandingPageRoutingModule,
+    ReactiveFormsModule,
+    SharedModule,
+    NgxStarsModule,
+  ],
+  providers: [provideNativeDateAdapter()],
 })
 export class LandingPageModule {}

@@ -18,7 +18,7 @@ import { NonAuthorizedUserComponent } from '../non-authorized-user/non-authorize
 export class PopularAdsComponent {
   defaultLanguage: string | null = null;
   Rooms: IRoom[] = [];
- AdsRooms: IAds[] = [];
+  AdsRooms: IAds[] = [];
   limit: number = 5;
   roleUser: any;
   constructor(
@@ -34,16 +34,18 @@ export class PopularAdsComponent {
       // Access localStorage only in the browser
       this.defaultLanguage = localStorage.getItem('language');
     }
-  _PortalhomeService.getAllAds().subscribe({
-    next: (res) => {
+    _PortalhomeService.getAllAds().subscribe({
+      next: (res) => {
         this.AdsRooms = res.data.ads;
       },
       error: (err) => {
         console.log(err);
       },
-    })
+    });
     _PortalhomeService.getAllRooms().subscribe({
       next: (res) => {
+        console.log(res);
+
         this.Rooms = res.data.rooms;
       },
       error: (err) => {
@@ -51,24 +53,32 @@ export class PopularAdsComponent {
       },
     });
 
-    if (localStorage) {
-      this.roleUser = localStorage.getItem('userRole');
+    if (isPlatformBrowser(platformId)) {
+      if (localStorage) {
+        this.roleUser = localStorage.getItem('userRole');
+      }
     }
   }
 
   addRoomToFavorites(id: string) {
     console.log(id);
     this._ExploreService.onAddRoomToFav(id).subscribe({
-      next: (res) => {
-      },
-      error: (err) => {
-      },
+      next: (res) => {},
+      error: (err) => {},
       complete: () => {
         this._ToastrService.success('Room added to favorites successfully');
       },
     });
   }
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+
+  viewRoom(id: string) {
+    this._Router.navigate(['/landing-page/Details-Room', id]);
+  }
+
+  openDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
     this.dialog.open(NonAuthorizedUserComponent, {
       width: '60%',
       enterAnimationDuration,

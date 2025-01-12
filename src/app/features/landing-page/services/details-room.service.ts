@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { _ } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,9 +9,19 @@ import { Observable } from 'rxjs';
 export class DetailsRoomService {
   constructor(private _HttpClient: HttpClient) {}
 
-  getDetailsRoom(): Observable<any> {
-    return this._HttpClient.get(
-      `/api/v0/portal/rooms/66f9e0fc6475e2d50da9d89f`
-    );
+  getDetailsRoom(id: string): Observable<any> {
+    return this._HttpClient.get(`/api/v0/portal/rooms/${id}`);
+  }
+
+  createReview(data: any): Observable<any> {
+    return this._HttpClient.post(`/api/v0/portal/room-reviews`, data);
+  }
+
+  getReview(id: string): Observable<any> {
+    return this._HttpClient.get(`/api/v0/portal/room-reviews/${id}`);
+  }
+
+  onBookingRoomWithDate(data: any): Observable<any> {
+    return this._HttpClient.post(`/api/v0/portal/booking`, data);
   }
 }

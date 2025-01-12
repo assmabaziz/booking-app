@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { PortalhomeService } from '../../services/portalhome.service';
 import { IRoom } from '../../../../../dashboard/modules/rooms/interfaces/iroom';
 import { IAds } from '../../../../../dashboard/modules/ads/interfaces/iads';
@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { NonAuthorizedUserComponent } from '../non-authorized-user/non-authorized-user.component';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-backyard',
@@ -17,17 +18,19 @@ export class BackyardComponent {
   Rooms: IRoom[] = [];
   limit: number = 5;
   roleUser: string | null = '';
-AdsRooms: IAds[] = [];
+  AdsRooms: IAds[] = [];
   constructor(
     private _PortalhomeService: PortalhomeService,
     private _ExploreService: ExploreService,
     private _ToastrService: ToastrService,
     private _Router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object,
     public dialog: MatDialog
   ) {
-     _PortalhomeService.getAllAds().subscribe({
+    _PortalhomeService.getAllAds().subscribe({
       next: (res) => {
         this.AdsRooms = res.data.ads;
+        // console.log(res);
       },
       error: (err) => {
         console.log(err);
@@ -41,24 +44,33 @@ AdsRooms: IAds[] = [];
         console.log(err);
       },
     });
-    if (localStorage) {
-      this.roleUser = localStorage.getItem('userRole');
+    if (isPlatformBrowser(platformId)) {
+      if (localStorage) {
+        this.roleUser = localStorage.getItem('userRole');
+      }
     }
   }
   addRoomToFavorites(id: string) {
     console.log(id);
     this._ExploreService.onAddRoomToFav(id).subscribe({
-      next: (res) => {
-      },
+      next: (res) => {},
       error: (err) => {
-        this._ToastrService.error(err.error.message)
+        this._ToastrService.error(err.error.message);
       },
       complete: () => {
         this._ToastrService.success('Room added to favorites successfully');
       },
     });
   }
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+
+  viewRoom(id: string) {
+    this._Router.navigate(['/landing-page/Details-Room', id]);
+  }
+
+  openDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
     this.dialog.open(NonAuthorizedUserComponent, {
       width: '60%',
       enterAnimationDuration,

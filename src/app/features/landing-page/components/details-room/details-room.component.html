@@ -8,17 +8,19 @@
     </div>
 
     <div class="row gap-0 g-2" *ngIf="room?.images?.length">
-      <div class="col-md-8">
-        <owl-carousel-o [options]="customOptions">
-          @for (imgRoom of room.images.slice(0,room.images.length-2); track
-          $index) {
-          <ng-template carouselSlide
-            ><img class="w-100 rounded-4" [src]="imgRoom" alt=""
-          /></ng-template>
-          }
-        </owl-carousel-o>
+      <div class="col-md-8 par">
+        <div class="">
+          <owl-carousel-o [options]="customOptions" class="">
+            @for (imgRoom of room.images.slice(0,room.images.length-2); track
+            $index) {
+            <ng-template class="" carouselSlide
+              ><img class="w-100 rounded-4" [src]="imgRoom" alt=""
+            /></ng-template>
+            }
+          </owl-carousel-o>
+        </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 par-2">
         <div class="d-flex flex-md-column gap-2">
           <div>
             <img
@@ -30,7 +32,6 @@
           <div>
             <img
               class="w-100 rounded-4"
-              height="235.5px"
               [src]="room.images[room.images.length - 1]"
               alt=""
             />
@@ -78,7 +79,7 @@
       </div>
       <div class="col-md-4 py-3">
         <div
-          class="border border-1 border-secondary px-5 pb-2 pt-5 d-flex flex-column justify-content-between h-100"
+          class="border border-1 rounded-4 border-secondary-subtle px-5 pb-4 pt-5 d-flex flex-column justify-content-between h-100"
         >
           <div>
             <h2 class="h3 title-booking">Start Booking</h2>
@@ -89,12 +90,101 @@
           </div>
 
           <div>
-            <p>Pick a Date</p>
-            <h2>date</h2>
-            <p>You will pay <span>$480 USD</span> per<span> 2 Person</span></p>
-            <button>Continue Book</button>
+            <h2 class="h5">Pick a Date</h2>
+            <div>
+              <mat-form-field>
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input
+                  [formGroup]="range"
+                  [rangePicker]="picker"
+                >
+                  <input
+                    matStartDate
+                    formControlName="startDate"
+                    placeholder="Start date"
+                  />
+                  <input
+                    matEndDate
+                    formControlName="endDate"
+                    placeholder="End date"
+                  />
+                </mat-date-range-input>
+
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+
+                @if (range.controls.startDate.hasError('matStartDateInvalid')) {
+                <mat-error>Invalid start date</mat-error>
+                } @if (range.controls.endDate.hasError('matEndDateInvalid')) {
+                <mat-error>Invalid end date</mat-error>
+                }
+              </mat-form-field>
+            </div>
+            <p>
+              You will pay <span>{{ room.price }} USD</span>
+            </p>
+            <button (click)="BookingDateRoom()">Continue Book</button>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="h4 mb-1">Feedback Room</h3>
+        <div class="d-flex gap-1 text-warning fs-3">
+          <span><i class="fa-regular fa-star"></i></span>
+          <span><i class="fa-regular fa-star"></i></span>
+          <span><i class="fa-regular fa-star"></i></span>
+          <span><i class="fa-regular fa-star"></i></span>
+          <span><i class="fa-regular fa-star"></i></span>
+        </div>
+
+        <h4 class="my-1">Review about this Room</h4>
+        <form class="mb-3" [formGroup]="reviewForm" (ngSubmit)="sendReview()">
+          <textarea
+            formControlName="review"
+            placeholder="Add your Review"
+            class="w-100 rounded-3 p-2"
+            rows="4"
+          ></textarea>
+          <h4 class="mb-0 mt-1">Select Your Rating</h4>
+          <div style="display: flex; align-items: center">
+            <ngx-stars
+              [readonly]="false"
+              [size]="2"
+              [maxStars]="5"
+              color="#FFD700"
+              class="text-warning"
+              (ratingOutput)="onRatingSet($event)"
+            ></ngx-stars>
+          </div>
+          <br />
+          <button type="submit" class="btn btn-primary w-50">Send</button>
+        </form>
+
+        @for (rat of reviewDetails; track rat._id) {
+
+        <div class="border border-2 border-warning p-1 rounded-3 w-75 mb-2">
+          <p>{{ rat.review }}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <span>{{ rat.rating }}</span>
+            <div class="d-flex align-items-center">
+              <img
+                width="30px"
+                height="30px"
+                class="rounded-circle mx-1"
+                [src]="rat.user.profileImage"
+                alt=""
+              />
+              <h4 class="d-inline-block">{{ rat.user.userName }}</h4>
+            </div>
+          </div>
+        </div>
+        }
       </div>
     </div>
   </div>

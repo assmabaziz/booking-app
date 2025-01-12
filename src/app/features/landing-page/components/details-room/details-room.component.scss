@@ -2,6 +2,15 @@
 
 section {
   .container {
+    .par img {
+      height: 608px;
+      object-fit: cover;
+    }
+    .par-2 img {
+      height: 300px;
+      object-fit: cover;
+    }
+
     .title-booking {
       color: $text-secondryColor;
     }
