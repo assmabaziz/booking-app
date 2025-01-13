@@ -1,48 +1,91 @@
 <section class="container my-5">
-  <div class="container"  >
-    <div class="row" [class]="_ShredDataService.textDir === 'ltr'?'ltr':'rtl'">
+  <div class="container">
+    <div
+      class="row"
+      [class]="_ShredDataService.textDir === 'ltr' ? 'ltr' : 'rtl'"
+    >
       <div class="col-6">
-        <h1 class="title">{{'explore.Forget Busy Work,' | translate}}</h1>
-          <h2 class="h1 title" [class]="_ShredDataService.textDir === 'ltr'?'ltr':'rtl'">
-            {{'explore.Start Next Vacation' | translate}}
-            </h2>
-          <p [class]="_ShredDataService.textDir === 'ltr'?'ltr':'rtl'">
-            {{'explore.We provide what you need to enjoy your holiday with family.' | translate}}</p>
-             <p>{{'explore.Time to make another memorable moments.' | translate}}</p>
-          <div class="my-4">
-            <h6 class="title">
-              {{'explore.Start booking' | translate}}
-</h6>
-            <div>
-              <p class="p-0 m-0 title">Pick a Date</p>
-              <mat-form-field class="w-75">
-                <!-- <mat-label>Enter a date range</mat-label> -->
-                <mat-date-range-input [rangePicker]="rangePicker" class="mx-auto">
-                  <input matStartDate placeholder="Start date" />
-                  <input matEndDate placeholder="End date" />
+        <h1 class="title">{{ "explore.Forget Busy Work," | translate }}</h1>
+        <h2
+          class="h1 title"
+          [class]="_ShredDataService.textDir === 'ltr' ? 'ltr' : 'rtl'"
+        >
+          {{ "explore.Start Next Vacation" | translate }}
+        </h2>
+        <p [class]="_ShredDataService.textDir === 'ltr' ? 'ltr' : 'rtl'">
+          {{
+            "explore.We provide what you need to enjoy your holiday with family."
+              | translate
+          }}
+        </p>
+        <p>
+          {{ "explore.Time to make another memorable moments." | translate }}
+        </p>
+        <div class="my-4">
+          <h6 class="title">
+            {{ "explore.Start booking" | translate }}
+          </h6>
+          <div>
+            <p class="p-0 m-0 title">Pick a Date</p>
+            <form [formGroup]="searchRoomsForm" (ngSubmit)="searchRoomsByParams(searchRoomsForm)">
+              <mat-form-field class="w-100 text-center mb-2">
+                <mat-date-range-input
+                  [rangePicker]="rangePicker"
+                  class="mx-auto"
+                >
+                  <input matStartDate placeholder="Start date" formControlName="startDate" />
+                  <input matEndDate placeholder="End date" formControlName="endDate" />
                 </mat-date-range-input>
-                <mat-datepicker-toggle matIconSuffix [for]="rangePicker"></mat-datepicker-toggle>
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="rangePicker"
+                ></mat-datepicker-toggle>
                 <mat-date-range-picker #rangePicker>
                   <mat-date-range-picker-actions>
                     <button mat-button matDateRangePickerCancel>Cancel</button>
-                    <button mat-raised-button matDateRangePickerApply>Apply</button>
+                    <button mat-raised-button matDateRangePickerApply>
+                      Apply
+                    </button>
                   </mat-date-range-picker-actions>
                 </mat-date-range-picker>
               </mat-form-field>
-            </div>
-            <div class="w-75 px-2" [class]="_ShredDataService.textDir === 'ltr'?'ltr':'rtl'">
-              <p class="m-0 p-0 title">
-                {{'explore.Capacity' | translate}}</p>
-                <div class="row text-center">
-                  <button  (click)="changeCount(personNumber-1)" class="bg-danger border-0 text-white px-4 btn-sm col-2">-</button>
-                  <span class=" col-8"  > {{personNumber}}  person</span>
-                  <button (click)="changeCount(personNumber+1)" class="bg-info border-0 text-white px-4 btn-sm col-2">+</button>
-                </div>
 
+              <div
+                class="w-75 px-2"
+                [class]="_ShredDataService.textDir === 'ltr' ? 'ltr' : 'rtl'"
+              >
+                <p class="m-0 p-0 title">
+                  {{ "explore.Capacity" | translate }}
+                </p>
+                <div class="row text-center flex-nowrap">
+                  <button
+                    (click)="changeCount(personNumber - 1)"
+                    class="bg-danger border-0 text-white px-4 btn-sm col-2"
+                    type="button"
+                  >
+                    -
+                  </button>
+                  <mat-form-field class="mb-0 bg-danger-subtle px-1">
+                    <input matInput placeholder="capacity" class="col-8 d-inline-block text-center" formControlName="capacity" [(ngModel)]="personNumber" />
+                  </mat-form-field>
+                  <button
+                    (click)="changeCount(personNumber + 1)"
+                    class="bg-info border-0 text-white px-4 btn-sm col-2"
+                    type="button"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="primary border-0 px-5 w-50 mt-4"
+                routerLink=""
+              >
+                {{ "explore.Explore" | translate }}
+              </button>
+            </form>
           </div>
-          <button type="submit" class="primary btn px-5 w-50 mt-4" routerLink="">
-            {{ "explore.Explore" | translate }}
-          </button>
         </div>
       </div>
       <div class="col-6">

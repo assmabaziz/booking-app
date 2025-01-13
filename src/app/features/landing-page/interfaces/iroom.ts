@@ -21,6 +21,7 @@ export interface IParamsRoom {
     size ?: number,
     startDate ?: Date | null,
     endDate ?: Date | null ,
+    capacity ?: number
 }
 
 export interface Icomment {

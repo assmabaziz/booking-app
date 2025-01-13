@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ExploreService } from '../../services/explore-service/explore.service';
 import { IParamsRoom, IRoom } from '../../interfaces/iroom';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ShredDataService } from '../../../../shared/services/shred-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NonAuthorizedUserComponent } from '../../modules/home/components/non-authorized-user/non-authorized-user.component';
@@ -17,15 +17,22 @@ export class ExploreComponent {
     private _ToastrService: ToastrService,
     private _Router: Router,
     public _ShredDataService :ShredDataService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _ActivatedRoute: ActivatedRoute
   ) {
     if (localStorage) {
       this.roleUser = localStorage.getItem('userRole');
     }
+    this._ActivatedRoute.queryParams.subscribe((params) => {
+      this.startDate = params['startDate'];
+      this.endDate = params['endDate'];
+      this.capacity = params['capacity'];
+    });
   }
   roomsList: IRoom[] = [];
   startDate: Date | null = null;
   endDate: Date | null = null;
+  capacity: number = 1;
   pageIndex: number = 1;
   pageSize: number = 10;
   pageNumber: number = 1;
@@ -47,6 +54,7 @@ export class ExploreComponent {
         size: this.pageSize,
         startDate: this.startDate,
         endDate: this.endDate,
+        capacity: this.capacity,
       };
     }
     this._ExploreService.onGetAllRooms(this.params).subscribe({
