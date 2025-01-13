@@ -29,6 +29,9 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { RouterModule, Routes } from '@angular/router';
+
+
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

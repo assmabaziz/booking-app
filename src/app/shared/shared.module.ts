@@ -27,7 +27,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import {MatStepperModule} from '@angular/material/stepper';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatMomentDateModule} from '@angular/material-moment-adapter';
+import {provideNativeDateAdapter} from '@angular/material/core';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -59,7 +59,7 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
     MatInputModule,
     CarouselModule,
     TranslateModule,
-    MatPaginatorModule,NzButtonModule, MatStepperModule
+    MatPaginatorModule,NzButtonModule, MatStepperModule, MatDatepickerModule,
 
   ],
   exports: [
@@ -91,7 +91,8 @@ import {MatMomentDateModule} from '@angular/material-moment-adapter';
     CarouselModule,
     TranslateModule,
     MatStepperModule,
-    MatPaginatorModule,NzButtonModule, NzDatePickerModule,MatDatepickerModule,MatMomentDateModule
+    MatPaginatorModule,NzButtonModule, NzDatePickerModule,MatDatepickerModule
   ],
+  providers: [provideNativeDateAdapter()],
 })
 export class SharedModule {}
