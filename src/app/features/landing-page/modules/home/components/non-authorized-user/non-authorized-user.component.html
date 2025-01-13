@@ -1,18 +1,35 @@
 <section>
   <div class="container position-relative">
-    <span class="close-icone" (click)="onNoClick()">
-      <mat-icon>close</mat-icon>
-    </span>
+    <div class="d-flex justify-content-between align-items-center py-2">
+      <h1 class="h2">Need login or register</h1>
+      <span class="close-icone" (click)="onNoClick()">
+        <mat-icon>close</mat-icon>
+      </span>
+    </div>
     <div class="row justify-content-center align-items-center">
       <div class="col-md-5">
-        <h2>Oooops!</h2>
-        <h3>may be you forgot something </h3>
+        <h2 class="h3">Oooooooops!!!!!</h2>
+        <h3>may be you forgot something</h3>
         <p>You need to login or register</p>
-        <button class="primary d-block" (click)="onNoClick()" routerLink="/auth/signin">Login now</button>
-        you haven't account? <a routerLink="/auth/signup" (click)="onNoClick()" class="text-danger fw-semibold">register here!</a>
+        <p>
+          you have an account?
+          <a routerLink="/auth/signin" class="text-danger fw-semibold"
+            >Login here!</a
+          >
+        </p>
+        <p>
+          you haven't account?
+          <a routerLink="/auth/signup" class="text-danger fw-semibold"
+            >register here!</a
+          >
+        </p>
       </div>
       <div class="col-md-7">
-        <img src="../../../../../../../assets/images/non-authorized-user-alert/non-authorized-user.gif" class="w-100" alt="non authorized user">
+        <img
+          src="../../../../../../../assets/images/non-authorized-user-alert/non-authorized-user.gif"
+          class="w-100"
+          alt="non authorized user"
+        />
       </div>
     </div>
   </div>

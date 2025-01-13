@@ -9,17 +9,17 @@ section {
       height: 30px;
       width: 30px;
       border-radius: 50%;
-      border: 1px solid red;
-      color: red;
-      position: absolute;
-      right: 10px;
-      top: 10px;
+      border: 1px solid #000;
+      color: #000;
+      // position: absolute;
+      // right: 10px;
+      // top: 10px;
       cursor: pointer;
       transition: $main-transition;
-      &:hover {
-        color: #fff;
-        background-color: red;
-      }
+      // &:hover {
+      //   color: #fff;
+      //   background-color: red;
+      // }
     }
 
   }

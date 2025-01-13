@@ -88,12 +88,15 @@ export class PaymentBookingComponent {
         console.log(res);
         if(res.data.success){
           this.stepTwoDone = true
+          this._ToastrService.success(res.data.message)
         }
       },
       error: (err) => {
         console.log(err);
         this._ToastrService.error(err.error.message)
-      },
+      },complete:()=> {
+        this._ToastrService.success("booking payed successfully")
+      }
     });
   }
 }
