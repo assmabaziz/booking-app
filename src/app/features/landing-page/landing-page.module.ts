@@ -13,7 +13,9 @@ import { CommentsComponent } from './components/comments/comments.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteCommentComponent } from './components/delete-comment/delete-comment.component';
 import { EditCommentComponent } from './components/edit-comment/edit-comment.component';
-
+import { PaymentBookingComponent } from './modules/home/components/payment-booking/payment-booking.component';
+import { NgxStripeModule } from 'ngx-stripe';
+import { StripeElementsDirective,StripePaymentElementComponent } from 'ngx-stripe';
 @NgModule({
   declarations: [
     LandingPageComponent,
@@ -26,7 +28,24 @@ import { EditCommentComponent } from './components/edit-comment/edit-comment.com
     CommentsComponent,
     DeleteCommentComponent,
     EditCommentComponent,
+    PaymentBookingComponent,
+    PaymentBookingComponent
   ],
-  imports: [CommonModule, LandingPageRoutingModule,ReactiveFormsModule, SharedModule],
+  imports: [CommonModule, LandingPageRoutingModule,ReactiveFormsModule, SharedModule, StripePaymentElementComponent, NgxStripeModule.forRoot(
+    'pk_test_51OTjURBQWp069pqTmqhKZHNNd3kMf9TTynJtLJQIJDOSYcGM7xz3DabzCzE7bTxvuYMY0IX96OHBjsysHEKIrwCK006Mu7mKw8'
+  )
+],
 })
 export class LandingPageModule {}
+/*
+
+
+StripePaymentElementComponent, NgxStripeModule.forRoot(
+    'pk_test_51OTjURBQWp069pqTmqhKZHNNd3kMf9TTynJtLJQIJDOSYcGM7xz3DabzCzE7bTxvuYMY0IX96OHBjsysHEKIrwCK006Mu7mKw8'
+  ),
+
+
+
+
+
+ */

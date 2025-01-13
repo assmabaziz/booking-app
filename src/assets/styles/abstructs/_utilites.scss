@@ -15,8 +15,22 @@ button {
     opacity: 0.9;
     cursor: not-allowed;
   }
-  
+
 }
 .cursor-pointer {
   cursor: pointer;
+}
+.logo {
+  color: $text-mainColor;
+  font-size: 1.625rem;
+  font-style: normal;
+  font-weight: 500;
+  cursor: pointer;
+  span {
+    color: $text-secondryColor;
+  }
+  p {
+    color: $text-secondryColor;
+    font-size: 14px;
+  }
 }

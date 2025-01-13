@@ -24,7 +24,7 @@ import { UppdatePasswordComponent } from './components/uppdate-password/uppdate-
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import {MatStepperModule} from '@angular/material/stepper';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -56,7 +56,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     MatInputModule,
     CarouselModule,
     TranslateModule,
-    MatPaginatorModule,NzButtonModule, NzDatePickerModule
+    MatPaginatorModule,NzButtonModule, MatStepperModule
   ],
   exports: [
     SidebarComponent,
@@ -86,7 +86,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     ProfileComponent,
     CarouselModule,
     TranslateModule,
-    MatPaginatorModule,NzButtonModule, NzDatePickerModule
+    MatPaginatorModule,MatStepperModule
   ],
 })
 export class SharedModule {}

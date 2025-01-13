@@ -1,0 +1,205 @@
+<section>
+  <div
+    class="logo text-decoration-none cursor-pointer text-center shadow-sm py-3"
+    [routerLink]="['/landing-page/home']"
+  >
+    Stay<span>cation.</span>
+  </div>
+
+  <mat-stepper headerPosition="top" #stepper>
+    <mat-step>
+      <ng-template matStepLabel>Step 1</ng-template>
+      <ng-template matStepContent>
+        <div class="container text-secondryColor">
+          <div class="text-center">
+            <h3>Payment</h3>
+            <p class="text-muted">Kindly follow the instructions below</p>
+          </div>
+
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-4 shadow-sm">
+              <p>
+                <span class="fw-medium h6">Room number: </span>
+                {{ bookingDetails?.room?.roomNumber }}
+              </p>
+              <p>
+                <span class="fw-medium h6"> Guest:</span>
+                {{ bookingDetails?.user?.userName }}
+              </p>
+              <p>
+                <span class="fw-medium h6">Start date:</span>
+                {{ bookingDetails?.startDate | date : "dd-MM-yyyy" }}
+              </p>
+              <p>
+                <span class="fw-medium h6">End date:</span>
+                {{ bookingDetails?.endDate | date : "dd-MM-yyyy" }}
+              </p>
+              <p>
+                <span class="fw-medium h6">Total price:</span>
+                {{ bookingDetails?.totalPrice }}
+              </p>
+
+              <div class="d-flex align-items-center">
+                <div class="me-2">
+                  <img
+                    src="../../../../../../../assets/images/payment-section-images/image 4.svg"
+                    alt="BCA bank logo"
+                  />
+                </div>
+                <div>
+                  <p>Bank Central Asia</p>
+                  <p>2208 1996</p>
+                  <p>BuildWith Angga</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-center">
+                <div class="me-2">
+                  <img
+                    src="../../../../../../../assets/images/payment-section-images/image 5.svg"
+                    alt="Mandiri bank logo"
+                  />
+                </div>
+                <div>
+                  <p>Bank Mandiri</p>
+                  <p>2208 1996</p>
+                  <p>BuildWith Angga</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="ms-5 border shadow rounded pt-5 px-3">
+                <ngx-stripe-elements
+                  [stripe]="stripe"
+                  [elementsOptions]="elementsOptions"
+                >
+                  <ngx-stripe-card
+                    class="text-secondryColor shadow-lg"
+                    [options]="cardOptions"
+                  />
+                </ngx-stripe-elements>
+
+                <button
+                  mat-button
+                  matStepperNext
+                  class="primary my-5 mx-auto text-white"
+                  type="submit"
+                  (click)="createToken()"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Step 2</ng-template>
+      <ng-template matStepContent>
+        <div class="container text-secondryColor">
+          <div class="text-center">
+            <h3>Payment</h3>
+            <p class="text-muted">Kindly follow the instructions below</p>
+          </div>
+
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-md-4 shadow-sm">
+              <p>RoomNumber: {{ bookingDetails?.room?.roomNumber }}</p>
+              <p>Guest: {{ bookingDetails?.user?.userName }}</p>
+              <p>
+                Start Date:
+                {{ bookingDetails?.startDate | date : "dd-MM-yyyy" }}
+              </p>
+              <p>
+                End Date: {{ bookingDetails?.endDate | date : "dd-MM-yyyy" }}
+              </p>
+              <p>Total Price: {{ bookingDetails?.totalPrice }}</p>
+
+              <div class="d-flex my-3">
+                <div class="me-2">
+                  <img
+                    src="../../../../../../../assets/images/payment-section-images/image 4.svg"
+                    alt="BCA bank logo"
+                  />
+                </div>
+                <div>
+                  <p>Bank Central Asia</p>
+                  <p>2208 1996</p>
+                  <p>BuildWith Angga</p>
+                </div>
+              </div>
+              <div class="d-flex">
+                <div class="me-2">
+                  <img
+                    src="../../../../../../../assets/images/payment-section-images/image 5.svg"
+                    alt="Mandiri bank logo"
+                  />
+                </div>
+                <div>
+                  <p>Bank Mandiri</p>
+                  <p>2208 1996</p>
+                  <p>BuildWith Angga</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="text-center ms-5 shadow rounded py-5">
+                <button
+                  (click)="paySubmit(token)"
+                  mat-button
+                  matStepperNext
+                  class="primary w-50 m-3 text-white"
+                >
+                  Confirm Booking
+                </button>
+                <button
+                  mat-button
+                  matStepperPrevious
+                  class="outline-primary w-50"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <ng-template matStepContent ngIf="">
+        <div class="text-center">
+          <h3 class="text-secondryColor">Yay! Completed</h3>
+          <img
+            src="../../../../../../../assets/images/payment-section-images/payment-done.svg"
+            alt="payment done"
+          />
+          <p class="text-muted">
+            We will inform you via email later <br />
+            once the transaction has been accepted
+          </p>
+          <button
+            class="primary w-25 my-3 border-0"
+            routerLink="/landing-page/home"
+          >
+            Back to Home
+          </button>
+        </div>
+      </ng-template>
+    </mat-step>
+  </mat-stepper>
+</section>
+
+<!--
+
+@if(stepTwoDone) {
+
+    }
+
+
+@if(stepOneDone) {
+
+    }
+-->

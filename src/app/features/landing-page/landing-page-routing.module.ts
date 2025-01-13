@@ -4,7 +4,7 @@ import { LandingPageComponent } from './landing-page.component';
 import { ExploreComponent } from './components/explore/explore.component';
 import { DetailsRoomComponent } from './components/details-room/details-room.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
-import { CommentsComponent } from './components/comments/comments.component';
+import { PaymentBookingComponent } from './modules/home/components/payment-booking/payment-booking.component';
 
 const routes: Routes = [
   {
@@ -23,7 +23,8 @@ const routes: Routes = [
       { path: 'explore', component: ExploreComponent },
       { path: 'Details-Room/:id', component: DetailsRoomComponent },
       { path: 'favorites', component: FavoritesComponent },
-      { path: 'review/:_id', component: CommentsComponent },
+      {path:'payementBooking/:id', component: PaymentBookingComponent}
+      // { path: 'review/:_id', component: CommentsComponent },
     ],
   },
 ];
