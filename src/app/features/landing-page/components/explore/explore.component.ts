@@ -70,9 +70,6 @@ export class ExploreComponent {
       },
     });
   }
-  viewRoomDetails(id:string) {
-
-  }
   handlePageEvent(e: any) {
     this.pageSize = e.pageSize;
     this.pageNumber = e.pageIndex + 1;

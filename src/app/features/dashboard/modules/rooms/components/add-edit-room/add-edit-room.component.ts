@@ -38,13 +38,11 @@ export class AddEditRoomComponent {
       this.RoomsId = this.roomDatda._id;
       this.isEditMode = true;
       this.isAddMode = false;
-      this.getRoomById(this.RoomsId);
     }
     if (this._ShredDataService.isViewMode()) {
       this.roomDatda = this._ShredDataService.myData();
       this.isAddMode = false;
       this.isEditMode = false;
-      console.log('room redy to view mode');
     }
   }
   addRoomForm = new FormGroup({
@@ -56,6 +54,9 @@ export class AddEditRoomComponent {
   });
   ngOnInit(): void {
     this.getAllFacilitest();
+    if(this.RoomsId){
+      this.getRoomById(this.RoomsId);
+    }
   }
   onSubmit(data: FormGroup) {
     if (this.RoomsId) {
@@ -76,7 +77,6 @@ export class AddEditRoomComponent {
       this._RoomsService.onEditRoom(roomData, this.RoomsId).subscribe({
         next: (res) => {
           console.log(res);
-
         },
         error: (err) => {
           this._ToastrService.error(err.error.message);
@@ -97,12 +97,12 @@ export class AddEditRoomComponent {
       roomData.append('imgs', item, item.name);
     }
     for (const facility of data.value.facilities) {
-      roomData.append('facilities', facility._id);
+      roomData.append('facilities', facility);
     }
       this._RoomsService.onAddRoom(roomData).subscribe({
         next: (res) => {},
         error: (err) => {
-          this._ToastrService.error(err.error.message, 'Faild');
+          this._ToastrService.error(err.error.message);
         },
         complete: () => {
           this._Router.navigate(['dashboard/rooms']);
@@ -115,7 +115,6 @@ export class AddEditRoomComponent {
     this._RoomsService.onGetRoomById(id).subscribe({
       next: (res) => {
         this.roomDetails = res.data.room;
-        // console.log(this.roomDetails);
       },
       error: (err) => {
         console.log(err);
@@ -123,32 +122,21 @@ export class AddEditRoomComponent {
         // console.log(this.roomDetails);
 
         this.imgSrc = this.roomDetails?.images
-// console.log(this.imgSrc);
-        if (this.roomDetails?.facilities) {
-          // console.log(this.roomDetails?.facilities);
+        // if (this.roomDetails?.facilities) {
 
-          for (const facility of this.roomDetails.facilities) {
-            // console.log(facility);
-            this.facilities.push(facility)
-// console.log(this.facilities);
-
-          }
-          // console.log(this.facilities);
-
-          // this.roomDetails.facilities.forEach((facility: any) => {
-
-          //   return this.facilities.push(facility);
-          // });
-        };
+        //   this.roomDetails.facilities.forEach((facility: any) => {
+        //     return this.facilities.push(facility);
+        //   });
+        // };
         this.addRoomForm.patchValue({
           roomNumber: this.roomDetails?.roomNumber,
           price: this.roomDetails?.price,
           capacity: this.roomDetails?.capacity,
           discount: this.roomDetails?.discount,
-          facilities: this.roomDetails?.facilities
+          facilities: this.roomDetails.facilities.map((x:any) =>x._id)
         });
         console.log(this.roomDetails.facilities);
-
+        console.log(this.addRoomForm.value);
       }
     });
   }

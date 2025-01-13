@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
 export class DetailsRoomService {
   constructor(private _HttpClient: HttpClient) {}
 
-  getDetailsRoom(): Observable<any> {
+  getDetailsRoom(id:string): Observable<any> {
     return this._HttpClient.get(
-      `/api/v0/portal/rooms/678093f4c01e1856618e0a01`
+      `/api/v0/portal/rooms/${id}`
     );
   }
 }
