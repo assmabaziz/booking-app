@@ -25,6 +25,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import {MatStepperModule} from '@angular/material/stepper';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatMomentDateModule} from '@angular/material-moment-adapter';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -57,6 +60,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     CarouselModule,
     TranslateModule,
     MatPaginatorModule,NzButtonModule, MatStepperModule
+
   ],
   exports: [
     SidebarComponent,
@@ -86,7 +90,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     ProfileComponent,
     CarouselModule,
     TranslateModule,
-    MatPaginatorModule,MatStepperModule
+    MatStepperModule,
+    MatPaginatorModule,NzButtonModule, NzDatePickerModule,MatDatepickerModule,MatMomentDateModule
   ],
 })
 export class SharedModule {}
