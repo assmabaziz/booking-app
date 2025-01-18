@@ -2,13 +2,14 @@
   <div class="container">
     <div class="mb-3">
       <div class="mx-auto text-center">
-        <h1>Village Angga</h1>
+        <h1>Room: {{room.roomNumber}}</h1>
         <span>Bogor, Indonesia</span>
       </div>
     </div>
 
     <div class="row gap-0 g-2" *ngIf="room?.images?.length">
-      <div class="col-md-8">
+      <div class="col-md-8 ">
+      <div class="par">
         <owl-carousel-o [options]="customOptions">
           @for (imgRoom of room.images.slice(0,room.images.length-2); track
           $index) {
@@ -18,7 +19,10 @@
           }
         </owl-carousel-o>
       </div>
-      <div class="col-md-4">
+
+      </div>
+      <div class="col-md-4 par-2">
+
         <div class="d-flex flex-md-column gap-2">
           <div>
             <img
@@ -30,7 +34,6 @@
           <div>
             <img
               class="w-100 rounded-4"
-              height="235.5px"
               [src]="room.images[room.images.length - 1]"
               alt=""
             />
@@ -78,64 +81,55 @@
       </div>
       <div class="col-md-4 py-3">
         <div
-          class="border border-1 border-secondary px-5 pb-2 pt-5 d-flex flex-column justify-content-between h-100"
+          class="border border-1 border-secondary-subtle  px-5 pb-4 pt-5 d-flex flex-column justify-content-between h-100"
         >
           <div>
             <h2 class="h3 title-booking">Start Booking</h2>
             <p class="price">
-              <span>$ {{ room.price }}</span> per night
+              <span>{{priceRoom | currency}}</span> per night
             </p>
-            <span>Discount {{ room.discount }}% Off </span>
+            <span>Discount {{ discount }}% Off </span>
           </div>
-
           <div>
-            <p>Pick a Date</p>
-            <h2>date</h2>
-            <p>You will pay <span>$480 USD</span> per<span> 2 Person</span></p>
-            <button (click)="itsJustAhelperFunction()">Continue Book</button>
-<!--
-
-[routerLink]="['/landing-page/payementBooking', room._id]"
-
--->
+            <p class="p-0 m-0 title">Pick a Date</p>
+            <form [formGroup]="bookingForm" (ngSubmit)="bookingRoom(bookingForm)">
+              <mat-form-field class="w-100 text-center mb-2">
+                <mat-date-range-input
+                  [rangePicker]="rangePicker"
+                  class="mx-auto"
+                >
+                  <input matStartDate placeholder="Start date"  formControlName="startDate" [(ngModel)]="firstDay"/>
+                  <input matEndDate placeholder="End date" formControlName="endDate" [(ngModel)]="lastDay"/>
+                </mat-date-range-input>
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="rangePicker"
+                ></mat-datepicker-toggle>
+                <mat-date-range-picker #rangePicker>
+                  <mat-date-range-picker-actions>
+                    <button mat-button matDateRangePickerCancel>Cancel</button>
+                    <button mat-raised-button matDateRangePickerApply (click)="calculateDateRange()">
+                      Apply
+                    </button>
+                  </mat-date-range-picker-actions>
+                </mat-date-range-picker>
+              </mat-form-field>
+              <div>
+                <p>You will pay <span class="fw-semibold">{{totalPrice | currency}}</span> per<span> {{dateRange.length}} nights</span></p>
+                <button type="submit">Continue Book</button>
+              </div>
+            </form>
           </div>
+
         </div>
+      </div>
+    </div>
+    <div class="row flex-nowrap gap-2">
+      <div class="col-md-6"></div>
+      <div class="col-md-6">
+        <app-comments></app-comments>
       </div>
     </div>
   </div>
 </section>
-
-
-<!-- <form [formGroup]="bookingForm" (ngSubmit)="bookingRoom(bookingForm)">
-  <mat-form-field class="example-form-field">
-    <mat-label>First campaign</mat-label>
-    <mat-date-range-input
-      [formGroup]="campaignOne"
-      [rangePicker]="campaignOnePicker"
-      [comparisonStart]="campaignTwo.value.start"
-      [comparisonEnd]="campaignTwo.value.end">
-      <input matStartDate placeholder="Start date" formControlName="start">
-      <input matEndDate placeholder="End date" formControlName="end">
-    </mat-date-range-input>
-    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
-    <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
-  </mat-form-field>
-
-  <mat-form-field class="example-form-field">
-    <mat-label>Second campaign</mat-label>
-    <mat-date-range-input
-      [formGroup]="campaignTwo"
-      [rangePicker]="campaignTwoPicker"
-      [comparisonStart]="campaignOne.value.start"
-      [comparisonEnd]="campaignOne.value.end">
-      <input matStartDate placeholder="Start date" formControlName="start">
-      <input matEndDate placeholder="End date" formControlName="end">
-    </mat-date-range-input>
-    <mat-datepicker-toggle matIconSuffix [for]="campaignTwoPicker"></mat-datepicker-toggle>
-    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-    <mat-date-range-picker #campaignTwoPicker></mat-date-range-picker>
-  </mat-form-field>
-
-</form> -->
 

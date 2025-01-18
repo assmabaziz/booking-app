@@ -23,7 +23,7 @@ export class CommentsComponent {
   ) {
     this.userRole = localStorage.getItem('userRole');
   }
-  roomId: string | any = this._ActivatedRoute.snapshot.params['_id'];
+  roomId: string | any = this._ActivatedRoute.snapshot.params['id'];
   userRole: string | null = '';
   roomComments: IRoomComment[] = [];
   addCommentForm = new FormGroup({
@@ -46,8 +46,7 @@ export class CommentsComponent {
   addComment(data: FormGroup): void {
     if (this.userRole) {
       this._RoomsService.onAddComment(data.value).subscribe({
-        next: (res) => {
-        },
+        next: (res) => {},
         error: (err) => {
           console.log(err);
           this._ToastrService.error(err.error.message);
@@ -71,11 +70,10 @@ export class CommentsComponent {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this._RoomsService.onRemoveComment(result).subscribe({
-          next: (res) => {
-          },
+          next: (res) => {},
           error: (err) => {
             console.log(err);
-            this._ToastrService.error(err.error.message)
+            this._ToastrService.error(err.error.message);
           },
           complete: () => {
             this._ToastrService.success('Comment deleted successfully');
@@ -92,18 +90,19 @@ export class CommentsComponent {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-    this._RoomsService.onUppdateComment(result.comment, commentDetails._id).subscribe({
-      next: (res) => {
-      },
-      error: (err) => {
-        console.log(err);
-        this._ToastrService.error(err.error.message)
-      },
-      complete: () => {
-        this._ToastrService.success('Comment updated successfully');
-        this.getAllComments()
-      },
-    });
+        this._RoomsService
+          .onUppdateComment(result.comment, commentDetails._id)
+          .subscribe({
+            next: (res) => {},
+            error: (err) => {
+              console.log(err);
+              this._ToastrService.error(err.error.message);
+            },
+            complete: () => {
+              this._ToastrService.success('Comment updated successfully');
+              this.getAllComments();
+            },
+          });
       }
     });
   }

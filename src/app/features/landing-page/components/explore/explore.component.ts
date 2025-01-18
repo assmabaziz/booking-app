@@ -90,8 +90,4 @@ export class ExploreComponent {
       exitAnimationDuration,
     });
   }
-  sayHi(roomId:string):void {
-console.log(roomId);
-
-  }
 }
