@@ -16,6 +16,7 @@ import { EditCommentComponent } from './components/edit-comment/edit-comment.com
 import { PaymentBookingComponent } from './modules/home/components/payment-booking/payment-booking.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { StripeElementsDirective,StripePaymentElementComponent } from 'ngx-stripe';
+import { NgxStarsModule } from 'ngx-stars';
 @NgModule({
   declarations: [
     LandingPageComponent,
@@ -31,7 +32,7 @@ import { StripeElementsDirective,StripePaymentElementComponent } from 'ngx-strip
     PaymentBookingComponent,
     PaymentBookingComponent
   ],
-  imports: [CommonModule, LandingPageRoutingModule,ReactiveFormsModule, SharedModule, StripePaymentElementComponent, NgxStripeModule.forRoot(
+  imports: [CommonModule, LandingPageRoutingModule,ReactiveFormsModule, SharedModule,NgxStarsModule, StripePaymentElementComponent, NgxStripeModule.forRoot(
     'pk_test_51OTjURBQWp069pqTmqhKZHNNd3kMf9TTynJtLJQIJDOSYcGM7xz3DabzCzE7bTxvuYMY0IX96OHBjsysHEKIrwCK006Mu7mKw8'
   )
 ],
