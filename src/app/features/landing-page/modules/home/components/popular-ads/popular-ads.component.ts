@@ -39,7 +39,7 @@ export class PopularAdsComponent {
         this.AdsRooms = res.data.ads;
       },
       error: (err) => {
-        console.log(err);
+        // console.log(err);
       },
     })
     _PortalhomeService.getAllRooms().subscribe({
@@ -47,7 +47,7 @@ export class PopularAdsComponent {
         this.Rooms = res.data.rooms;
       },
       error: (err) => {
-        console.log(err);
+        // console.log(err);
       },
     });
 
@@ -57,12 +57,10 @@ export class PopularAdsComponent {
   }
 
   addRoomToFavorites(id: string) {
-    console.log(id);
+    // console.log(id);
     this._ExploreService.onAddRoomToFav(id).subscribe({
-      next: (res) => {
-      },
-      error: (err) => {
-      },
+      next: (res) => {},
+      error: (err) => {},
       complete: () => {
         this._ToastrService.success('Room added to favorites successfully');
       },

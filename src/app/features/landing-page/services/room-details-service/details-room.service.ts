@@ -20,4 +20,8 @@ export class DetailsRoomService {
   getReview(id: string): Observable<any> {
     return this._HttpClient.get(`/api/v0/portal/room-reviews/${id}`);
   }
+
+  onBookingRoomWithDate(data: any): Observable<any> {
+    return this._HttpClient.post(`/api/v0/portal/booking`, data);
+  }
 }

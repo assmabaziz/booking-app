@@ -64,7 +64,7 @@ export class AdsComponent implements OnInit {
 
   getAllAds() {
     this._AdsService.getAllAds(this.params).subscribe({
-      next: (res: IApiRespose<IAds>) => {
+      next: (res) => {
         // console.log(res);
         const key = Object.keys(res.data).find((k) =>
           Array.isArray(res.data[k])
@@ -141,7 +141,7 @@ export class AdsComponent implements OnInit {
         delete result.room;
         console.log(result);
         this._AdsService.onUpdateAdsById(data._id, result).subscribe({
-          next: (res: IApiRespose<IadsAddEdit>) => {
+          next: (res) => {
             // console.log(res);
             this._ToastrService.success(res.message);
             this.getAllAds();
@@ -173,7 +173,7 @@ export class AdsComponent implements OnInit {
         delete result.disable;
         // console.log(result);
         this._AdsService.onAddAds(result).subscribe({
-          next: (res: IApiRespose<IadsAddEdit>) => {
+          next: (res) => {
             // console.log(res);
             this._ToastrService.success(res.message);
             this.getAllAds();
@@ -196,7 +196,7 @@ export class AdsComponent implements OnInit {
       if (result) {
         // console.log(result);
         this._AdsService.onDeleteAdsById(data._id).subscribe({
-          next: (res: IApiRespose<IadsDelete>) => {
+          next: (res) => {
             // console.log(res);
             this._ToastrService.success(res.message);
             this.getAllAds();

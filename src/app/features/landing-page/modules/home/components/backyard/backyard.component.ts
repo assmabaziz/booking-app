@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { PortalhomeService } from '../../services/portalhome.service';
 import { IRoom } from '../../../../../dashboard/modules/rooms/interfaces/iroom';
 import { IAds } from '../../../../../dashboard/modules/ads/interfaces/iads';
@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { NonAuthorizedUserComponent } from '../non-authorized-user/non-authorized-user.component';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-backyard',
@@ -23,6 +24,7 @@ AdsRooms: IAds[] = [];
     private _ExploreService: ExploreService,
     private _ToastrService: ToastrService,
     private _Router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object,
     public dialog: MatDialog
   ) {
      _PortalhomeService.getAllAds().subscribe({
@@ -43,6 +45,11 @@ AdsRooms: IAds[] = [];
     });
     if (localStorage) {
       this.roleUser = localStorage.getItem('userRole');
+      if (isPlatformBrowser(platformId)) {
+        if (localStorage) {
+          this.roleUser = localStorage.getItem('userRole');
+        }
+      }
     }
   }
   addRoomToFavorites(id: string) {
