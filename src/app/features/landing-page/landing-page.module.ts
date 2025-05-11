@@ -17,6 +17,7 @@ import { PaymentBookingComponent } from './modules/home/components/payment-booki
 import { NgxStripeModule } from 'ngx-stripe';
 import { StripeElementsDirective,StripePaymentElementComponent } from 'ngx-stripe';
 import { NgxStarsModule } from 'ngx-stars';
+import { provideNativeDateAdapter } from '@angular/material/core';
 @NgModule({
   declarations: [
     LandingPageComponent,
@@ -36,6 +37,7 @@ import { NgxStarsModule } from 'ngx-stars';
     'pk_test_51OTjURBQWp069pqTmqhKZHNNd3kMf9TTynJtLJQIJDOSYcGM7xz3DabzCzE7bTxvuYMY0IX96OHBjsysHEKIrwCK006Mu7mKw8'
   )
 ],
+providers: [provideNativeDateAdapter()],
 })
 export class LandingPageModule {}
 /*

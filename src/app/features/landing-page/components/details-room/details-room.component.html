@@ -8,8 +8,8 @@
     </div>
 
     <div class="row gap-0 g-2" *ngIf="room?.images?.length">
-      <div class="col-md-8 ">
-      <div class="par">
+      <div class="col-md-8 par">
+      <div class="">
         <owl-carousel-o [options]="customOptions">
           @for (imgRoom of room.images.slice(0,room.images.length-2); track
           $index) {
@@ -81,7 +81,7 @@
       </div>
       <div class="col-md-4 py-3">
         <div
-          class="border border-1 border-secondary-subtle  px-5 pb-4 pt-5 d-flex flex-column justify-content-between h-100"
+          class="border border-1 rounded-4 border-secondary-subtle px-5 pb-4 pt-5 d-flex flex-column justify-content-between h-100"
         >
           <div>
             <h2 class="h3 title-booking">Start Booking</h2>
@@ -125,7 +125,50 @@
       </div>
     </div>
     <div class="row flex-nowrap gap-2">
-      <div class="col-md-6"></div>
+      <div class="col-md-6">
+        <h4 class="my-1">Rate</h4>
+          <div style="display: flex; align-items: center">
+            <ngx-stars
+              [readonly]="false"
+              [size]="2"
+              [maxStars]="5"
+              color="#FFD700"
+              class="text-warning"
+              (ratingOutput)="onRatingSet($event)"
+            ></ngx-stars>
+          </div>
+          <h4 class="mt-2 mb-1">Message</h4>
+        <form class="mb-3" [formGroup]="reviewForm" (ngSubmit)="sendReview()">
+          <textarea
+            formControlName="review"
+            placeholder="Add your Review"
+            class="w-100 rounded-3 p-2"
+            rows="4"
+          ></textarea>
+          
+          <br />
+          <button type="submit" class="btn btn-primary w-25">Rate</button>
+        </form>
+        @for (rat of reviewDetails; track rat._id) {
+
+          <div class="border border-2 border-warning p-1 rounded-3 w-75 mb-2">
+            <p>{{ rat.review }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span>{{ rat.rating }}</span>
+              <div class="d-flex align-items-center">
+                <img
+                  width="30px"
+                  height="30px"
+                  class="rounded-circle mx-1"
+                  [src]="rat.user.profileImage"
+                  alt=""
+                />
+                <h4 class="d-inline-block">{{ rat.user.userName }}</h4>
+              </div>
+            </div>
+          </div>
+          }
+      </div>
       <div class="col-md-6">
         <app-comments></app-comments>
       </div>

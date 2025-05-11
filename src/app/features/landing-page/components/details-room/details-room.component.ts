@@ -18,7 +18,7 @@ import { IRating } from '../../interfaces/irating';
   styleUrl: './details-room.component.scss',
   providers: [DatePipe],
 })
-export class DetailsRoomComponent {
+export class DetailsRoomComponent implements OnInit{
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -76,10 +76,10 @@ export class DetailsRoomComponent {
         this.Facilities = res.data.room.facilities;
         this.priceRoom = this.room.price;
         this.discount = this.room.discount;
-        console.log(this.room);
+        // console.log(this.room);
       },
       error: (err) => {
-        console.log(err);
+        // console.log(err);
       }
     });
     this.getReviews();
@@ -92,7 +92,7 @@ export class DetailsRoomComponent {
     console.log(this.bookingForm.value);
     this._BookingService.onCreateBooking(this.bookingForm.value).subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
         this.bookingId = res.data.booking._id;
       },
       error: (err) => {
@@ -103,7 +103,7 @@ export class DetailsRoomComponent {
           'you have booked a room, you can continue payment '
         );
         this._Router.navigate([`landing-page/payementBooking/`, this.bookingId]);
-        console.log(this.bookingId);
+        // console.log(this.bookingId);
 
       },
     });
@@ -128,11 +128,11 @@ console.log(this.bookingForm.value);
   getReviews() {
     this._DetailsRoomService.getReview(this.roomId).subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
         this.reviewDetails = res.data.roomReviews;
       },
       error: (err) => {
-        console.log(err);
+        // console.log(err);
       },
     });
   }
@@ -140,7 +140,7 @@ console.log(this.bookingForm.value);
     this.raitingRoom = rating;
   }
   sendReview() {
-    console.log(this.reviewForm.value);
+    // console.log(this.reviewForm.value);
 
     this._DetailsRoomService
       .createReview({
@@ -150,9 +150,33 @@ console.log(this.bookingForm.value);
       })
       .subscribe({
         next: (res) => {
-          console.log(res);
+          // console.log(res);
           this._ToastrService.success(res.message);
           this.getReviews();
+        },
+        error: (err) => {
+          // console.log(err);
+          this._ToastrService.error(err.error.message);
+        },
+      });
+  }
+
+
+  range = new FormGroup({
+    startDate: new FormControl<Date | null>(null),
+    endDate: new FormControl<Date | null>(null),
+  });
+  BookingDateRoom() {
+    this._DetailsRoomService
+      .onBookingRoomWithDate({
+        ...this.range.value,
+        room: this.roomId,
+        totalPrice: this.room.price,
+      })
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this._ToastrService.success(res.message);
         },
         error: (err) => {
           console.log(err);
