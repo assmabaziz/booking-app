@@ -51,9 +51,11 @@ export class PopularAdsComponent {
       },
     });
 
-    if (localStorage) {
-      this.roleUser = localStorage.getItem('userRole');
-    }
+     if (isPlatformBrowser(platformId)) {
+        if (localStorage) {
+          this.roleUser = localStorage.getItem('userRole');
+        }
+      }
   }
 
   addRoomToFavorites(id: string) {
