@@ -76,6 +76,5 @@ export function createTranslateLoader(http: HttpClient) {
     provideHttpClient(withFetch()),
   ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/hotel",
+            "outputPath": "dist/hotel/browser",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -41,15 +41,11 @@
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.scss"
             ],
-            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js"],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js"]
           },
           "configurations": {
             "production": {
+              "outputPath": "dist/hotel/browser",
               "budgets": [
                 {
                   "type": "initial",
@@ -84,6 +80,48 @@
           },
           "defaultConfiguration": "development"
         },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/hotel/server",
+            "main": "src/main.server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputPath": "dist/hotel/server"
+            },
+            "development": {
+              "outputPath": "dist/hotel/server"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "hotel:build",
+            "serverTarget": "hotel:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "hotel:build:production",
+              "serverTarget": "hotel:server:production"
+            },
+            "development": {
+              "browserTarget": "hotel:build:development",
+              "serverTarget": "hotel:server:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {"browserTarget": "hotel:build:production",
+            "serverTarget": "hotel:server:production",
+            "routes": ["/"]
+          }
+        },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
@@ -105,6 +143,6 @@
     }
   },
   "cli": {
-    "analytics": "2891f10b-2267-443e-8571-ea41389de393"
+    "analytics": false
   }
 }
