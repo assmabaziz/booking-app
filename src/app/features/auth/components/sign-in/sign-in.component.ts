@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, PLATFORM_ID } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { HelperService } from '../../../../shared/services/helper.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent {
   hidePassword: boolean = true;
+    private platformId = inject(PLATFORM_ID);
   signInForm = new FormGroup({
     email: new FormControl(null, [
       Validators.required,
@@ -26,8 +28,13 @@ export class SignInComponent {
   constructor(
     private _AuthService: AuthService,
     private _Router: Router,
-    private _ToastrService: ToastrService
+    private _ToastrService: ToastrService,
+    private _helperService : HelperService,
   ) {}
+  ngOnInit(): void {
+    console.log(this._helperService.isPlatformBrowser());
+    console.log(this.platformId);//just a test , to be daleted later
+  }
   onSubmit(data: FormGroup) {
     this._AuthService.onSignin(data.value).subscribe({
       next: (res) => {

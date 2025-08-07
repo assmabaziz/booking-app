@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { RoomsService } from '../../services/rooms-service/rooms.service';
 import { MatDialog } from '@angular/material/dialog';
-import { NonAuthorizedUserComponent } from '../../modules/home/components/non-authorized-user/non-authorized-user.component';
-import { Icomment, IRoomComment } from '../../interfaces/iroom';
 import { ToastrService } from 'ngx-toastr';
+
+import { RoomsService } from '../../services/rooms-service/rooms.service';
+import { NonAuthorizedUserComponent } from '../../modules/home/components/non-authorized-user/non-authorized-user.component';
+import { IRoomComment } from '../../interfaces/iroom';
 import { DeleteCommentComponent } from '../delete-comment/delete-comment.component';
 import { EditCommentComponent } from '../edit-comment/edit-comment.component';
+import { HelperService } from '../../../../shared/services/helper.service';
+
 
 @Component({
   selector: 'app-comments',
@@ -19,9 +22,12 @@ export class CommentsComponent {
     private _ActivatedRoute: ActivatedRoute,
     private _RoomsService: RoomsService,
     private _ToastrService: ToastrService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private helperService: HelperService
   ) {
-    this.userRole = localStorage.getItem('userRole');
+      if (this.helperService.isPlatformBrowser())  {
+        this.userRole = localStorage.getItem('userRole');
+      }
   }
   roomId: string | any = this._ActivatedRoute.snapshot.params['id'];
   userRole: string | null = '';

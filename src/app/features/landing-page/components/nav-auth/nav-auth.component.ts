@@ -1,10 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { AuthService } from '../../../auth/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
+
+import { AuthService } from '../../../auth/services/auth.service';
 import { IProfile } from '../../../../shared/interfaces/iprofile';
 import { UppdatePasswordComponent } from '../../../../shared/components/uppdate-password/uppdate-password.component';
 import { ProfileComponent } from '../../../../shared/components/profile/profile.component';
 import { ShredDataService } from '../../../../shared/services/shred-data.service';
+import { HelperService } from '../../../../shared/services/helper.service';
+
+
 
 @Component({
   selector: 'app-nav-auth',
@@ -14,21 +18,20 @@ import { ShredDataService } from '../../../../shared/services/shred-data.service
 export class NavAuthComponent {
   constructor(
     private _AuthService: AuthService,
-    public _ShredDataService: ShredDataService
+    public _ShredDataService: ShredDataService,
+    private helperService : HelperService
   ) {}
   public dialog = inject(MatDialog);
   profileData!: IProfile | null;
   userRole: any;
   ngOnInit(): void {
-    if (typeof window !== 'undefined') {
+    if (this.helperService.isPlatformBrowser()) {
       if (localStorage.getItem('userToken')) {
         this._AuthService.getProfieDetails().subscribe({
           next: (res) => {
-            // console.log(res);
             this.profileData = res.data.user;
           },
           error: (err) => {
-            console.log(err);
           },
         });
         this.userRole = this._AuthService.role;

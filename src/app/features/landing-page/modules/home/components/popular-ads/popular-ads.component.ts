@@ -1,14 +1,14 @@
-import { PortalhomeService } from './../../services/portalhome.service';
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+
+import { PortalhomeService } from './../../services/portalhome.service';
 import { IAds } from '../../../../../dashboard/modules/ads/interfaces/iads';
 import { ShredDataService } from '../../../../../../shared/services/shred-data.service';
-import { isPlatformBrowser } from '@angular/common';
 import { IRoom } from '../../../../interfaces/iroom';
-import { ToastrService } from 'ngx-toastr';
 import { ExploreService } from '../../../../services/explore-service/explore.service';
-import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
 import { NonAuthorizedUserComponent } from '../non-authorized-user/non-authorized-user.component';
+import { HelperService } from '../../../../../../shared/services/helper.service';
 
 @Component({
   selector: 'app-popular-ads',
@@ -27,13 +27,14 @@ export class PopularAdsComponent {
     @Inject(PLATFORM_ID) private platformId: Object,
     private _ExploreService: ExploreService,
     private _ToastrService: ToastrService,
-    private _Router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog, 
+    private helperService : HelperService
   ) {
-    if (isPlatformBrowser(platformId)) {
-      // Access localStorage only in the browser
-      this.defaultLanguage = localStorage.getItem('language');
-    }
+
+ if (this.helperService.isPlatformBrowser())  {
+   this.defaultLanguage = localStorage.getItem('language');
+
+      }
   _PortalhomeService.getAllAds().subscribe({
     next: (res) => {
         this.AdsRooms = res.data.ads;
@@ -51,10 +52,10 @@ export class PopularAdsComponent {
       },
     });
 
-     if (isPlatformBrowser(platformId)) {
-        if (localStorage) {
-          this.roleUser = localStorage.getItem('userRole');
-        }
+     if (this.helperService.isPlatformBrowser())  {
+       if (localStorage) {
+         this.roleUser = localStorage.getItem('userRole');
+       }
       }
   }
 

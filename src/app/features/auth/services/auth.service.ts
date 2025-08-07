@@ -7,6 +7,7 @@ import { ILogin } from '../interfaces/ilogin';
 import { IRegister } from '../interfaces/iregister';
 import { IReset } from '../interfaces/ireset';
 import { isPlatformBrowser } from '@angular/common';
+import { HelperService } from '../../../shared/services/helper.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,35 +17,36 @@ export class AuthService {
   constructor(
     private _HttpClient: HttpClient,
     private _Router: Router,
-    @Inject(PLATFORM_ID) private platformId: Object
+    private helperService : HelperService
   ) {
-    if (isPlatformBrowser(platformId)) {
+    if (this.helperService.isPlatformBrowser()) {
       this.getProfile();
     }
   }
   getProfile() {
-    if (localStorage.getItem('userToken')) {
-      let finalToken: any = localStorage.getItem('userToken');
-      let decodedToken: any = jwtDecode(finalToken);
-      localStorage.setItem('userRole', decodedToken.role);
-      localStorage.setItem('id', decodedToken._id);
-      this.setRole();
-      // return JSON.parse(localStorage.getItem('userToken') || '{}');
-    } else {
-      // return null;
-    }
+      if (this.helperService.isPlatformBrowser())  {
+        if (localStorage.getItem('userToken')) {
+          let finalToken: any = localStorage.getItem('userToken');
+          let decodedToken: any = jwtDecode(finalToken);
+          localStorage.setItem('userRole', decodedToken.role);
+          localStorage.setItem('id', decodedToken._id);
+          this.setRole();
+        } 
+      }
   }
   setRole() {
-    if (localStorage.getItem('userToken') && localStorage.getItem('userRole')) {
-      this.role = localStorage.getItem('userRole');
-      localStorage.getItem('id');
-    }
+      if (this.helperService.isPlatformBrowser())  {
+        if (localStorage.getItem('userToken') && localStorage.getItem('userRole')) {
+          this.role = localStorage.getItem('userRole');
+          localStorage.getItem('id');
+        }
+      }
   }
 
   getProfieDetails(): Observable<any> {
-    return this._HttpClient.get(
-      `/api/v0/admin/users/${localStorage.getItem('id')}`
-    );
+      return this._HttpClient.get(
+        `/api/v0/admin/users/${localStorage.getItem('id')}`
+      );
   }
 
   onSignUp(data: any): Observable<any> {

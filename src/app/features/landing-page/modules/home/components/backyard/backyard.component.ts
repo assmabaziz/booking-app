@@ -4,10 +4,9 @@ import { IRoom } from '../../../../../dashboard/modules/rooms/interfaces/iroom';
 import { IAds } from '../../../../../dashboard/modules/ads/interfaces/iads';
 import { ExploreService } from '../../../../services/explore-service/explore.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { NonAuthorizedUserComponent } from '../non-authorized-user/non-authorized-user.component';
-import { isPlatformBrowser } from '@angular/common';
+import { HelperService } from '../../../../../../shared/services/helper.service';
 
 @Component({
   selector: 'app-backyard',
@@ -23,9 +22,8 @@ AdsRooms: IAds[] = [];
     private _PortalhomeService: PortalhomeService,
     private _ExploreService: ExploreService,
     private _ToastrService: ToastrService,
-    private _Router: Router,
-    @Inject(PLATFORM_ID) private platformId: Object,
-    public dialog: MatDialog
+    public dialog: MatDialog, 
+    private helperService : HelperService
   ) {
      _PortalhomeService.getAllAds().subscribe({
       next: (res) => {
@@ -43,11 +41,11 @@ AdsRooms: IAds[] = [];
         console.log(err);
       },
     });
-     if (isPlatformBrowser(platformId)) {
-        if (localStorage) {
-          this.roleUser = localStorage.getItem('userRole');
-        }
+    if (this.helperService.isPlatformBrowser())  {
+      if (localStorage) {
+        this.roleUser = localStorage.getItem('userRole');
       }
+    }
   }
   addRoomToFavorites(id: string) {
     console.log(id);

@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
-import { ExploreService } from '../../services/explore-service/explore.service';
-import { IParamsRoom, IRoom } from '../../interfaces/iroom';
-import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ShredDataService } from '../../../../shared/services/shred-data.service';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+import { IParamsRoom, IRoom } from '../../interfaces/iroom';
+
+import { ToastrService } from 'ngx-toastr';
+import { ShredDataService } from '../../../../shared/services/shred-data.service';
+import { ExploreService } from '../../services/explore-service/explore.service';
 import { NonAuthorizedUserComponent } from '../../modules/home/components/non-authorized-user/non-authorized-user.component';
+import { HelperService } from '../../../../shared/services/helper.service';
+
+
 @Component({
   selector: 'app-explore',
   templateUrl: './explore.component.html',
@@ -15,14 +19,16 @@ export class ExploreComponent {
   constructor(
     private _ExploreService: ExploreService,
     private _ToastrService: ToastrService,
-    private _Router: Router,
     public _ShredDataService :ShredDataService,
     public dialog: MatDialog,
-    private _ActivatedRoute: ActivatedRoute
+    private _ActivatedRoute: ActivatedRoute, 
+    private helperService : HelperService
   ) {
-    if (localStorage) {
-      this.roleUser = localStorage.getItem('userRole');
-    }
+      if (this.helperService.isPlatformBrowser())  {
+        if (localStorage) {
+          this.roleUser = localStorage.getItem('userRole');
+        }
+      }
     this._ActivatedRoute.queryParams.subscribe((params) => {
       this.startDate = params['startDate'];
       this.endDate = params['endDate'];
@@ -67,7 +73,6 @@ export class ExploreComponent {
   addRoomToFavorites(id: string) {
     this._ExploreService.onAddRoomToFav(id).subscribe({
       next: (res) => {
-        // console.log(res);
       },
       error: (err) => {
         this._ToastrService.error(err.error.message)
