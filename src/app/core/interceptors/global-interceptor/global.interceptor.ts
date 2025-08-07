@@ -15,13 +15,12 @@ import { HelperService } from '../../../shared/services/helper.service';
 export class globalInterceptor implements HttpInterceptor {
   private baseUrl = 'https://upskilling-egypt.com:3000';
   newRequest: HttpRequest<unknown> | undefined;
-  const helperService = inject(HelperService);
-
+   constructor(private helperService: HelperService) {}
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (helperService.isPlatformBrowser()) {
+    if (this.helperService.isPlatformBrowser()) {
       if (localStorage.getItem('userToken')) {
         this.newRequest = request.clone({
           url: request.url.includes('assets')
