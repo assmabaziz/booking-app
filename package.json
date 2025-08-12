@@ -5,12 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:ssr": "ng build && ng run hotel:server",
+    "build:ssr": "ng build --configuration=production && ng run hotel:server:production",
     "serve:ssr": "node dist/hotel/server/main.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-
   "private": true,
   "engines": {
     "node": "20.x"
@@ -62,6 +61,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "rimraf": "^6.0.1",
     "typescript": "~5.4.2"
   }
 }

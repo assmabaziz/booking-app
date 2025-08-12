@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/hotel/browser",
+            "outputPath": "dist/hotel",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -45,7 +45,7 @@
           },
           "configurations": {
             "production": {
-              "outputPath": "dist/hotel/browser",
+              "outputPath": "dist/hotel",
               "budgets": [
                 {
                   "type": "initial",
@@ -84,7 +84,7 @@
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "outputPath": "dist/hotel/server",
-            "main": "src/main.server.ts",
+            "main": "server.ts",
             "tsConfig": "tsconfig.server.json"
           },
           "configurations": {
@@ -117,7 +117,8 @@
         },
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
-          "options": {"browserTarget": "hotel:build:production",
+          "options": {
+            "browserTarget": "hotel:build:production",
             "serverTarget": "hotel:server:production",
             "routes": ["/"]
           }

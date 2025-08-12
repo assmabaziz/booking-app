@@ -1,43 +1,57 @@
+import 'zone.js/node';
 import { APP_BASE_HREF } from '@angular/common';
 import { CommonEngine } from '@angular/ssr';
-import express from 'express';
-import { fileURLToPath } from 'node:url';
-import { dirname, join, resolve } from 'node:path';
+import express, { Request, Response, NextFunction } from 'express';
+import { join } from 'node:path';
+import { existsSync } from 'node:fs';
 import AppServerModule from './src/main.server';
 
-// The Express app is exported so that it can be used by serverless Functions.
+// ✅ استخدم جذر المشروع دائمًا
+const projectRoot = process.cwd(); // C:\Users\...\booking-app
+const serverDistFolder  = join(projectRoot, 'dist', 'hotel', 'server');   // dist/hotel/server
+const browserDistFolder = join(projectRoot, 'dist', 'hotel', 'browser');  // dist/hotel/browser
+
+// اختر ملف الـ HTML المتاح
+const indexServerHtml = join(serverDistFolder, 'index.server.html');
+const indexBrowserHtml = join(browserDistFolder, 'index.html');
+const indexHtml = existsSync(indexServerHtml) ? indexServerHtml : indexBrowserHtml;
+
+// — Debug logs لمرة واحدة (تتركها مؤقتًا)
+console.log('[SSR] projectRoot:', projectRoot);
+console.log('[SSR] serverDistFolder:', serverDistFolder);
+console.log('[SSR] browserDistFolder:', browserDistFolder);
+console.log('[SSR] indexHtml exists?:', existsSync(indexHtml), '→', indexHtml);
+
+// نُصدّر تطبيق Express
 export function app(): express.Express {
   const server = express();
-  const serverDistFolder = dirname(fileURLToPath(import.meta.url));
-  const browserDistFolder = resolve(serverDistFolder, '../browser');
-  const indexHtml = join(serverDistFolder, 'index.server.html');
-
   const commonEngine = new CommonEngine();
 
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
-  // Example Express Rest API endpoints
-  // server.get('/api/**', (req, res) => { });
-  // Serve static files from /browser
-  server.get('*.*', express.static(browserDistFolder, {
-    maxAge: '1y'
-  }));
+  // ستاتيك
+  server.get('*.*', express.static(browserDistFolder, { maxAge: '1y' }));
 
-  // All regular routes use the Angular engine
-  server.get('*', (req, res, next) => {
+  // SSR
+  server.get('*', (req: Request, res: Response, next: NextFunction) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
 
-    commonEngine
-      .render({
-        bootstrap: AppServerModule,
-        documentFilePath: indexHtml,
-        url: `${protocol}://${headers.host}${originalUrl}`,
-        publicPath: browserDistFolder,
-        providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
-      })
-      .then((html) => res.send(html))
-      .catch((err) => next(err));
+    commonEngine.render({
+      bootstrap: AppServerModule,
+      documentFilePath: indexHtml,
+      url: `${protocol}://${headers.host}${originalUrl}`,
+      publicPath: browserDistFolder,
+      providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
+    })
+    .then(html => res.send(html))
+    .catch(err => next(err));
+  });
+
+  // Error handler يطبع الاستثناءات بدل ما يدي Internal Server Error صامت
+  server.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+    console.error('[SSR] Render error:', err);
+    res.status(500).send('Internal Server Error');
   });
 
   return server;
@@ -45,8 +59,6 @@ export function app(): express.Express {
 
 function run(): void {
   const port = process.env['PORT'] || 4000;
-
-  // Start up the Node server
   const server = app();
   server.listen(port, () => {
     console.log(`Node Express server listening on http://localhost:${port}`);
@@ -54,3 +66,4 @@ function run(): void {
 }
 
 run();
+export * from './src/main.server';
